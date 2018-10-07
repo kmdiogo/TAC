@@ -6,10 +6,28 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
     <style>
         .student-or-employee{
             width: 100%;
             height: 200%;
+        }
+        .student-or-employee:hover{
+            animation: jump 1s infinite ease-in-out;
+        }
+        @keyframes jump {
+            50% {
+                transform: translateY(5%);
+            }
+            100% {
+                transform: translateY(0%);
+            }
+        }
+        #content{
+            transition: all 2s ease-in-out;
+        }
+        #content.start-up{
+            transform: translateY(-5%);
         }
         .wrapper{
             display: flex;
@@ -37,52 +55,45 @@
         }
     </style>
 </head>
-<body>
+<body class="hidden">
 <div class="wrapper">
-    <nav id="sidebar">
+    <nav id="sidebar" class="active">
         <div class="sidebar-header">
             <h3>TAC</h3>
         </div>
         <ul class="list-unstyled components">
-            <p>Dummy Heading</p>
             <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <a href="#homeSubmenu">Home</a>
             </li>
             <li>
-                <a href="#">Shit</a>
+                <a href="#">Student Sign-In</a>
             </li>
             <li>
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                <a href="#pageSubmenu">Employee Clock-In</a>
             </li>
             <li>
-                <a href="#">More shit</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="#">Employee Tools</a>
             </li>
         </ul>
     </nav>
 
+    <button type="button" id="sidebarCollapse" class="btn btn-info">III</button>
+    <div class="justify-content-center align-items-center d-flex start-up" id="content" style="min-height: 100vh;width: 100%;">
 
-    <div id="content" style="min-height: 100vh;width: 100%;">
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
-            <i class="fas fa-align-left"></i>
-            <span>III</span>
-        </button>
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <h1>Welcome to the Tutor Assistance Center</h1>
+                <h1>Welcome to the Tutor Assistance Computer</h1>
                 <h3>Please select if you are a student or employee</h3>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary hover-expand student-or-employee">
+                    <button class="btn btn-primary student-or-employee">
                         Student
                     </button>
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary hover-expand student-or-employee">
+                    <button class="btn btn-primary student-or-employee">
                         Employee
                     </button>
                 </div>
@@ -100,11 +111,16 @@
 <script src="{% static 'js/bootstrap.js' %}"></script>
 <script>
     $(document).ready(function(){
+        $('body').removeClass('hidden');
+        $('#content').removeClass('start-up');
+        BindIndexEvents();
+    });
+
+    function BindIndexEvents(){
         $('#sidebarCollapse').click(function(){
-            console.log("afgjsd");
             $('#sidebar').toggleClass('active');
         });
-    });
+    }
 </script>
 </body>
 </html>

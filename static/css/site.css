@@ -1,3 +1,11 @@
+body{
+    font-family: 'Krub', sans-serif;
+    transition: opacity 1s;
+}
+body.hidden{
+    opacity: 0;
+}
+
 .hover-expand{
     transition: all 0.2s ease-in-out;
 }
@@ -5,3 +13,15 @@
 .hover-expand:hover{
     transform: scale(1.1,1.1);
 }
+
+.hover-translate-left, .hover-translate-right{
+    transition: all 0.2s ease-in-out;
+}
+.hover-translate-left:hover{
+    transform: translateX(-5%);
+}
+
+.hover-translate-right:hover{
+    transform: translateX(5%);
+}
+
