@@ -38,3 +38,22 @@ function AddTwoNumbers(a,b){
   return a + b;
 }
 ```
+
+#### Python
+The coding style for Python largely adheres to PEP-8 standards, but there are some exceptions:
+* Variable names are still lowercase camel case
+```Python
+myAge = 5
+myName = "John Doe"
+```
+* Function names are lowercase separated with underscores
+```Python
+def add_two_numbers(a,b):
+  return a+b
+```
+* Class names are uppercase camel case
+```Python
+class Shape:
+  def __init__(self):
+    pass
+```
