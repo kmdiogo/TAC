@@ -40,7 +40,7 @@ function AddTwoNumbers(a,b){
 ```
 
 #### Python
-The coding style for Python largely adheres to PEP-8 standards, but there are some exceptions:
+The coding style for Python largely adheres to PEP-8 standards, but there are some exceptions. Here are the main things to know:
 * Variable names are still lowercase camel case
 ```Python
 myAge = 5
@@ -53,7 +53,7 @@ def add_two_numbers(a,b):
 ```
 * Class names are uppercase camel case
 ```Python
-class Shape:
+class MyExampleClass:
   def __init__(self):
     pass
 ```
