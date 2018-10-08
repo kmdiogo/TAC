@@ -60,7 +60,7 @@ class MyExampleClass:
 
 ### SETTING UP THE PROJECT
 0. Download and install Python 3.7 if not installed on your machine already
-These next steps apply to if you are using PyCharm.
+These next steps apply if you are using PyCharm.
 1. Open up PyCharm and ensure you are on the create a new project window. Create a project by pulling from from versional control, and use the repo URL https://github.com/kmdiogo/TAC to download the project files
 2. The project will prompt you to configure a Python Interpreter and Virtual Environment, make sure you select Python 3.7.
 3. PyCharm should notify that you are missing packages from requirements.txt, click the install missing packages button and your project should be good to go!
