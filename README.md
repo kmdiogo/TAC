@@ -13,7 +13,7 @@ These are some general coding standards we should all try to adhere to to mainta
 ```HTML
 <div class = "example-class-name" id = "example-div"></div>
 ```
-* CSS rules that can be applicable to more than page must be include in the site.css file under the static directory
+* CSS rules that can be applicable to more than page must be included in the site.css file under the static directory
 * CSS rules specific to a page must be placed inline in the header section of the HTML file. This is subject to change as the project scales
 ```HTML
 <head>
