@@ -27,7 +27,7 @@ These are some general coding standards we should all try to adhere to to mainta
 #### Javascript
 * Javascript must be placed at the end of body tag, after all other HTML
 * For now, just write the javascript inline with the HTML file, this is also subject to change
-* Variable names must be named with lowercase camel case
+* Variable names must be named with lowerCamelCase
 ```Javascript
 let myAge = 5;
 let myName = 'John Doe';
@@ -41,7 +41,7 @@ function AddTwoNumbers(a,b){
 
 #### Python
 The coding style for Python largely adheres to PEP-8 standards, but there are some exceptions. Here are the main things to know:
-* Variable names are still lowercase camel case
+* Variable names are still lowerCamelCase
 ```Python
 myAge = 5
 myName = "John Doe"
@@ -51,7 +51,7 @@ myName = "John Doe"
 def add_two_numbers(a,b):
   return a+b
 ```
-* Class names are uppercase camel case
+* Class names are UpperCamelCase
 ```Python
 class MyExampleClass:
   def __init__(self):
@@ -62,5 +62,8 @@ class MyExampleClass:
 0. Download and install Python 3.7 if not installed on your machine already
 These next steps apply if you are using PyCharm.
 1. Open up PyCharm and ensure you are on the create a new project window. Create a project by pulling from from versional control, and use the repo URL https://github.com/kmdiogo/TAC to download the project files
-2. The project will prompt you to configure a Python Interpreter and Virtual Environment, make sure you select Python 3.7.
-3. PyCharm should notify that you are missing packages from requirements.txt, click the install missing packages button and your project should be good to go!
+2. Once the Project is pulled and the project opens, go to File > Settings, then in the pop-up window, find the Python Interpreter tab. In this section, create a new Python Virtual Environment using Python 3.7 as the base interpreter.
+3. Let PyCharm finish loading and creating the virtual environment
+4. Open the 'requirements.txt' file by double-clicking the file in the folder view. Once it opens, PyCharm should detect you are missing dependencies, click 'Install Requirements' to install all necessary packages.
+5. Once that is finished, click on the 'Add Configuration' button near the top right of PyCharm. In this pop-up window, click the plus to add a new configuration, then select Django. For project title, put 'TAC'. Click apply then confirm
+6. PyCharm should notify that you are missing packages from requirements.txt, click the install missing packages button and your project should be good to go!
