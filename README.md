@@ -71,6 +71,6 @@ These next steps apply if you are using PyCharm.
 
 ### Resources
 As always, refer to documentation first before asking for help. Below are some useful resources.
-[Django 2.1 Documenation](https://docs.djangoproject.com/en/2.1/)
-[Bootstrap 4.1 Documenation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
-[JQuery API Documenation](https://api.jquery.com/)
+* [Django 2.1 Documenation](https://docs.djangoproject.com/en/2.1/)
+* [Bootstrap 4.1 Documenation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+* [JQuery API Documenation](https://api.jquery.com/)
