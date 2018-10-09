@@ -26,6 +26,19 @@ These are some general coding standards we should all try to adhere to to mainta
 ```
 #### Javascript
 * Javascript must be placed at the end of body tag, after all other HTML
+```HTML
+<body>
+  <p>This</p>
+  <p>Is</p>
+  <p>My HTML</p>
+  ...
+  ...
+  ...
+  <script id='example-javascript'>
+    console.log("Hello World");
+  </script>
+</body>
+```
 * For now, just write the javascript inline with the HTML file, this is also subject to change
 * Variable names must be named with lowerCamelCase
 ```Javascript
