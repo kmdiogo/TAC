@@ -67,3 +67,10 @@ These next steps apply if you are using PyCharm.
 4. Open the 'requirements.txt' file by double-clicking the file in the folder view. Once it opens, PyCharm should detect you are missing dependencies, click 'Install Requirements' to install all necessary packages.
 5. Once that is finished, click on the 'Add Configuration' button near the top right of PyCharm. In this pop-up window, click the plus to add a new configuration, then select Django. For project title, put 'TAC'. Click apply then confirm
 6. PyCharm should notify that you are missing packages from requirements.txt, click the install missing packages button and your project should be good to go!
+
+
+### Resources
+As always, refer to documentation first before asking for help. Below are some useful resources.
+[Django 2.1 Documenation](https://docs.djangoproject.com/en/2.1/)
+[Bootstrap 4.1 Documenation](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
+[JQuery API Documenation](https://api.jquery.com/)
