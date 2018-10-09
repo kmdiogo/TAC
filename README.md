@@ -9,7 +9,7 @@ This repository contains all the source code for the TAC tutor management softwa
 ### CODING STANDARDS
 These are some general coding standards we should all try to adhere to to maintain consistency across the software.
 ##### HTML/CSS
-* HTML id/class names should be separated with dashes. Example:
+* HTML id/class names should be separated with dashes
 ```HTML
 <div class = "example-class-name" id = "example-div"></div>
 ```
