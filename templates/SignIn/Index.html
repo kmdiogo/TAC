@@ -3,17 +3,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TAC &middot; Home</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/SignIn/TAC_LOGO.png' %}"/>
     <style>
+        body{
+            background-color: white/*rgba(167,25,48,1)*/;
+        }
         .student-or-employee{
             width: 100%;
             height: 200%;
         }
         .student-or-employee:hover{
             animation: jump 1s infinite ease-in-out;
+            /*background-color: grey !important;*/
         }
         @keyframes jump {
             50% {
@@ -58,8 +63,10 @@
 <body class="hidden">
 <div class="wrapper">
     <nav id="sidebar" class="active">
-        <div class="sidebar-header">
+        <div class="sidebar-header row">
+            <img class="d-flex align-self-center ml-2 mr-1" src="{% static 'images/SignIn/TAC_LOGO.png' %}" style="width:15%;height:15%;"/>
             <h3>TAC</h3>
+
         </div>
         <ul class="list-unstyled components">
             <li class="active">
@@ -81,6 +88,9 @@
     <div class="justify-content-center align-items-center d-flex start-up" id="content" style="min-height: 100vh;width: 100%;">
 
         <div class="container">
+            <div class="d-flex justify-content-center">
+                <img src="{% static 'images/SignIn/TAC_LOGO.png' %}" style="height:7%;width:20%;"/>
+            </div>
             <div class="row d-flex justify-content-center">
                 <h1>Welcome to the Tutor Assistance Computer</h1>
                 <h3>Please select if you are a student or employee</h3>
