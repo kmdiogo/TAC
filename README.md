@@ -45,7 +45,7 @@ These are some general coding standards we should all try to adhere to to mainta
 let myAge = 5;
 let myName = 'John Doe';
 ```
-* Function names must use uppercase camel case
+* Function names must use UpperCamelCase
 ```Javascript
 function AddTwoNumbers(a,b){
   return a + b;
