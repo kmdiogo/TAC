@@ -22,6 +22,7 @@
 
     #content{
         transition: all 2s ease-in-out;
+        /*animation: slide-down 1s;*/
     }
     #content.start-up{
         transform: translateY(-5%);
@@ -63,15 +64,11 @@
         margin-top: 5px;
         margin-bottom: 5px;
     }
-    #button-sidebar > span:hover {
-        animation: spin 1s linear infinite;
-    }
     .section {
-        transition: opacity 0.4s ease-in;
-        opacity: 0;
+        display: none;
     }
     .section.active {
-        opacity: 1;
+        display: block;
     }
     .section-button {
         transition: background-color 0.2s linear;
@@ -89,13 +86,13 @@
         <hr>
         <ul class="list-unstyled components" id="sidebar-links">
             <li class="active">
-                <button class="btn btn-outline-info section-button" href="{% url 'index' %}" data-section="#home-section">Home</button>
+                <button class="btn btn-outline-info section-button active" data-section="#home-section">Home</button>
             </li>
             <li>
                 <button class="btn btn-outline-info section-button" data-section="#student-section">Student Sign-In</button>
             </li>
             <li>
-                <button class="btn btn-outline-info section-button">Employee Clock-In</button>
+                <button class="btn btn-outline-info section-button" data-section="#employee-section">Employee Clock-In</button>
             </li>
             <li>
                 <button class="btn btn-outline-info section-button" >Employee Tools</button>
@@ -110,11 +107,14 @@
             <div class="section active" id="home-section">
                 {% include 'SignIn/_HomeSection.html' %}
             </div>
-
             <div class="section" id="student-section">
                 {% include 'SignIn/_StudentSection.html' %}
             </div>
+            <div class="section" id="employee-section">
+                {% include 'SignIn/_EmployeeSection.html' %}
+            </div>
         </div>
+
     </div>
 </div>
 {% endblock %}
@@ -135,10 +135,14 @@
         });
 
         $('.section-button').click(function(){
+            let targetSection = $(this).data('section');
+            if ($(this).hasClass('active'))
+                return;
             $('.section-button').removeClass('active');
             $(this).addClass('active');
-            $('.section').removeClass('active');
-            $($(this).data('section')).addClass('active');
+            $('.section').fadeOut('fast').promise().done(function(){
+                $(targetSection).fadeIn('fast');
+            });
         });
     }
 </script>
