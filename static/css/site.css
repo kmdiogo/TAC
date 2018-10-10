@@ -22,3 +22,17 @@ body{
     transform: translateX(5%);
 }
 
+@keyframes jump {
+    50% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+
+}
+

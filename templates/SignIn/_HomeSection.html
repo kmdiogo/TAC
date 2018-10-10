@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <img src="{% static 'images/SignIn/TAC_Logo.png' %}" style="height:7%;width:20%;"/>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <h1>Welcome to the Tutor Assistance Computer</h1>
+        <h3>Please select if you are a student or employee</h3>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-3"></div>
+        <div class="col-md-3" id="col-button-student">
+            <button class="btn btn-primary student-or-employee">
+                Student
+            </button>
+        </div>
+        <div class="col-md-3" id="col-button-employee">
+            <button class="btn btn-primary student-or-employee">
+                Employee
+            </button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

@@ -19,14 +19,7 @@
         animation: jump 1s infinite ease-in-out;
         /*background-color: grey !important;*/
     }
-    @keyframes jump {
-        50% {
-            transform: translateY(5%);
-        }
-        100% {
-            transform: translateY(0%);
-        }
-    }
+
     #content{
         transition: all 2s ease-in-out;
     }
@@ -50,17 +43,38 @@
         margin-left: -250px;
     }
     @media (max-width: 768px) {
-        #sidebar {
+        /*#sidebar {
             margin-left: -250px;
         }
         #sidebar.active {
             margin-left: 0;
+        }*/
+        #col-button-employee, #col-button-student {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .student-or-employee {
+            width: 100%;
+            height: 100%;
         }
     }
     #sidebar-links > li > button{
         width: 100%;
         margin-top: 5px;
         margin-bottom: 5px;
+    }
+    #button-sidebar > span:hover {
+        animation: spin 1s linear infinite;
+    }
+    .section {
+        transition: opacity 0.4s ease-in;
+        opacity: 0;
+    }
+    .section.active {
+        opacity: 1;
+    }
+    .section-button {
+        transition: background-color 0.2s linear;
     }
 </style>
 {% endblock %}
@@ -70,50 +84,35 @@
 <div class="wrapper hidden">
     <nav id="sidebar" class="active">
         <div class="sidebar-header row">
-            <img class="d-flex align-self-center ml-2 mr-1" src="{% static 'images/SignIn/TAC_LOGO.png' %}" style="width:15%;height:15%;"/>
-            <h3>TAC</h3>
+            <img class="d-flex w-50 h-50 ml-3" src="{% static 'images/SignIn/TAC_Logo_Text.png' %}" />
         </div>
         <hr>
         <ul class="list-unstyled components" id="sidebar-links">
             <li class="active">
-                <button class="btn btn-outline-info" href="{% url 'index' %}">Home</button>
+                <button class="btn btn-outline-info section-button" href="{% url 'index' %}" data-section="#home-section">Home</button>
             </li>
             <li>
-                <button class="btn btn-outline-info">Student Sign-In</button>
+                <button class="btn btn-outline-info section-button" data-section="#student-section">Student Sign-In</button>
             </li>
             <li>
-                <button class="btn btn-outline-info">Employee Clock-In</button>
+                <button class="btn btn-outline-info section-button">Employee Clock-In</button>
             </li>
             <li>
-                <button class="btn btn-outline-info" >Employee Tools</button>
+                <button class="btn btn-outline-info section-button" >Employee Tools</button>
             </li>
         </ul>
 
     </nav>
 
-    <button type="button" id="sidebarCollapse" class="btn btn-info">III</button>
+    <button type="button" id="button-sidebar" class="btn btn-info"><span>III</span></button>
     <div class="justify-content-center align-items-center d-flex start-up" id="content" style="min-height: 100vh;width: 100%;">
-        <div class="container">
-            <div class="d-flex justify-content-center">
-                <img src="{% static 'images/SignIn/TAC_LOGO.png' %}" style="height:7%;width:20%;"/>
+        <div id="sections">
+            <div class="section active" id="home-section">
+                {% include 'SignIn/_HomeSection.html' %}
             </div>
-            <div class="row d-flex justify-content-center">
-                <h1>Welcome to the Tutor Assistance Computer</h1>
-                <h3>Please select if you are a student or employee</h3>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <button class="btn btn-primary student-or-employee">
-                        Student
-                    </button>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-primary student-or-employee">
-                        Employee
-                    </button>
-                </div>
-                <div class="col-md-3"></div>
+
+            <div class="section" id="student-section">
+                {% include 'SignIn/_StudentSection.html' %}
             </div>
         </div>
     </div>
@@ -131,8 +130,15 @@
     });
 
     function BindIndexEvents(){
-        $('#sidebarCollapse').click(function(){
+        $('#button-sidebar').click(function(){
             $('#sidebar').toggleClass('active');
+        });
+
+        $('.section-button').click(function(){
+            $('.section-button').removeClass('active');
+            $(this).addClass('active');
+            $('.section').removeClass('active');
+            $($(this).data('section')).addClass('active');
         });
     }
 </script>
