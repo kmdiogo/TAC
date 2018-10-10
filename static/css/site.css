@@ -1,10 +1,7 @@
 body{
     font-family: 'Krub', sans-serif;
-    transition: opacity 1s;
 }
-body.hidden{
-    opacity: 0;
-}
+
 
 .hover-expand{
     transition: all 0.2s ease-in-out;
