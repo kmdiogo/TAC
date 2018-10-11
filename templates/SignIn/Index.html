@@ -144,6 +144,17 @@
                 $(targetSection).fadeIn('fast');
             });
         });
+
+        $('#button-student-submit').click(function(){
+            $.ajax({
+                type: 'post',
+                url: "{% url 'create_student' %}",
+                data: $('#form-student').serialize(),
+                success: function(data){
+                    console.log(data);
+                }
+            });
+        });
     }
 </script>
 {% endblock %}
