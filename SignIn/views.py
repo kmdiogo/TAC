@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from SignIn.forms import StudentForm
-from django.views.decorators.http import require_POST, require_http_methods
-from django.http import JsonResponse
+from SignIn.models import Student
+from django.views.decorators.http import require_POST, require_http_methods, require_GET
+from django.http import JsonResponse, HttpResponse
+from django.template.loader import render_to_string
 
 @require_http_methods(['GET'])
 def index(request):
@@ -21,4 +23,14 @@ def create_student(request):
     else:
         data = {'student_is_valid': False}
         return JsonResponse(data)
+
+@require_GET
+def school_id_taken(request):
+    id = request.GET.get('schoolId', None)
+    response = {'isTaken': Student.objects.filter(schoolId__iexact=id).exists()}
+    return JsonResponse(response)
+
+
+
+
 

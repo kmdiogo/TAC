@@ -1,7 +1,39 @@
 {% load static %}
+{% load widget_tweaks %}
 
-<form action="{% url 'create_student' %}" method="post" id="form-student">
-    {% csrf_token %}
-    {{ form }}
-</form>
-<button class="btn btn-primary" id="button-student-submit">Submit</button>
+<div class="container justify-content-center d-flex flex-column h-100 w-50">
+    <form action="{% url 'create_student' %}" method="post" id="form-student">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label class="col-md-3" for="{{ form.schoolId.id_for_label }}">School ID</label>
+            <div class="col-md-9">
+                {% render_field form.schoolId class='form-control' %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3" for="{{ form.firstName.id_for_label }}">First Name</label>
+            <div class="col-md-9">
+                {% render_field form.firstName class='form-control' %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3" for="{{ form.lastName.id_for_label }}">Last Name</label>
+            <div class="col-md-9">
+                {% render_field form.lastName class='form-control' %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3" for="{{ form.sex.id_for_label }}">Sex</label>
+            <div class="col-md-9">
+                {% render_field form.sex class='form-control' %}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3" for="{{ form.email.id_for_label }}">Email</label>
+            <div class="col-md-9">
+                {% render_field form.email class='form-control' %}
+            </div>
+        </div>
+    </form>
+    <button class="btn btn-primary hover-jump" id="button-student-submit">Submit</button>
+</div>

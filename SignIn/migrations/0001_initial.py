@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Student',
             fields=[
-                ('schoolIdentifier', models.CharField(max_length=50, primary_key=True, serialize=False)),
+                ('schoolId', models.CharField(max_length=50, primary_key=True, serialize=False)),
                 ('firstName', models.CharField(max_length=50)),
                 ('lastName', models.CharField(max_length=50)),
                 ('sex', models.CharField(choices=[('M', 'Male'), ('F', 'Female')], max_length=1)),

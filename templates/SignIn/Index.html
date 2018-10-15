@@ -16,8 +16,11 @@
         height: 200%;
     }
     .student-or-employee:hover{
-        animation: jump 1s infinite ease-in-out;
         /*background-color: grey !important;*/
+    }
+
+    .hover-jump:hover{
+        animation: jump 1s infinite ease-in-out;
     }
 
     #content{
@@ -66,6 +69,8 @@
     }
     .section {
         display: none;
+        width: 100%;
+        height: 100%;
     }
     .section.active {
         display: block;
@@ -86,35 +91,33 @@
         <hr>
         <ul class="list-unstyled components" id="sidebar-links">
             <li class="active">
-                <button class="btn btn-outline-info section-button active" data-section="#home-section">Home</button>
+                <button class="btn btn-outline-info section-button active" data-section="#home-section" id="home-button">Home</button>
             </li>
             <li>
-                <button class="btn btn-outline-info section-button" data-section="#student-section">Student Sign-In</button>
+                <button class="btn btn-outline-info section-button" data-section="#student-section" id="student-button">Student Sign-In</button>
             </li>
             <li>
-                <button class="btn btn-outline-info section-button" data-section="#employee-section">Employee Clock-In</button>
+                <button class="btn btn-outline-info section-button" data-section="#employee-section" id="employee-button">Employee Clock-In</button>
             </li>
             <li>
-                <button class="btn btn-outline-info section-button" >Employee Tools</button>
+                <button class="btn btn-outline-info section-button" id="button-tools">Employee Tools</button>
             </li>
         </ul>
 
     </nav>
 
     <button type="button" id="button-sidebar" class="btn btn-info"><span>III</span></button>
-    <div class="justify-content-center align-items-center d-flex start-up" id="content" style="min-height: 100vh;width: 100%;">
-        <div id="sections">
-            <div class="section active" id="home-section">
-                {% include 'SignIn/_HomeSection.html' %}
-            </div>
-            <div class="section" id="student-section">
-                {% include 'SignIn/_StudentSection.html' %}
-            </div>
-            <div class="section" id="employee-section">
-                {% include 'SignIn/_EmployeeSection.html' %}
-            </div>
-        </div>
 
+    <div class="start-up" id="content" style="min-height: 100vh;width: 100%;">
+        <div class="section active" id="home-section" data-button="#home-button">
+            {% include 'SignIn/_HomeSection.html' %}
+        </div>
+        <div class="section" id="student-section" data-button="#student-button">
+            {% include 'SignIn/_StudentSection.html' %}
+        </div>
+        <div class="section" id="employee-section" data-button="#employee-button">
+            {% include 'SignIn/_EmployeeSection.html' %}
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -122,8 +125,11 @@
 
 
 {% block scripts %}
+{% include 'SignIn/Templates_SignIn.html' %}
 <script>
     $(document).ready(function(){
+        Validators();
+        InputMasks();
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
@@ -135,26 +141,90 @@
         });
 
         $('.section-button').click(function(){
-            let targetSection = $(this).data('section');
-            if ($(this).hasClass('active'))
-                return;
-            $('.section-button').removeClass('active');
-            $(this).addClass('active');
-            $('.section').fadeOut('fast').promise().done(function(){
-                $(targetSection).fadeIn('fast');
-            });
+            ChangeSection($(this).data('section'));
+        });
+
+        $('.student-or-employee').click(function(){
+            ChangeSection($(this).data('section'));
         });
 
         $('#button-student-submit').click(function(){
-            $.ajax({
-                type: 'post',
-                url: "{% url 'create_student' %}",
-                data: $('#form-student').serialize(),
-                success: function(data){
-                    console.log(data);
+            let sendData = { 'schoolId': $('#id_schoolId').val() };
+            $.getJSON("{% url 'school_id_taken' %}", sendData, function(data) {
+                if (data.isTaken){
+                    alert("School ID is already taken");
+                    return;
+                }
+                if (!$('#form-student').valid())
+                    return;
+
+                let postData = $('#form-student').serialize();
+                $.post("{% url 'create_student' %}", postData, function(data){
+                    if (data.student_is_valid)
+                        alert("Saved");
+                    else
+                        alert("Invalid form");
+                });
+            });
+
+        });
+
+        function ChangeSection(sectionId){
+            let targetButton = $($(sectionId).data('button'));
+            let targetSection = $($(sectionId));
+            let activeButton = $('.section-button.active').first();
+            let activeSection = $(activeButton.data('section'));
+
+            if (activeSection.attr('id') === targetSection.attr('id'))
+                return;
+            activeButton.removeClass('active');
+            targetButton.addClass('active');
+            activeSection.fadeOut('fast').promise().done(function(){
+                targetSection.fadeIn('fast');
+                $('#form-student').validate().resetForm();
+                $('#form-student').trigger('reset');
+            });
+        }
+
+        {% comment %}
+        $('#id_schoolId').change(function(){
+            let requestData = { 'schoolId': $('#id_schoolId').val() };
+            $.get("{% url 'school_id_taken' %}", requestData, function(data) {
+                if (data.isTaken || !$('#id_schoolId').inputmask('isComplete')) {
+                    $('#id_schoolId').siblings('#id-taken,#id-not-taken').remove();
+                    $('#id_schoolId').after($('#temp-id-taken').html());
+                }
+                else {
+                    $('#id_schoolId').siblings('#id-taken,#id-not-taken').remove();
+                    $('#id_schoolId').after($('#temp-id-not-taken').html());
                 }
             });
         });
+        {% endcomment %}
+    }
+
+    function Validators(){
+        $('#form-student').validate({
+            messages: {
+                schoolId: "Invalid ID",
+                firstName: "Please enter your first name",
+                lastName: "Please enter your last name"
+            },
+            success: function(label, element){
+                $(element).addClass('is-valid').removeClass('is-invalid');
+            },
+            highlight: function(element, errorClass, validClass){
+                $(element).addClass('is-invalid').removeClass('is-valid');
+            },
+            unhighlight: function(element){
+                $(element).removeClass('is-invalid').removeClass('is-valid');
+            }
+        });
+    }
+
+    function InputMasks(){
+        $("#id_schoolId").inputmask("Y00999999");
     }
 </script>
+
 {% endblock %}

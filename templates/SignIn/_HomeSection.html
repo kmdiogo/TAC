@@ -1,22 +1,27 @@
 {% load static %}
 
-<div class="container">
-    <div class="d-flex justify-content-center">
+<div class="container d-flex align-items-center justify-content-center h-100 flex-grow-0 flex-column">
+    <div class="row justify-content-center">
         <img src="{% static 'images/SignIn/TAC_Logo.png' %}" style="height:7%;width:20%;"/>
     </div>
-    <div class="row d-flex justify-content-center">
+
+    <div class="row">
         <h1>Welcome to the Tutor Assistance Computer</h1>
+    </div>
+
+    <div class="row">
         <h3>Please select if you are a student or employee</h3>
     </div>
-    <div class="row d-flex justify-content-center">
+
+    <div class="row w-100">
         <div class="col-md-3"></div>
         <div class="col-md-3" id="col-button-student">
-            <button class="btn btn-info student-or-employee">
+            <button class="btn btn-info student-or-employee hover-jump" data-section="#student-section">
                 Student
             </button>
         </div>
         <div class="col-md-3" id="col-button-employee">
-            <button class="btn btn-info student-or-employee">
+            <button class="btn btn-info student-or-employee hover-jump" data-section="#employee-section">
                 Employee
             </button>
         </div>
