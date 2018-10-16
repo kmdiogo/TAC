@@ -85,25 +85,7 @@
 {% block content %}
 <div class="wrapper hidden">
     <nav id="sidebar" class="active">
-        <div class="sidebar-header row">
-            <img class="d-flex w-50 h-50 ml-3" src="{% static 'images/SignIn/TAC_Logo_Text.png' %}" />
-        </div>
-        <hr>
-        <ul class="list-unstyled components" id="sidebar-links">
-            <li class="active">
-                <button class="btn btn-outline-info section-button active" data-section="#home-section" id="home-button">Home</button>
-            </li>
-            <li>
-                <button class="btn btn-outline-info section-button" data-section="#student-section" id="student-button">Student Sign-In</button>
-            </li>
-            <li>
-                <button class="btn btn-outline-info section-button" data-section="#employee-section" id="employee-button">Employee Clock-In</button>
-            </li>
-            <li>
-                <button class="btn btn-outline-info section-button" id="button-tools">Employee Tools</button>
-            </li>
-        </ul>
-
+        {% include 'SignIn/_Sidebar.html' %}
     </nav>
 
     <button type="button" id="button-sidebar" class="btn btn-info"><span>III</span></button>
@@ -113,7 +95,7 @@
             {% include 'SignIn/_HomeSection.html' %}
         </div>
         <div class="section" id="student-section" data-button="#student-button">
-            {% include 'SignIn/_StudentSection.html' %}
+            {% include 'SignIn/StudentSection/_StudentSection.html' %}
         </div>
         <div class="section" id="employee-section" data-button="#employee-button">
             {% include 'SignIn/_EmployeeSection.html' %}
@@ -125,7 +107,6 @@
 
 
 {% block scripts %}
-{% include 'SignIn/Templates_SignIn.html' %}
 <script>
     $(document).ready(function(){
         Validators();
@@ -169,22 +150,6 @@
 
         });
 
-        function ChangeSection(sectionId){
-            let targetButton = $($(sectionId).data('button'));
-            let targetSection = $($(sectionId));
-            let activeButton = $('.section-button.active').first();
-            let activeSection = $(activeButton.data('section'));
-
-            if (activeSection.attr('id') === targetSection.attr('id'))
-                return;
-            activeButton.removeClass('active');
-            targetButton.addClass('active');
-            activeSection.fadeOut('fast').promise().done(function(){
-                targetSection.fadeIn('fast');
-                $('#form-student').validate().resetForm();
-                $('#form-student').trigger('reset');
-            });
-        }
 
         {% comment %}
         $('#id_schoolId').change(function(){
@@ -203,6 +168,33 @@
         {% endcomment %}
     }
 
+    /**
+     * Changes the active section and highlights its respective button
+     * @Param {string} sectionId - The id of the target section with #
+     */
+    function ChangeSection(sectionId){
+        // Get the DOM objects for the target section/button and the currently active section/button
+        let targetButton = $($(sectionId).data('button'));
+        let targetSection = $($(sectionId));
+        let activeButton = $('.section-button.active').first();
+        let activeSection = $(activeButton.data('section'));
+
+        // If the targetSection is the current active section, end function
+        if (activeSection.attr('id') === targetSection.attr('id'))
+            return;
+
+        // Fade to target section and highlight its respective button
+        activeButton.removeClass('active');
+        targetButton.addClass('active');
+        activeSection.fadeOut('fast').promise().done(function(){
+            targetSection.fadeIn('fast');
+            $('#form-student').validate().resetForm();
+            $('#form-student').trigger('reset');
+        });
+    }
+    /**
+     * Registers all jquery.validate validators for all forms
+     */
     function Validators(){
         $('#form-student').validate({
             messages: {

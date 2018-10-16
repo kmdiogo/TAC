@@ -1,0 +1,19 @@
+{% load static %}
+<div class="d-flex justify-content-center sidebar-header row">
+    <img class="w-75 h-75" src="{% static 'images/SignIn/TAC_Logo_Text.png' %}" />
+</div>
+<hr>
+<ul class="list-unstyled components" id="sidebar-links">
+    <li class="active">
+        <button class="btn btn-outline-info section-button active" data-section="#home-section" id="home-button">Home</button>
+    </li>
+    <li>
+        <button class="btn btn-outline-info section-button" data-section="#student-section" id="student-button">Student Sign-In</button>
+    </li>
+    <li>
+        <button class="btn btn-outline-info section-button" data-section="#employee-section" id="employee-button">Employee Clock-In</button>
+    </li>
+    <li>
+        <button class="btn btn-outline-info section-button" id="button-tools">Employee Tools</button>
+    </li>
+</ul>
