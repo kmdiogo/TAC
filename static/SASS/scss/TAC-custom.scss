@@ -2,45 +2,54 @@
 // implemented. Uncomment and add any additional imports needed to the
 // "Required" section.
 
+$YSU-red: #a2182f !default;
+
 $theme-colors: (
-  "info": #A2182F
+  "info": $YSU-red
 );
 
-@import "bootstrap";
+.btn-outline-info {
+  color: #fff;
+  background-color: black;
+  border-color: $YSU-red;
+}
+
+@import "TAC-custom-Variables";
+//@import "bootstrap";
 
 // Required
-//@import "functions";
-//@import "variables";
-//@import "mixins";
-//@import "buttons";
-//@import "forms";
-//@import "grid";
-//@import "reboot";
-//@import "type";
-//@import "utilities";
-//@import "alert";
-//@import "badge";
-//@import "breadcrumb";
-//@import "button-group";
-//@import "card";
-//@import "carousel";
-//@import "close";
-//@import "code";
-//@import "custom-forms";
-//@import "dropdown";
-//@import "images";
-//@import "input-group";
-//@import "jumbotron";
-//@import "list-group";
-//@import "media";
-//@import "modal";
-//@import "nav";
-//@import "navbar";
-//@import "pagination";
-//@import "popover";
-//@import "print";
-//@import "progress";
-//@import "root";
-//@import "tables";
-//@import "tooltip";
-//@import "transitions";
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "buttons";
+@import "forms";
+@import "grid";
+@import "reboot";
+@import "type";
+@import "utilities";
+@import "alert";
+@import "badge";
+@import "breadcrumb";
+@import "button-group";
+@import "card";
+@import "carousel";
+@import "close";
+@import "code";
+@import "custom-forms";
+@import "dropdown";
+@import "images";
+@import "input-group";
+@import "jumbotron";
+@import "list-group";
+@import "media";
+@import "modal";
+@import "nav";
+@import "navbar";
+@import "pagination";
+@import "popover";
+@import "print";
+@import "progress";
+@import "root";
+@import "tables";
+@import "tooltip";
+@import "transitions";
