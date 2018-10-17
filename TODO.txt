@@ -1,0 +1,6 @@
+MODEL CHANGES
+- Add major, academic year, DOB to student
+- Add employee model (schoolId, name, sex, classes-taught, DOB, availability)
+- Add session model (schoolId, time-in, time-out, academic class, feedback, reason-for-visit)
+- Add shift model (schoolId, time-in, time-out)
+- Add availability (schoolId, DOW, 0,1,2,3........,24)

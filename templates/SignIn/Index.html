@@ -115,6 +115,7 @@
 
 {% block scripts %}
 <script>
+    const SCHOOL_ID_FORMAT = "Y00999999";
     $(document).ready(function(){
         Validators();
         InputMasks();
@@ -133,13 +134,24 @@
             ChangeSection($(this).data('section'));
         });
 
+        $('#input-student-section-schoolId').keypress(function(e){
+            if (e.which === 13){
+                $.getJSON("{% url 'school_id_taken' %}", {'schoolId': $(this).val() }, function(data){
+                    if (!data.isTaken){
+                        $('#modal-new-student-form').modal('show');
+                        $('#id_schoolId').val($('#input-student-section-schoolId').val());
+                    }
+                });
+            }
+        });
+
         // ALGORITHM:
         // 1. Validate form input using jquery.validate
         // 2. Send AJAX request to ensure schoolId isn't taken
         // 3. Send form POST request
         // 4. Show success screen if POST request returned successful
         $('#button-new-student-submit').click(function(){
-            if (!$('#form-student').valid())
+            if (!$('#form-student').valid() || !$('#id_schoolId').inputmask("isComplete"))
                 return;
             let sendData = { 'schoolId': $('#id_schoolId').val() };
             $.getJSON("{% url 'school_id_taken' %}", sendData, function(data) {
@@ -233,7 +245,8 @@
      * Registers all inputs masks
      */
     function InputMasks(){
-        $("#id_schoolId").inputmask("Y00999999");
+        $("#id_schoolId").inputmask(SCHOOL_ID_FORMAT);
+        $('#input-student-section-schoolId').inputmask(SCHOOL_ID_FORMAT);
     }
 
     /**
@@ -257,6 +270,7 @@
      */
     function RestartAnimation(element,animationClass){
         $(element).removeClass(animationClass)
+        $('#button-StudentSection')
         setTimeout(function(){
            $(element).addClass(animationClass);
         },100);
