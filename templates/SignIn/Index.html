@@ -168,7 +168,12 @@
         });
 
         // Verify schoolId has not been used already every time the input field changes value
-        $('#id_schoolId').change(function(){
+        $('#id_schoolId').on('change keyup paste',function(){
+            //let newStudentSchoolId = $('#form-student')
+            if (!$('#id_schoolId').inputmask('isComplete')){
+                $('#new-student-id-taken').hide();
+                return;
+            }
             let sendData = { 'schoolId': $('#id_schoolId').val() };
             $('#icon-new-student-loading').show();
             $.getJSON("{% url 'school_id_taken' %}", sendData, function(data){
@@ -246,7 +251,7 @@
     }
 
     /**
-     * Restart an animation playback for a given element. NOTE: Only works with classes that use animations
+     * Restart an animation playback for a given element. NOTE: Only works with animation classes
      * @param element - DOM element to apply animation restart
      * @param animationClass - Animation from a class to be restarted
      */
@@ -256,6 +261,7 @@
            $(element).addClass(animationClass);
         },100);
     }
+
 </script>
 
 {% endblock %}
