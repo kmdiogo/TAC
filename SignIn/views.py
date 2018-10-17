@@ -35,5 +35,12 @@ def school_id_taken(request):
 
 
 
+@require_GET
+def get_student_name(request):
+    id = request.GET.get('schoolId')
+    if Student.objects.filter(schoolId__iexact = id).exists():
+        firstName = Student.objects.get(schoolId__iexact = id).firstName
+        lastName =  Student.objects.get(schoolId__iexact = id).lastName
+        return JsonResponse({'first_name_is': firstName, 'last_name_is': lastName})
 
 

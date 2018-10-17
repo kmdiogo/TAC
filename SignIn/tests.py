@@ -23,3 +23,22 @@ class ViewsTests(TestCase):
 
         # Check that the rendered context contains 5 customers.
         self.assertTrue(response.json()['isTaken'])
+
+    def test_create_student_valid(self):
+        response = self.client.post('/create_student', data={'schoolId' : 'Y00000000',
+                                                             'firstName' : 'Boobs',
+                                                             'lastName': 'McGee',
+                                                             'sex' : 'F',
+                                                             'email': 'boobs.mcgee@merica.edu'})
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json() ['student_is_valid'])
+
+    def test_create_student_invalid_id(self):
+        response = self.client.post('/create_student', data={'schoolId' : '0000000000',
+                                                             'firstName' : 'Boobs',
+                                                             'lastName': 'McGee',
+                                                             'sex' : 'F',
+                                                             'email': 'boobs.mcgee@merica.edu'})
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(response.json() ['student_is_valid'])
+
