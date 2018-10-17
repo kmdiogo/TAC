@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 
 <div class="modal fade" id="modal-new-student-form" tabindex="-1">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">New Student</h5>
@@ -12,7 +12,7 @@
             </div>
 
             <div class="modal-body">
-                <div class="container {% comment %}justify-content-center d-flex flex-column h-100 w-50{% endcomment %}">
+                <div class="container" id="new-student-form-body">
                     <form action="{% url 'create_student' %}" method="post" id="form-student">
                         {% csrf_token %}
                         <div class="form-group row">
@@ -47,11 +47,19 @@
                         </div>
                     </form>
                 </div>
+                <div class="text-center" id="new-student-success-screen" style="display:none!important;">
+                    <h3 style="color:green;" id="new-student-success-message">You were successfully registered!</h3>
+                    <i class="far fa-check-circle fa-4x" style="color: green;" id="icon-new-student-success"></i>
+                    <h5>Now that you're registered, close this window and sign-in by entering your Y number</h5>
+                </div>
+
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary hover-jump" id="button-student-submit">Submit</button>
+                <h6 class="is-invalid" id="new-student-id-taken" style="display:none;">That School ID is already taken</h6>
+                <i class="fas fa-spinner spin" id="icon-new-student-loading" style="display:none;"></i>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="button-new-student-close">Close</button>
+                <button class="btn btn-info hover-jump" id="button-new-student-submit">Submit</button>
             </div>
         </div>
     </div>

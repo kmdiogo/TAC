@@ -1,7 +1,12 @@
 {% load static %}
 
-<div class="container h-100 d-flex justify-content-center align-items-center">
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal-new-student-form">
+
+<div class="container h-100 d-flex justify-content-center align-items-center flex-column">
+    <h2>Enter Your Y-Number to Sign-In</h2>
+    <input class="form-control w-50" type="text" />
+    <hr />
+    <h6>Or click here if this is your first visit</h6>
+    <button class="btn btn-info hover-jump" id="button-new-student" data-toggle="modal" data-target="#modal-new-student-form">
         New Student
     </button>
 </div>

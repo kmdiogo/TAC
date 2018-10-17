@@ -15,11 +15,14 @@ def index(request):
 @require_POST
 def create_student(request):
     newStudent = StudentForm(request.POST)
-    print(newStudent.errors)
+
     if newStudent.is_valid():
-        data = {'student_is_valid': True}
-        newStudent.save()
-        return JsonResponse(data)
+        isIdTaken = Student.objects.filter(schoolId__iexact=newStudent.cleaned_data['schoolId']).exists()
+        if isIdTaken:
+            return JsonResponse({'student_is_valid': False})
+        else:
+            newStudent.save()
+            return JsonResponse({'student_is_valid': True})
     else:
         data = {'student_is_valid': False}
         return JsonResponse(data)

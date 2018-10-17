@@ -78,6 +78,7 @@
     .section-button {
         transition: background-color 0.2s linear;
     }
+
 </style>
 {% endblock %}
 
@@ -92,13 +93,13 @@
 
     <div class="start-up" id="content" style="min-height: 100vh;width: 100%;">
         <div class="section active" id="home-section" data-button="#home-button">
-            {% include 'SignIn/_HomeSection.html' %}
+            {% include 'SignIn/HomeSection/_HomeSection.html' %}
         </div>
         <div class="section" id="student-section" data-button="#student-button">
             {% include 'SignIn/StudentSection/_StudentSection.html' %}
         </div>
         <div class="section" id="employee-section" data-button="#employee-button">
-            {% include 'SignIn/_EmployeeSection.html' %}
+            {% include 'SignIn/EmployeeSection/_EmployeeSection.html' %}
         </div>
     </div>
 </div>
@@ -121,51 +122,63 @@
             $('#sidebar').toggleClass('active');
         });
 
-        $('.section-button').click(function(){
+        // Switch to the section specified by the button's data-section
+        $('.section-button,.student-or-employee').click(function(){
             ChangeSection($(this).data('section'));
         });
 
-        $('.student-or-employee').click(function(){
-            ChangeSection($(this).data('section'));
-        });
-
-        $('#button-student-submit').click(function(){
+        // ALGORITHM:
+        // 1. Validate form input using jquery.validate
+        // 2. Send AJAX request to ensure schoolId isn't taken
+        // 3. Send form POST request
+        // 4. Show success screen if POST request returned successful
+        $('#button-new-student-submit').click(function(){
+            if (!$('#form-student').valid())
+                return;
             let sendData = { 'schoolId': $('#id_schoolId').val() };
             $.getJSON("{% url 'school_id_taken' %}", sendData, function(data) {
                 if (data.isTaken){
-                    alert("School ID is already taken");
+                    // Shake error message
+                    RestartAnimation($('#new-student-id-taken'), 'shake-3');
                     return;
                 }
-                if (!$('#form-student').valid())
-                    return;
 
+                // Show loading icon. Send POST request. If response returned was successful, show success screen
+                $('#icon-new-student-loading').show();
                 let postData = $('#form-student').serialize();
                 $.post("{% url 'create_student' %}", postData, function(data){
-                    if (data.student_is_valid)
-                        alert("Saved");
-                    else
-                        alert("Invalid form");
+                    $('#icon-new-student-loading').hide();
+                    if (data.student_is_valid){
+                        $('#button-new-student-close,#button-new-student-submit').fadeOut();
+                        $('#new-student-form-body').fadeOut().promise().done(function(){
+                            $('#new-student-success-screen').fadeIn();
+                        });
+                    }
+                    else {
+                        alert("Something went wrong!");
+                    }
                 });
             });
-
         });
 
-
-        {% comment %}
+        // Verify schoolId has not been used already every time the input field changes value
         $('#id_schoolId').change(function(){
-            let requestData = { 'schoolId': $('#id_schoolId').val() };
-            $.get("{% url 'school_id_taken' %}", requestData, function(data) {
-                if (data.isTaken || !$('#id_schoolId').inputmask('isComplete')) {
-                    $('#id_schoolId').siblings('#id-taken,#id-not-taken').remove();
-                    $('#id_schoolId').after($('#temp-id-taken').html());
-                }
-                else {
-                    $('#id_schoolId').siblings('#id-taken,#id-not-taken').remove();
-                    $('#id_schoolId').after($('#temp-id-not-taken').html());
-                }
+            let sendData = { 'schoolId': $('#id_schoolId').val() };
+            $('#icon-new-student-loading').show();
+            $.getJSON("{% url 'school_id_taken' %}", sendData, function(data){
+                $('#icon-new-student-loading').hide();
+                if (data['isTaken'])
+                    $('#new-student-id-taken').show();
+                else
+                   $('#new-student-id-taken').hide();
+
             });
         });
-        {% endcomment %}
+
+        // Reset new student form when the modal closes
+        $('#modal-new-student-form').on('hidden.bs.modal',function(){
+            ResetNewStudentFormModal();
+        });
     }
 
     /**
@@ -188,8 +201,6 @@
         targetButton.addClass('active');
         activeSection.fadeOut('fast').promise().done(function(){
             targetSection.fadeIn('fast');
-            $('#form-student').validate().resetForm();
-            $('#form-student').trigger('reset');
         });
     }
     /**
@@ -202,20 +213,42 @@
                 firstName: "Please enter your first name",
                 lastName: "Please enter your last name"
             },
-            success: function(label, element){
-                $(element).addClass('is-valid').removeClass('is-invalid');
-            },
-            highlight: function(element, errorClass, validClass){
-                $(element).addClass('is-invalid').removeClass('is-valid');
-            },
-            unhighlight: function(element){
-                $(element).removeClass('is-invalid').removeClass('is-valid');
-            }
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
         });
     }
 
+    /**
+     * Registers all inputs masks
+     */
     function InputMasks(){
         $("#id_schoolId").inputmask("Y00999999");
+    }
+
+    /**
+     * Resets the modal back to its initial state
+     */
+    function ResetNewStudentFormModal(){
+        $('#form-student').validate().resetForm();
+        $('#form-student').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        $('#form-student').trigger('reset');
+        $('#new-student-form-body').show();
+        $('#new-student-success-screen').hide();
+        $('#icon-new-student-loading').hide();
+        $('#new-student-id-taken').hide();
+        $('#button-new-student-close,#button-new-student-submit').show();
+    }
+
+    /**
+     * Restart an animation playback for a given element. NOTE: Only works with classes that use animations
+     * @param element - DOM element to apply animation restart
+     * @param animationClass - Animation from a class to be restarted
+     */
+    function RestartAnimation(element,animationClass){
+        $(element).removeClass(animationClass)
+        setTimeout(function(){
+           $(element).addClass(animationClass);
+        },100);
     }
 </script>
 
