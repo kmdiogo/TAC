@@ -94,14 +94,13 @@ class MyExampleClass:
 ```
 
 ### SETTING UP THE PROJECT
-0. Download and install Python 3.7 (3.6 is also fine if on Linux) if not installed on your machine already
-These next steps apply if you are using PyCharm.
-1. Open up PyCharm and ensure you are on the create a new project window. Create a project by pulling from from versional control, and use the repo URL https://github.com/kmdiogo/TAC to download the project files
-2. Once the Project is pulled and the project opens, go to File > Settings, then in the pop-up window, find the Python Interpreter tab. In this section, create a new Python Virtual Environment using Python 3.7 as the base interpreter.
+0. Download and install Python 3.7 (3.6 is also fine if on Linux) if not installed on your machine already. These next steps apply only if you are using PyCharm.
+1. Open up PyCharm and ensure you are on the create a new project window. Create a project by pulling from versional control, and use the repo URL https://github.com/kmdiogo/TAC to download the project files
+2. Once the Project is pulled and the project opens, go to File > Settings; then in the pop-up window, find the Python Interpreter tab. In this section, create a new Python Virtual Environment using Python 3.7 as the base interpreter.
 3. Let PyCharm finish loading and creating the virtual environment
 4. Open the 'requirements.txt' file by double-clicking the file in the folder view. Once it opens, PyCharm should detect you are missing dependencies, click 'Install Requirements' to install all necessary packages.
-5. Once that is finished, click on the 'Add Configuration' button near the top right of PyCharm. In this pop-up window, click the plus to add a new configuration, then select Django. For project title, put 'TAC'. Click apply then confirm
-6. PyCharm should notify that you are missing packages from requirements.txt, click the install missing packages button and your project should be good to go!
+5. Once that is finished, click on the 'Add Configuration' button near the top right of PyCharm. In this pop-up window, click the plus to add a new configuration, then select Django. For project title, put 'TAC'. Leave the rest of the fields. Click apply then confirm.
+6. You are now ready to start developing. Happy Coding!
 
 
 ### Resources
