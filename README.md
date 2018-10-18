@@ -20,6 +20,7 @@ These are some general coding standards we should all try to adhere to to mainta
   - if the element belongs to a specific sub-html section, add it. The section must use upper camel case (ex. StudentSection)
   - provide a descriptive and appropriate lengthed name for what the element does. This must use lower camel case (ex. errorMessage)
   Consider the following examples:
+  ####Example 1
   ```HTML
     <div id="StudentSection-errorMessage">
       <h1>AN ERROR OCCURED</h1>
@@ -27,10 +28,11 @@ These are some general coding standards we should all try to adhere to to mainta
     </div>
   ```
   The id 'StudentSection-errorMessage' lets us know that the element tag is not a header, \<p\>, \<button\>, or \<input\> (usually this means the   id belongs to a div or container element) and that it belongs to the StudentSection sub-html file.
+  ####Example 2
   ```HTML
     <button id="button-EmployeeSection-submitClockIn">Submit</button>
   ```
-  This id 'button-EmployeeSection-submitClockIn' id tells us the element is a button in the EmployeeSection sub-html file that is used     to submit something relating to ClockingIn (more specifically, since it is located in the EmployeeSection, it is probably used to       submit employee clock-in requests)
+  The id 'button-EmployeeSection-submitClockIn' id tells us the element is a button in the EmployeeSection sub-html file that is used     to submit something relating to ClockingIn (more specifically, since it is located in the EmployeeSection, it is probably used to       submit employee clock-in requests)
 * CSS rules that can be applicable to more than page must be included in the site.css file under the static directory
 * CSS rules specific to a page must be placed inline in the header section of the HTML file. This is subject to change as the project scales
 ```HTML
