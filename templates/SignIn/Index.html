@@ -249,6 +249,11 @@
     function InputMasks(){
         $("#id_schoolId").inputmask(SCHOOL_ID_FORMAT);
         $('#input-StudentSection-schoolId').inputmask(SCHOOL_ID_FORMAT);
+        $('#id_dob').inputmask('datetime',{
+            inputFormat: 'yyyy-mm-dd',
+            placeholder: 'YYYY-MM-DD'
+        });
+
     }
 
     /**
@@ -271,8 +276,8 @@
      * @param animationClass - Animation from a class to be restarted
      */
     function RestartAnimation(element,animationClass){
-        $(element).removeClass(animationClass)
-        $('#button-StudentSection')
+        $(element).removeClass(animationClass);
+        $('#button-StudentSection');
         setTimeout(function(){
            $(element).addClass(animationClass);
         },100);

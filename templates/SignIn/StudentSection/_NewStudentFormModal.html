@@ -45,6 +45,24 @@
                                 {% render_field form.email class='form-control' %}
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ form.dob.id_for_label }}">Date of Birth</label>
+                            <div class="col-md-9">
+                                {% render_field form.dob class='form-control' %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ form.academicYear.id_for_label }}">Academic Year</label>
+                            <div class="col-md-9">
+                                {% render_field form.academicYear class='form-control' %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ form.major.id_for_label }}">Major</label>
+                            <div class="col-md-9">
+                                {% render_field form.major class='form-control' %}
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="text-center" id="StudentSection-newStudentSuccessScreen" style="display:none!important;">

@@ -26,6 +26,7 @@ def create_student(request):
             newStudent.save()
             return JsonResponse({'student_is_valid': True})
     else:
+        print(newStudent.errors)
         data = {'student_is_valid': False}
         return JsonResponse(data)
 

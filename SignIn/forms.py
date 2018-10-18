@@ -5,4 +5,4 @@ from SignIn.models import Student
 class StudentForm(ModelForm):
     class Meta:
         model = Student
-        fields = ['schoolId', 'firstName', 'lastName', 'sex', 'email']
+        fields = ['schoolId', 'firstName', 'lastName', 'sex', 'email', 'dob', 'major', 'academicYear' ]
