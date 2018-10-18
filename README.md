@@ -26,7 +26,7 @@ These are some general coding standards we should all try to adhere to to mainta
       <p>Please contact an administrator</p>
     </div>
   ```
-  The id 'StudentSection-errorMessage' let's us know that the element tag is not a header, \<p\>, \<button\>, or \<input\> (usually this means the   id belongs to a div or container element) and that it belongs to the StudentSection sub-html file.
+  The id 'StudentSection-errorMessage' lets us know that the element tag is not a header, \<p\>, \<button\>, or \<input\> (usually this means the   id belongs to a div or container element) and that it belongs to the StudentSection sub-html file.
   ```HTML
     <button id="button-EmployeeSection-submitClockIn">Submit</button>
   ```
