@@ -2,8 +2,9 @@
 This repository contains all the source code for the TAC tutor management software.
 
 ### Table of Contents
-[Pushing Changes](#INSTRUCTIONS FOR PUSHING CHANGES)
+[Pushing Changes](#heading)
 [Resources](#Resources)
+
 ## INSTRUCTIONS FOR PUSHING CHANGES
 * First and foremost, please make sure your code is extensively tested and organized as best as possible (see next section for coding standards)
 * ***DO NOT PUSH YOUR VIRTUAL PYTHON ENVIRONMENT TO MASTER.*** In your project, your virtual environment is under the folder titled 'venv'. It contains thousands of files and will clutter the repo immensely. When pushing changes, ensure the changelist DOES NOT include the folder 'venv' or any of its files. (See the section titled 'SETTING UP THE PROJECT' on instructions for setting up your own venv)
@@ -105,7 +106,7 @@ class MyExampleClass:
 5. Once that is finished, click on the 'Add Configuration' button near the top right of PyCharm. In this pop-up window, click the plus to add a new configuration, then select Django. For project title, put 'TAC'. Leave the rest of the fields. Click apply then confirm.
 6. You are now ready to start developing. Happy Coding!
 
-
+## Heading
 ## Resources
 As always, refer to documentation first before asking for help. Below are some useful resources.
 * [Django 2.1 Documenation](https://docs.djangoproject.com/en/2.1/)
