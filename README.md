@@ -17,7 +17,7 @@ These are some general coding standards we should all try to adhere to to mainta
   - if the element tag is one of the following: 
     {h1-h6, p, button, input}
     start the id with the respective tag name
-  - if the element belongs to a specific section, add it. The section must use upper camel case (ex. StudentSection)
+  - if the element belongs to a specific sub-html section, add it. The section must use upper camel case (ex. StudentSection)
   - provide a descriptive and appropriate lengthed name for what the element does. This must use lower camel case (ex. errorMessage)
   Consider the following examples:
   ```HTML
