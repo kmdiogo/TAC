@@ -1,4 +1,5 @@
-# TAC
+[logo]: https://github.com/kmdiogo/TAC/blob/master/static/images/SignIn/TAC_Logo_Text.png
+![alt text][logo]  
 This repository contains all the source code for the TAC tutor management software.
 
 ### Table of Contents
