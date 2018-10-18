@@ -14,8 +14,8 @@ These are some general coding standards we should all try to adhere to to mainta
 <div class = "example-class-name"></div>
 ```
 * When giving HTML elements id's, refer to the following sequence of rules. For each rule, separate the id with a dash
-  - if the element is one of the following: 
-    <h1>-<h6>, <p>, <button>, <input>
+  - if the element tag is one of the following: 
+    h1-h6, p, button, input
     start the id with the respective tag name
   - if the element belongs to a specific section, add it. The section must use upper camel case (ex. StudentSection)
   - provide a descriptive and appropriate lengthed name for what the element does. This must use lower camel case (ex. errorMessage)
