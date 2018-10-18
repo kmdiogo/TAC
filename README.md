@@ -94,7 +94,7 @@ class MyExampleClass:
 ```
 
 ### SETTING UP THE PROJECT
-0. Download and install Python 3.7 if not installed on your machine already
+0. Download and install Python 3.7 (3.6 is also fine if on Linux) if not installed on your machine already
 These next steps apply if you are using PyCharm.
 1. Open up PyCharm and ensure you are on the create a new project window. Create a project by pulling from from versional control, and use the repo URL https://github.com/kmdiogo/TAC to download the project files
 2. Once the Project is pulled and the project opens, go to File > Settings, then in the pop-up window, find the Python Interpreter tab. In this section, create a new Python Virtual Environment using Python 3.7 as the base interpreter.
