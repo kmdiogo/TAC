@@ -4,7 +4,7 @@ This repository contains all the source code for the TAC tutor management softwa
 ### Table of Contents
 1. [Pushing Changes](#instructions-for-pushing-changes)
 2. [Coding Standards](#coding-standards)  
-   * [HTML/CSS](#html-css)
+   * [HTML-CSS](#html-css)
    * [Javascript](#javascript)
    * [Python](#python)
 3. [Setting Up the Project](#setting-up-the-project)  
