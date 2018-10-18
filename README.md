@@ -9,10 +9,28 @@ This repository contains all the source code for the TAC tutor management softwa
 ### CODING STANDARDS
 These are some general coding standards we should all try to adhere to to maintain consistency across the software.
 ##### HTML/CSS
-* HTML id/class names should be lowercase and separated with dashes
+* HTML class names should be lowercase and separated with dashes
 ```HTML
-<div class = "example-class-name" id = "example-div"></div>
+<div class = "example-class-name"></div>
 ```
+* When giving HTML elements id's, refer to the following sequence of rules. For each rule, separate the id with a dash
+  - if the element is one of the following: 
+    <h1>-<h6>, <p>, <button>, <input>
+    start the id with the respective tag name
+  - if the element belongs to a specific section, add it. The section must use upper camel case (ex. StudentSection)
+  - provide a descriptive and appropriate lengthed name for what the element does. This must use lower camel case (ex. errorMessage)
+ Consider the following examples:
+ ```HTML
+  <div id="StudentSection-errorMessage">
+    <h1>AN ERROR OCCURED</h1>
+    <p>Please contact an administrator</p>
+  </div>
+```
+The id 'StudentSection-errorMessage' let's us know that the element is not a header, <p>, <button>, or <input> (usually this means the id belongs to a div or container element) and that it belongs to the StudentSection sub-html file.
+```HTML
+  <button id="button-EmployeeSection-submitClockIn">Submit</button>
+```
+This id 'button-EmployeeSection-submitClockIn' id tells us the element is a button in the EmployeeSection sub-html file that is used to submit something relating to ClockingIn (more specifically, since it is located in the EmployeeSection, it is probably used to submit employee clock-in requests)
 * CSS rules that can be applicable to more than page must be included in the site.css file under the static directory
 * CSS rules specific to a page must be placed inline in the header section of the HTML file. This is subject to change as the project scales
 ```HTML
