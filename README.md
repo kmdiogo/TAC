@@ -20,7 +20,8 @@ These are some general coding standards we should all try to adhere to to mainta
   - if the element belongs to a specific sub-html section, add it. The section must use upper camel case (ex. StudentSection)
   - provide a descriptive and appropriate lengthed name for what the element does. This must use lower camel case (ex. errorMessage)
   Consider the following examples:
-  ***Example 1***
+  
+  ***Example 1:***
   ```HTML
     <div id="StudentSection-errorMessage">
       <h1>AN ERROR OCCURED</h1>
@@ -28,7 +29,8 @@ These are some general coding standards we should all try to adhere to to mainta
     </div>
   ```
   The id 'StudentSection-errorMessage' lets us know that the element tag is not a header, \<p\>, \<button\>, or \<input\> (usually this means the   id belongs to a div or container element) and that it belongs to the StudentSection sub-html file.
-  ***Example 2***
+  
+  ***Example 2:***
   ```HTML
     <button id="button-EmployeeSection-submitClockIn">Submit</button>
   ```
