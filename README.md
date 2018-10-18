@@ -2,12 +2,13 @@
 This repository contains all the source code for the TAC tutor management software.
 
 ### Table of Contents
-[Pushing Changes](#INSTRUCTIONS_FOR_PUSHING_CHANGES)  
+[Pushing Changes](#heading)  
 [Coding Standards](#heading-1)  
 [Setting Up the Project](#heading-2)  
 [Resources](#heading-3)  
 
-## Heading
+--- 
+
 ## INSTRUCTIONS FOR PUSHING CHANGES
 * First and foremost, please make sure your code is extensively tested and organized as best as possible (see next section for coding standards)
 * ***DO NOT PUSH YOUR VIRTUAL PYTHON ENVIRONMENT TO MASTER.*** In your project, your virtual environment is under the folder titled 'venv'. It contains thousands of files and will clutter the repo immensely. When pushing changes, ensure the changelist DOES NOT include the folder 'venv' or any of its files. (See the section titled 'SETTING UP THE PROJECT' on instructions for setting up your own venv)
