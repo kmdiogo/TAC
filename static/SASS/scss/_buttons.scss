@@ -82,12 +82,12 @@ fieldset:disabled a.btn {
   color: $link-color;
   background-color: transparent;
 
-  @include hover {
+  /*@include hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
     background-color: transparent;
     border-color: transparent;
-  }
+  }*/
 
   &:focus,
   &.focus {
