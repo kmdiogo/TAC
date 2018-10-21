@@ -9,11 +9,23 @@
         // Reset new student form when the modal closes
         $('#modal-StudentSection-newStudentModal').on('hidden.bs.modal',function(){
             ResetNewStudentForm();
+            $('#input-StudentSection-schoolId').val('');
         });
 
         $('#modal-StudentSection-openSessionModal').on('hidden.bs.modal', function(){
             ResetOpenSessionForm();
+            $('#input-StudentSection-schoolId').val('');
         });
+
+        $('#modal-StudentSection-closeSessionModal').on('hidden.bs.modal', function(){
+           ResetCloseSessionForm();
+           $('#input-StudentSection-schoolId').val('');
+        });
+
+        $('#button-StudentSection-home').click(function(){
+            ChangeSection("#home-section");
+        });
+
 
         $('#input-StudentSection-schoolId').on('keypress', function(e){
             if (e.which === 13) $('#button-StudentSection-yNumberSubmit').trigger('click');
@@ -46,6 +58,7 @@
             });
         });
 
+        // -----OPEN SESSION SUBMIT-----
         $('#button-StudentSection-openSessionSubmit').click(function(){
             if (!$('#form-StudentSection-openSession').valid())
                 return;
@@ -55,12 +68,28 @@
                 data: postData,
                 //headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
                 url: POST_OPEN_SESSION_URL,
-                statusCode:{
-                    200: function(){
-                        alert("Thanks!");
-                    }
+                success: function(){
+                    $('#modal-StudentSection-openSessionModal').modal('hide');
                 }
             });
+        });
+
+        // -----CLOSE SESSION SUBMIT-----
+        $('#button-StudentSection-closeSessionSubmit').click(function(){
+           if ($('#form-StudentSection-closeSession').valid()){
+               let schoolId = $('#input-StudentSection-schoolId').val();
+               let putData = $('#form-StudentSection-closeSession').serialize();
+               $.ajax({
+                  type: 'PUT',
+                  data: putData,
+                   headers: {'X-CSRFToken': $('#form-StudentSection-closeSession').find("input[name='csrfmiddlewaretoken']").val()},
+                  url: CloseSessionURL(schoolId),
+                   success: function(){
+                      $('#modal-StudentSection-closeSessionModal').modal('hide');
+                   }
+               });
+           }
+
         });
 
         // Verify schoolId has not been used already every time the input field changes value
@@ -105,12 +134,14 @@
                                     // If open session does not exist, take user to new session form
                                     404: function(){
                                         $('#text-StudentSection-studentName').text("Welcome Back, {0}!".format(data.firstName));
-                                        $('#id_student').val($('#input-StudentSection-schoolId').val());
+                                        $('#form-StudentSection-openSession').find("input[name='student']").val(schoolId);
                                         $('#modal-StudentSection-openSessionModal').modal('show');
                                     },
                                     // If open session exists, take user to sign-out form
                                     200: function(){
-                                        alert('SIGN-OUT SCREEN GOES HERE');
+                                        $('#text-StudentSection-goodbye').text('Thanks for visiting the MAC, {0}!'.format(data.firstName));
+                                        $('#form-StudentSection-closeSession').find("input[name='student']").val(schoolId);
+                                        $('#modal-StudentSection-closeSessionModal').modal('show');
                                     }
                                 }
                             });
@@ -143,7 +174,18 @@
             },
             validClass: 'is-valid',
             errorClass: 'is-invalid'
-        })
+        });
+
+        $('#form-StudentSection-closeSession').validate({
+           rules: {
+               rating: {
+                   max: 5,
+                   min: 1
+               }
+           },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
     }
 
     /**
@@ -177,6 +219,13 @@
         $('#form-StudentSection-openSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
         $('#form-StudentSection-openSession').trigger('reset');
         $('#id_student').val("");
+    }
+
+    function ResetCloseSessionForm(){
+        $('#form-StudentSection-closeSession').validate().resetForm();
+        $('#form-StudentSection-closeSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        $('#form-StudentSection-closeSession').trigger('reset');
+        $('#id_closeSession-student').val('');
     }
 
 </script>

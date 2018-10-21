@@ -19,4 +19,4 @@ class CloseSessionForm(ModelForm):
 
     class Meta:
         model = Session
-        fields = ['comments', 'rating', 'student']
+        fields = ['comments', 'rating']

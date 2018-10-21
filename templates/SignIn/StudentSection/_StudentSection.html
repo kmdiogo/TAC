@@ -1,32 +1,17 @@
 {% load static %}
 
-
+<button class="btn btn-primary hover-jump" style="position: absolute;top:20px; right:30px;width: 100px;" id="button-StudentSection-home">Home</button>
 <div class="container h-100 d-flex justify-content-center align-items-center flex-column">
     <h2>Enter Your Y-Number to Sign-In</h2>
     <input class="form-control w-50 text-center" type="text" id="input-StudentSection-schoolId" style="font-size: 150%;"/>
     <hr />
     <button class="btn btn-primary hover-jump w-25" id="button-StudentSection-yNumberSubmit" style="height: 7%;">Submit</button>
-    {% comment %}
-    <h6>Or click here if this is your first visit</h6>
-    <button class="btn btn-info hover-jump" id="button-new-student" data-toggle="modal" data-target="#modal-new-student-form">
-        New Student
-    </button>
-    <form action="{% url 'open_student_session' %}" method="post">
-        {% csrf_token %}
-        {{ openSessionForm }}
-        <input type="submit"/>
-    </form>
-    <form action="{% url 'close_student_session' %}" method="post">
-        {% csrf_token %}
-        {{ closeSessionForm }}
-        <input type="submit"/>
-    </form>
-    {% endcomment %}
 </div>
 
 
 
 {% include 'SignIn/StudentSection/_NewStudentFormModal.html' %}
 {% include 'SignIn/StudentSection/_OpenSessionFormModal.html' %}
+{% include 'SignIn/StudentSection/_CloseSessionFormModal.html' %}
 
 

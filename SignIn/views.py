@@ -64,10 +64,10 @@ class CreateOpenSessionView(APIView):
 @require_http_methods(['GET'])
 def index(request):
     studentForm = StudentForm()
-    closeSessionForm = CloseSessionForm()
     openSessionForm = OpenSessionForm()
+    closeSessionForm = CloseSessionForm()
 
-    context = {'studentForm': studentForm, 'closeSessionForm': closeSessionForm, 'openSessionForm': OpenSessionForm}
+    context = {'studentForm': studentForm, 'openSessionForm': openSessionForm, 'closeSessionForm': closeSessionForm}
     return render(request, 'SignIn/Index.html', context)
 
 

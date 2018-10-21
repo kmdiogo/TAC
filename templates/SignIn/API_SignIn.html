@@ -22,5 +22,13 @@
         return POST_OPEN_SESSION_URL + schoolId;
     }
 
+    function CloseSessionURL(schoolId){
+        return POST_OPEN_SESSION_URL + schoolId + "/";
+    }
+
+    function GetField(formElem, fieldName){
+        return $(formElem).find("input[name='" + fieldName + "']");
+    }
+
 
 </script>
