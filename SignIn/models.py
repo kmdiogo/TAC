@@ -1,19 +1,64 @@
 from django.db import models
 from SignIn.CONSTANTS import *
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+import datetime
 # Create your models here.
 
 
-class Student(models.Model):
-    schoolIdValidator = RegexValidator(SCHOOL_ID_REGEX, 'School Id does not match the school format')
-
-    schoolId = models.CharField(max_length=50, primary_key=True, verbose_name=SCHOOL_ID_ALIAS, validators=[schoolIdValidator])
-    firstName = models.CharField(max_length=50, verbose_name="First Name", null=True)
-    lastName = models.CharField(max_length=50, verbose_name="Last Name", null=True)
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES, verbose_name="Sex", null=True)
-    dob = models.DateField(verbose_name="Date of Birth", null=True)
-    academicYear = models.CharField(max_length=2, choices=CLASS_CHOICES, verbose_name="Academic Year", null=True)
-    major = models.CharField(max_length=50, choices=MAJOR_CHOICES, verbose_name="Major", null=True)
-    email = models.EmailField(verbose_name="E-mail", null=True)
+class Person(models.Model):
+    firstName = models.CharField(max_length=50, verbose_name="First Name")
+    lastName = models.CharField(max_length=50, verbose_name="Last Name")
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, verbose_name="Sex")
+    dob = models.DateField(verbose_name="Date of Birth")
+    email = models.EmailField(verbose_name="E-mail")
     created = models.DateField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+
+class Student(Person):
+    schoolIdValidator = RegexValidator(SCHOOL_ID_REGEX, 'School ID does not match the specified format')
+    schoolId = models.CharField(max_length=50, primary_key=True, verbose_name=SCHOOL_ID_ALIAS, validators=[schoolIdValidator])
+    academicYear = models.CharField(max_length=2, choices=CLASS_CHOICES, verbose_name="Academic Year")
+    major = models.CharField(max_length=50, choices=MAJOR_CHOICES, verbose_name="Major")
+
+    def __str__(self):
+        return '{id} - {last}, {first}'.format(id=self.schoolId, last=self.lastName, first=self.firstName)
+
+
+class Session(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course = models.CharField(max_length=50, verbose_name="Course Seeking Help For", choices=COURSE_CHOICES)
+    reason = models.CharField(max_length=50, verbose_name="Reason for Visit")
+    rating = models.IntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    comments = models.TextField(null=True, blank=True, max_length=1000)
+    startTime = models.DateTimeField(auto_now_add=True)
+    endTime = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        if not self.endTime:
+            return 'Open {course} session for {student}'.format(course=self.course, student=self.student)
+        else:
+            return 'Closed {course} session for {student}'.format(course=self.course, student=self.student)
+
+
+"""""
+class Employee(Person):
+    employeeIdValidator = RegexValidator(EMPLOYEE_ID_REGEX, 'Employee ID does not match the specified format')
+    id = models.CharField(max_length=50, primary_key=True, verbose_name=EMPLOYEE_ID_ALIAS, validators=[employeeIdValidator])
+
+
+class Course(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    courseNumber = models.CharField(max_length=50, verbose_name="Course Number")
+    courseName = models.CharField(max_length=100, verbose_name="Course Name", null=True)
+
+
+class Availability(models.Model):
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+"""
+
+
+
 

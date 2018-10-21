@@ -95,10 +95,11 @@
         {% include 'SignIn/_Sidebar.html' %}
     </nav>
 
-    <button type="button" id="button-sidebar" class="btn btn-info"><span>III</span></button>
+    <button type="button" id="button-sidebar" class="btn btn-primary"><span>III</span></button>
 
     <div class="start-up" id="content" style="min-height: 100vh;width: 100%;">
         <div class="section active" id="home-section" data-button="#home-button">
+            <!--<img class="w-100 h-100" src="/static/images/SignIn/anti%20weed.jpg" style="position: ; left: 0; top: 0;"/>-->
             {% include 'SignIn/HomeSection/_HomeSection.html' %}
         </div>
         <div class="section" id="student-section" data-button="#student-button">
@@ -117,8 +118,6 @@
 <script>
     const SCHOOL_ID_FORMAT = "Y00999999";
     $(document).ready(function(){
-        Validators();
-        InputMasks();
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
@@ -127,82 +126,6 @@
     function BindIndexEvents(){
         $('#button-sidebar').click(function(){
             $('#sidebar').toggleClass('active');
-        });
-
-        // Switch to the section specified by the button's data-section
-        $('.section-button,.student-or-employee').click(function(){
-            ChangeSection($(this).data('section'));
-        });
-
-        $('#input-StudentSection-schoolId').on('keypress', function(e){
-            if (e.which === 13) $('#button-StudentSection-yNumberSubmit').trigger('click');
-        });
-
-        $('#button-StudentSection-yNumberSubmit').click(function(){
-            $.getJSON("{% url 'school_id_taken' %}", {'schoolId': $('#input-StudentSection-schoolId').val() }, function(data){
-                if (!data.isTaken && $('#input-StudentSection-schoolId').inputmask('isComplete')){
-                    $('#modal-StudentSection-newStudentModal').modal('show');
-                    $('#id_schoolId').val($('#input-StudentSection-schoolId').val());
-                    $('#input-StudentSection-schoolId').val('');
-                }
-            });
-        });
-
-        // ALGORITHM:
-        // 1. Validate form input using jquery.validate
-        // 2. Send AJAX request to ensure schoolId isn't taken
-        // 3. Send form POST request
-        // 4. Show success screen if POST request returned successful
-        $('#button-StudentSection-newStudentSubmit').click(function(){
-            if (!$('#form-StudentSection-newStudent').valid() || !$('#id_schoolId').inputmask("isComplete"))
-                return;
-            let sendData = { 'schoolId': $('#id_schoolId').val() };
-            $.getJSON("{% url 'school_id_taken' %}", sendData, function(data) {
-                if (data.isTaken){
-                    // Shake error message
-                    RestartAnimation($('#text-StudentSection-schoolIdTaken'), 'shake-3');
-                    return;
-                }
-
-                // Show loading icon. Send POST request. If response returned was successful, show success screen
-                $('#icon-StudentSection-newStudentLoading').show();
-                let postData = $('#form-StudentSection-newStudent').serialize();
-                $.post("{% url 'create_student' %}", postData, function(data){
-                    $('#icon-StudentSection-newStudentLoading').hide();
-                    if (data.student_is_valid){
-                        $('#button-StudentSection-newStudentClose,#button-StudentSection-newStudentSubmit').fadeOut();
-                        $('#StudentSection-newStudentFormBody').fadeOut().promise().done(function(){
-                            $('#StudentSection-newStudentSuccessScreen').fadeIn();
-                        });
-                    }
-                    else {
-                        alert("Something went wrong!");
-                    }
-                });
-            });
-        });
-
-        // Verify schoolId has not been used already every time the input field changes value
-        $('#id_schoolId').on('change keyup paste',function(){
-            //let newStudentSchoolId = $('#form-student')
-            if (!$('#id_schoolId').inputmask('isComplete')){
-                $('#text-StudentSection-schoolIdTaken').hide();
-                return;
-            }
-            let sendData = { 'schoolId': $('#id_schoolId').val() };
-            $('#icon-StudentSection-newStudentLoading').show();
-            $.getJSON("{% url 'school_id_taken' %}", sendData, function(data){
-                $('#icon-StudentSection-newStudentLoading').hide();
-                if (data.isTaken)
-                    $('#text-StudentSection-schoolIdTaken').show();
-                else
-                   $('#text-StudentSection-schoolIdTaken').hide();
-            });
-        });
-
-        // Reset new student form when the modal closes
-        $('#modal-StudentSection-newStudentModal').on('hidden.bs.modal',function(){
-            ResetNewStudentFormModal();
         });
     }
 
@@ -228,47 +151,10 @@
             targetSection.fadeIn('fast');
         });
     }
-    /**
-     * Registers all jquery.validate validators for all forms
-     */
-    function Validators(){
-        $('#form-StudentSection-newStudent').validate({
-            messages: {
-                schoolId: "Invalid ID",
-                firstName: "Please enter your first name",
-                lastName: "Please enter your last name"
-            },
-            validClass: 'is-valid',
-            errorClass: 'is-invalid'
-        });
-    }
 
-    /**
-     * Registers all inputs masks
-     */
-    function InputMasks(){
-        $("#id_schoolId").inputmask(SCHOOL_ID_FORMAT);
-        $('#input-StudentSection-schoolId').inputmask(SCHOOL_ID_FORMAT);
-        $('#id_dob').inputmask('datetime',{
-            inputFormat: 'yyyy-mm-dd',
-            placeholder: 'YYYY-MM-DD'
-        });
 
-    }
 
-    /**
-     * Resets the modal back to its initial state
-     */
-    function ResetNewStudentFormModal(){
-        $('#form-StudentSection-newStudent').validate().resetForm();
-        $('#form-StudentSection-newStudent').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
-        $('#form-StudentSection-newStudent').trigger('reset');
-        $('#StudentSection-newStudentFormBody').show();
-        $('#StudentSection-newStudentSuccessScreen').hide();
-        $('#icon-StudentSection-newStudentLoading').hide();
-        $('#text-StudentSection-schoolIdTaken').hide();
-        $('#button-StudentSection-newStudentClose,#button-StudentSection-newStudentSubmit').show();
-    }
+
 
     /**
      * Restart an animation playback for a given element. NOTE: Only works with animation classes
@@ -283,6 +169,11 @@
         },100);
     }
 
+
+
 </script>
+
+{% include 'SignIn/HomeSection/Scripts/Scripts_HomeSection.html' %}
+{% include 'SignIn/StudentSection/Scripts/Scripts_StudentSection.html' %}
 
 {% endblock %}

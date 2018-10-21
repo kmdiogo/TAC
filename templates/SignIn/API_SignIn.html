@@ -1,0 +1,34 @@
+<script>
+    const POST_STUDENT_URL = '/tac-api/students/';
+    const POST_OPEN_SESSION_URL = '/tac-api/sessions/';
+
+    if (!String.prototype.format) {
+      String.prototype.format = function() {
+        let args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+          return typeof args[number] != 'undefined'
+            ? args[number]
+            : match
+          ;
+        });
+      };
+    }
+
+    function GetStudent(schoolId){
+        return POST_STUDENT_URL + schoolId;
+    }
+
+    function GetOpenSessionURL(schoolId){
+        return POST_OPEN_SESSION_URL + schoolId;
+    }
+
+    function CloseSessionURL(schoolId){
+        return POST_OPEN_SESSION_URL + schoolId + "/";
+    }
+
+    function GetField(formElem, fieldName){
+        return $(formElem).find("input[name='" + fieldName + "']");
+    }
+
+
+</script>

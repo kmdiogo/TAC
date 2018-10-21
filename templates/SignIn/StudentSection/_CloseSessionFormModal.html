@@ -1,0 +1,40 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="modal fade" id="modal-StudentSection-closeSessionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span id="text-StudentSection-goodbye"></span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container" id="StudentSection-closeSessionFormBody" type="">
+                    <form method="post" id="form-StudentSection-closeSession">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ closeSessionForm.rating.id_for_label }}">{{ closeSessionForm.rating.label_tag }}</label>
+                            <div class="col-md-9">
+                                {% render_field closeSessionForm.rating class='form-control' min='1' max='5' %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ closeSessionForm.comments.id_for_label }}">{{ closeSessionForm.comments.label_tag }}</label>
+                            <div class="col-md-9">
+                                {% render_field closeSessionForm.comments class='form-control' %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary hover-jump" id="button-StudentSection-closeSessionSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,10 +3,7 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 //
-// *IMPORTANT*
-// Make a copy of the variable you want to change in "custom.scss" and change that
-// copy. Then comment out the original variable in this file.
-
+//
 
 //
 // Color system
@@ -196,8 +193,8 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
+//@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+//@include _assert-starts-at-zero($grid-breakpoints);
 
 
 // Grid containers
@@ -211,7 +208,7 @@ $container-max-widths: (
   xl: 1140px
 ) !default;
 
-@include _assert-ascending($container-max-widths, "$container-max-widths");
+//@include _assert-ascending($container-max-widths, "$container-max-widths");
 
 
 // Grid columns
@@ -695,7 +692,7 @@ $pagination-border-color:           $gray-300 !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
-$pagination-hover-color:            $link-hover-color !default;
+//$pagination-hover-color:            $link-hover-color !default;
 $pagination-hover-bg:               $gray-200 !default;
 $pagination-hover-border-color:     $gray-300 !default;
 

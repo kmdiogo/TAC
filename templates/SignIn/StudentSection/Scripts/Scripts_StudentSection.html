@@ -1,0 +1,231 @@
+<script>
+    $(document).ready(function(){
+        RegisterStudentSection_Events();
+        RegisterStudentSection_Validators();
+        RegisterStudentSection_InputMasks();
+    });
+
+    function RegisterStudentSection_Events(){
+        // Reset new student form when the modal closes
+        $('#modal-StudentSection-newStudentModal').on('hidden.bs.modal',function(){
+            ResetNewStudentForm();
+            $('#input-StudentSection-schoolId').val('');
+        });
+
+        $('#modal-StudentSection-openSessionModal').on('hidden.bs.modal', function(){
+            ResetOpenSessionForm();
+            $('#input-StudentSection-schoolId').val('');
+        });
+
+        $('#modal-StudentSection-closeSessionModal').on('hidden.bs.modal', function(){
+           ResetCloseSessionForm();
+           $('#input-StudentSection-schoolId').val('');
+        });
+
+        $('#button-StudentSection-home').click(function(){
+            ChangeSection("#home-section");
+        });
+
+
+        $('#input-StudentSection-schoolId').on('keypress', function(e){
+            if (e.which === 13) $('#button-StudentSection-yNumberSubmit').trigger('click');
+        });
+
+        // ALGORITHM:
+        // 1. Validate form input using jquery.validate
+        // 2. Send AJAX request to ensure schoolId isn't taken
+        // 3. Send form POST request
+        // 4. Show success screen if POST request returned successful
+        $('#button-StudentSection-newStudentSubmit').click(function(){
+            if (!$('#form-StudentSection-newStudent').valid() || !$('#id_schoolId').inputmask("isComplete"))
+                return;
+            let postData =$('#form-StudentSection-newStudent').serialize();
+            $.ajax({
+                url: GetStudent($('#id_schoolId').val()),
+                statusCode: {
+                    200: function(){
+                        RestartAnimation($('#text-StudentSection-schoolIdTaken'),'shake-3');
+                    },
+                    404: function(){
+                        $.post(POST_STUDENT_URL, postData, function(){
+                            $('#button-StudentSection-newStudentClose,#button-StudentSection-newStudentSubmit').fadeOut();
+                            $('#StudentSection-newStudentFormBody').fadeOut().promise().done(function(){
+                                $('#StudentSection-newStudentSuccessScreen').fadeIn();
+                            });
+                        });
+                    }
+                }
+            });
+        });
+
+        // -----OPEN SESSION SUBMIT-----
+        $('#button-StudentSection-openSessionSubmit').click(function(){
+            if (!$('#form-StudentSection-openSession').valid())
+                return;
+            let postData = $('#form-StudentSection-openSession').serialize();
+            $.ajax({
+                type: 'POST',
+                data: postData,
+                //headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
+                url: POST_OPEN_SESSION_URL,
+                success: function(){
+                    $('#modal-StudentSection-openSessionModal').modal('hide');
+                }
+            });
+        });
+
+        // -----CLOSE SESSION SUBMIT-----
+        $('#button-StudentSection-closeSessionSubmit').click(function(){
+           if ($('#form-StudentSection-closeSession').valid()){
+               let schoolId = $('#input-StudentSection-schoolId').val();
+               let putData = $('#form-StudentSection-closeSession').serialize();
+               $.ajax({
+                  type: 'PUT',
+                  data: putData,
+                   headers: {'X-CSRFToken': $('#form-StudentSection-closeSession').find("input[name='csrfmiddlewaretoken']").val()},
+                  url: CloseSessionURL(schoolId),
+                   success: function(){
+                      $('#modal-StudentSection-closeSessionModal').modal('hide');
+                   }
+               });
+           }
+
+        });
+
+        // Verify schoolId has not been used already every time the input field changes value
+        $('#id_schoolId').on('change keyup paste',function(){
+            if (!$('#id_schoolId').inputmask('isComplete')){
+                $('#text-StudentSection-schoolIdTaken').hide();
+                return;
+            }
+            let id = $('#id_schoolId').val();
+            $.ajax({
+                url: GetStudent(id),
+                statusCode: {
+                    200: function(){
+                        $('#text-StudentSection-schoolIdTaken').show();
+                    },
+                    404: function() {
+                        $('#text-StudentSection-schoolIdTaken').hide();
+                    }
+                }
+            });
+        });
+
+        // DECISION TREE FOR SIGNING-IN/SIGNING-OUT/NEW STUDENT
+        $('#button-StudentSection-yNumberSubmit').click(function(){
+            if ($('#input-StudentSection-schoolId').inputmask('isComplete')){
+                let schoolId = $('#input-StudentSection-schoolId').val();
+                // First check if student exists (404 = DNE, 200 = exists)
+                $.ajax({
+                    url: GetStudent(schoolId),
+                    statusCode: {
+                        // If DNE, take user to new student form
+                        404: function() {
+                            $('#modal-StudentSection-newStudentModal').modal('show');
+                            $('#id_schoolId').val(schoolId);
+                            $('#input-StudentSection-schoolId').val('');
+                        },
+                        // If does exist, check if user has open session (404 = no open sessions, 200 = open session)
+                        200: function(data) {
+                            $.ajax({
+                                url: GetOpenSessionURL(schoolId),
+                                statusCode: {
+                                    // If open session does not exist, take user to new session form
+                                    404: function(){
+                                        $('#text-StudentSection-studentName').text("Welcome Back, {0}!".format(data.firstName));
+                                        $('#form-StudentSection-openSession').find("input[name='student']").val(schoolId);
+                                        $('#modal-StudentSection-openSessionModal').modal('show');
+                                    },
+                                    // If open session exists, take user to sign-out form
+                                    200: function(){
+                                        $('#text-StudentSection-goodbye').text('Thanks for visiting the MAC, {0}!'.format(data.firstName));
+                                        $('#form-StudentSection-closeSession').find("input[name='student']").val(schoolId);
+                                        $('#modal-StudentSection-closeSessionModal').modal('show');
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * Registers all jquery.validate validators for all forms
+     */
+    function RegisterStudentSection_Validators(){
+        $('#form-StudentSection-newStudent').validate({
+            messages: {
+                schoolId: "Invalid ID",
+                firstName: "Please enter your first name",
+                lastName: "Please enter your last name"
+            },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
+
+        $('#form-StudentSection-openSession').validate({
+            messages: {
+                reason: "Please tell us why you're here",
+                course: 'Please select a course'
+            },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
+
+        $('#form-StudentSection-closeSession').validate({
+           rules: {
+               rating: {
+                   max: 5,
+                   min: 1
+               }
+           },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
+    }
+
+    /**
+     * Registers all inputs masks
+     */
+    function RegisterStudentSection_InputMasks(){
+        $("#id_schoolId").inputmask(SCHOOL_ID_FORMAT);
+        $('#input-StudentSection-schoolId').inputmask(SCHOOL_ID_FORMAT);
+        $('#id_dob').inputmask('datetime',{
+            inputFormat: 'yyyy-mm-dd',
+            placeholder: 'YYYY-MM-DD'
+        });
+    }
+
+    /**
+     * Resets the modal back to its initial state
+     */
+    function ResetNewStudentForm(){
+        $('#form-StudentSection-newStudent').validate().resetForm();
+        $('#form-StudentSection-newStudent').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        $('#form-StudentSection-newStudent').trigger('reset');
+        $('#StudentSection-newStudentFormBody').show();
+        $('#StudentSection-newStudentSuccessScreen').hide();
+        $('#icon-StudentSection-newStudentLoading').hide();
+        $('#text-StudentSection-schoolIdTaken').hide();
+        $('#button-StudentSection-newStudentClose,#button-StudentSection-newStudentSubmit').show();
+    }
+
+    function ResetOpenSessionForm(){
+        $('#form-StudentSection-openSession').validate().resetForm();
+        $('#form-StudentSection-openSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        $('#form-StudentSection-openSession').trigger('reset');
+        $('#id_student').val("");
+    }
+
+    function ResetCloseSessionForm(){
+        $('#form-StudentSection-closeSession').validate().resetForm();
+        $('#form-StudentSection-closeSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        $('#form-StudentSection-closeSession').trigger('reset');
+        $('#id_closeSession-student').val('');
+    }
+
+</script>

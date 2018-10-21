@@ -1,18 +1,28 @@
 from django.test import TestCase
 from django.test import Client
+from rest_framework.test import APIClient
 from SignIn.models import Student
+
 
 # Create your tests here.
 class ViewsTests(TestCase):
     def setUp(self):
         # Every test needs a client.
-        self.client = Client()
+        self.client = APIClient()
 
     @classmethod
     def setUpTestData(cls):
         cls.student = Student.objects.create(schoolId="Y00123456", firstName="John",
                                              lastName="Doe", sex="M",
                                              email="john.doe@generic.com")
+
+    def test_student_retrieve_valid(self):
+        response = self.client.get('/tac-api/students/Y00123456', follow=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_student_retrieve_invalid(self):
+        response = self.client.get('/tac-api/students/Y00654321', follow=True)
+        self.assertEqual(response.status_code, 404)
 
     def test_school_id_taken(self):
         # Issue a GET request.

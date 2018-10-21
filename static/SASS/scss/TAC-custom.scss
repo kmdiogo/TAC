@@ -5,22 +5,22 @@
 $YSU-red: #a2182f !default;
 
 $theme-colors: (
-  "info": $YSU-red
+  "primary": $YSU-red
 );
 
-.btn-outline-info {
+.btn-outline-primary {
   color: #fff;
   background-color: black;
   border-color: $YSU-red;
 }
 
-@import "TAC-custom-Variables";
 //@import "bootstrap";
 
 // Required
 @import "functions";
-@import "variables";
+//@import "variables";
 @import "mixins";
+@import "TAC-custom-Variables";
 @import "buttons";
 @import "forms";
 @import "grid";

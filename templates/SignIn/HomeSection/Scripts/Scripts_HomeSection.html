@@ -1,0 +1,17 @@
+<script id="HomeSection-homeScripts">
+    $(document).ready(function(){
+        BindHomeSectionEvents();
+    });
+
+    function BindHomeSectionEvents(){
+        // Switch to the section specified by the button's data-section
+        $('.section-button,.student-or-employee').click(function(){
+            ChangeSection($(this).data('section'));
+        });
+
+
+    }
+
+
+
+</script>
