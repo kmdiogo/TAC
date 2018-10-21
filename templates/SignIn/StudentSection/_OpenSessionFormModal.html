@@ -1,0 +1,47 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="modal fade" id="modal-StudentSection-openSessionModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><span id="text-StudentSection-studentName"></span> &nbsp;<i class="far fa-smile-wink"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="container" id="StudentSection-openSessionFormBody">
+                    <form method="post" id="form-StudentSection-openSession">
+                        {% csrf_token %}
+                        {{ openSessionForm.student.as_hidden }}
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ openSessionForm.reason.id_for_label }}">{{ openSessionForm.reason.label_tag }}</label>
+                            <div class="col-md-9">
+                                {% render_field openSessionForm.reason class='form-control' %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3" for="{{ openSessionForm.course.id_for_label }}">{{ openSessionForm.course.label_tag }}</label>
+                            <div class="col-md-9">
+                                {% render_field openSessionForm.course class='form-control' %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--<div class="text-center" id="StudentSection-newStudentSuccessScreen" style="display:none!important;">
+                    <h3 style="color:green;">You were successfully registered!</h3>
+                    <i class="far fa-check-circle fa-4x" style="color: green;"></i>
+                    <h5>Now that you're registered, close this window and sign-in by entering your Y number</h5>
+                </div>-->
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="button-StudentSection-newStudentClose">Close</button>
+                <button class="btn btn-primary hover-jump" id="button-StudentSection-openSessionSubmit">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,10 +10,23 @@
     <h6>Or click here if this is your first visit</h6>
     <button class="btn btn-info hover-jump" id="button-new-student" data-toggle="modal" data-target="#modal-new-student-form">
         New Student
-    </button>{% endcomment %}
+    </button>
+    <form action="{% url 'open_student_session' %}" method="post">
+        {% csrf_token %}
+        {{ openSessionForm }}
+        <input type="submit"/>
+    </form>
+    <form action="{% url 'close_student_session' %}" method="post">
+        {% csrf_token %}
+        {{ closeSessionForm }}
+        <input type="submit"/>
+    </form>
+    {% endcomment %}
 </div>
 
 
+
 {% include 'SignIn/StudentSection/_NewStudentFormModal.html' %}
+{% include 'SignIn/StudentSection/_OpenSessionFormModal.html' %}
 
 

@@ -13,54 +13,70 @@
 
             <div class="modal-body">
                 <div class="container" id="StudentSection-newStudentFormBody">
-                    <form action="{% url 'create_student' %}" method="post" id="form-StudentSection-newStudent">
+                    <form method="post" id="form-StudentSection-newStudent">
                         {% csrf_token %}
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.schoolId.id_for_label }}">School ID</label>
+                            <label class="col-md-3" for="{{ studentForm.schoolId.id_for_label }}">
+                                {{ studentForm.schoolId.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.schoolId class='form-control' %}
+                                {% render_field studentForm.schoolId class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.firstName.id_for_label }}">First Name</label>
+                            <label class="col-md-3" for="{{ studentForm.firstName.id_for_label }}">
+                                {{ studentForm.firstName.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.firstName class='form-control' %}
+                                {% render_field studentForm.firstName class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.lastName.id_for_label }}">Last Name</label>
+                            <label class="col-md-3" for="{{ studentForm.lastName.id_for_label }}">
+                                {{ studentForm.lastName.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.lastName class='form-control' %}
+                                {% render_field studentForm.lastName class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.sex.id_for_label }}">Sex</label>
+                            <label class="col-md-3" for="{{ studentForm.sex.id_for_label }}">
+                                {{ studentForm.sex.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.sex class='form-control' %}
+                                {% render_field studentForm.sex class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.email.id_for_label }}">Email</label>
+                            <label class="col-md-3" for="{{ studentForm.email.id_for_label }}">
+                                {{ studentForm.email.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.email class='form-control' %}
+                                {% render_field studentForm.email class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.dob.id_for_label }}">Date of Birth</label>
+                            <label class="col-md-3" for="{{ studentForm.dob.id_for_label }}">
+                                {{ studentForm.dob.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.dob class='form-control' %}
+                                {% render_field studentForm.dob class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.academicYear.id_for_label }}">Academic Year</label>
+                            <label class="col-md-3" for="{{ studentForm.academicYear.id_for_label }}">
+                                {{ studentForm.academicYear.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.academicYear class='form-control' %}
+                                {% render_field studentForm.academicYear class='form-control' %}
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3" for="{{ form.major.id_for_label }}">Major</label>
+                            <label class="col-md-3" for="{{ studentForm.major.id_for_label }}">
+                                {{ studentForm.major.label_tag }}
+                            </label>
                             <div class="col-md-9">
-                                {% render_field form.major class='form-control' %}
+                                {% render_field studentForm.major class='form-control' %}
                             </div>
                         </div>
                     </form>
