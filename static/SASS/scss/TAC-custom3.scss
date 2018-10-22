@@ -1,0 +1,55 @@
+// All customizations MUST be added above the imports or they will not be
+// implemented. Uncomment and add any additional imports needed to the
+// "Required" section.
+
+$TAC-Blue: #001C59 !default;
+
+$theme-colors: (
+  "primary": $TAC-Blue
+);
+
+.btn-outline-primary {
+  color: #fff;
+  background-color: black;
+  border-color: $TAC-Blue;
+}
+
+//@import "bootstrap";
+
+// Required
+@import "functions";
+//@import "variables";
+@import "mixins";
+@import "TAC-custom-Variables";
+@import "buttons";
+@import "forms";
+@import "grid";
+@import "reboot";
+@import "type";
+@import "utilities";
+@import "alert";
+@import "badge";
+@import "breadcrumb";
+@import "button-group";
+@import "card";
+@import "carousel";
+@import "close";
+@import "code";
+@import "custom-forms";
+@import "dropdown";
+@import "images";
+@import "input-group";
+@import "jumbotron";
+@import "list-group";
+@import "media";
+@import "modal";
+@import "nav";
+@import "navbar";
+@import "pagination";
+@import "popover";
+@import "print";
+@import "progress";
+@import "root";
+@import "tables";
+@import "tooltip";
+@import "transitions";
