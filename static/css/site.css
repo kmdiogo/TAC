@@ -1,5 +1,3 @@
-/*YSU RED COLOR CODE: #A2182F*/
-
 body{
     font-family: 'Krub', sans-serif;
 }
@@ -60,6 +58,8 @@ body{
 .shake-3{
     animation: shake 0.1s linear 3;
 }
+
+
 
 
 

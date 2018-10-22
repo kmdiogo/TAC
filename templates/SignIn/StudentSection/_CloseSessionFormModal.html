@@ -18,7 +18,31 @@
                         <div class="form-group row">
                             <label class="col-md-3" for="{{ closeSessionForm.rating.id_for_label }}">{{ closeSessionForm.rating.label_tag }}</label>
                             <div class="col-md-9">
-                                {% render_field closeSessionForm.rating class='form-control' min='1' max='5' %}
+                                {% comment %}{% render_field closeSessionForm.rating class='form-control' min='1' max='5' %}{% endcomment %}
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div>
+                                                <input type="radio" id="very-satisfied" name="rating"  value="5" />
+                                                <label for="very-satisfied">Very Satisfied</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="satisfied" name="rating" value="4" />
+                                                <label for="satisfied">Satisfied</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div>
+                                                <input type="radio" id="dissatisfied" name="rating" value="3" />
+                                                <label for="dissatisfied">Dissatisfied</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="very-dissatisfied" name="rating" value="2" />
+                                                <label for="very-dissatisfied">Very Dissatisfied</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
                         <div class="form-group row">
