@@ -31,6 +31,7 @@
 
     #content{
         transition: all 2s ease-in-out;
+        overflow: hidden;
         /*animation: slide-down 1s;*/
     }
     #content.start-up{
@@ -77,6 +78,11 @@
         display: none;
         width: 100%;
         height: 100%;
+        transition: all 0.45s ease-out;
+    }
+    .section.off-screen{
+
+        transform: translateX(100%);
     }
     .section.active {
         display: block;
@@ -102,10 +108,10 @@
             <!--<img class="w-100 h-100" src="/static/images/SignIn/anti%20weed.jpg" style="position: ; left: 0; top: 0;"/>-->
             {% include 'SignIn/HomeSection/_HomeSection.html' %}
         </div>
-        <div class="section" id="student-section" data-button="#student-button">
+        <div class="section off-screen" id="student-section" data-button="#student-button">
             {% include 'SignIn/StudentSection/_StudentSection.html' %}
         </div>
-        <div class="section" id="employee-section" data-button="#employee-button">
+        <div class="section off-screen" id="employee-section" data-button="#employee-button">
             {% include 'SignIn/EmployeeSection/_EmployeeSection.html' %}
         </div>
     </div>
@@ -147,13 +153,14 @@
         // Fade to target section and highlight its respective button
         activeButton.removeClass('active');
         targetButton.addClass('active');
-        activeSection.fadeOut('fast').promise().done(function(){
-            targetSection.fadeIn('fast');
-        });
+        /*activeSection.addClass('off-screen').fadeOut('fast').promise().done(function(){
+            targetSection.fadeIn('fast').removeClass('off-screen');
+        });*/
+        activeSection.addClass('off-screen').fadeOut('fast');
+        setTimeout(function(){
+            targetSection.fadeIn().removeClass('off-screen');
+        },200);
     }
-
-
-
 
 
     /**
