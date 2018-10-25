@@ -22,10 +22,6 @@
            $('#input-StudentSection-schoolId').val('');
         });
 
-        $('#button-StudentSection-home').click(function(){
-            ChangeSection("#home-section");
-        });
-
 
         $('#input-StudentSection-schoolId').on('keypress', function(e){
             if (e.which === 13) $('#button-StudentSection-yNumberSubmit').trigger('click');
@@ -36,6 +32,7 @@
         // 2. Send AJAX request to ensure schoolId isn't taken
         // 3. Send form POST request
         // 4. Show success screen if POST request returned successful
+        // -------NEW STUDENT SUBMIT------
         $('#button-StudentSection-newStudentSubmit').click(function(){
             if (!$('#form-StudentSection-newStudent').valid() || !$('#id_schoolId').inputmask("isComplete"))
                 return;
@@ -51,6 +48,11 @@
                             $('#button-StudentSection-newStudentClose,#button-StudentSection-newStudentSubmit').fadeOut();
                             $('#StudentSection-newStudentFormBody').fadeOut().promise().done(function(){
                                 $('#StudentSection-newStudentSuccessScreen').fadeIn();
+                                setTimeout(function(){
+                                    $('#modal-StudentSection-newStudentModal').modal('hide');
+                                    $('#modal-StudentSection-openSessionModal').modal('show');
+                                    ShowOpenSessionForm($('#id_schoolId').val(), $('#id_firstName').val());
+                                },2000);
                             });
                         });
                     }
@@ -66,7 +68,7 @@
             $.ajax({
                 type: 'POST',
                 data: postData,
-                //headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
+                headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
                 url: POST_OPEN_SESSION_URL,
                 success: function(){
                     $('#modal-StudentSection-openSessionModal').modal('hide');
@@ -122,9 +124,7 @@
                     statusCode: {
                         // If DNE, take user to new student form
                         404: function() {
-                            $('#modal-StudentSection-newStudentModal').modal('show');
-                            $('#id_schoolId').val(schoolId);
-                            $('#input-StudentSection-schoolId').val('');
+                            ShowNewStudentForm(schoolId);
                         },
                         // If does exist, check if user has open session (404 = no open sessions, 200 = open session)
                         200: function(data) {
@@ -133,15 +133,11 @@
                                 statusCode: {
                                     // If open session does not exist, take user to new session form
                                     404: function(){
-                                        $('#text-StudentSection-studentName').text("Welcome Back, {0}!".format(data.firstName));
-                                        $('#form-StudentSection-openSession').find("input[name='student']").val(schoolId);
-                                        $('#modal-StudentSection-openSessionModal').modal('show');
+                                        ShowOpenSessionForm(schoolId, data.firstName);
                                     },
                                     // If open session exists, take user to sign-out form
                                     200: function(){
-                                        $('#text-StudentSection-goodbye').text('Thanks for visiting the MAC, {0}!'.format(data.firstName));
-                                        $('#form-StudentSection-closeSession').find("input[name='student']").val(schoolId);
-                                        $('#modal-StudentSection-closeSessionModal').modal('show');
+                                        ShowCloseSessionForm(schoolId, data.firstName);
                                     }
                                 }
                             });
@@ -153,6 +149,7 @@
         });
     }
 
+    //------------------------------------HELPER FUNCTIONS--------------------------------------------
     /**
      * Registers all jquery.validate validators for all forms
      */
@@ -204,9 +201,10 @@
      * Resets the modal back to its initial state
      */
     function ResetNewStudentForm(){
-        $('#form-StudentSection-newStudent').validate().resetForm();
-        $('#form-StudentSection-newStudent').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
-        $('#form-StudentSection-newStudent').trigger('reset');
+        let newStudentForm = $('#form-StudentSection-newStudent');
+        newStudentForm.validate().resetForm();
+        newStudentForm.find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        newStudentForm.trigger('reset');
         $('#StudentSection-newStudentFormBody').show();
         $('#StudentSection-newStudentSuccessScreen').hide();
         $('#icon-StudentSection-newStudentLoading').hide();
@@ -215,17 +213,37 @@
     }
 
     function ResetOpenSessionForm(){
-        $('#form-StudentSection-openSession').validate().resetForm();
-        $('#form-StudentSection-openSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
-        $('#form-StudentSection-openSession').trigger('reset');
+        let openSessionForm = $('#form-StudentSection-openSession');
+        openSessionForm.validate().resetForm();
+        openSessionForm.find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        openSessionForm.trigger('reset');
         $('#id_student').val("");
     }
 
     function ResetCloseSessionForm(){
-        $('#form-StudentSection-closeSession').validate().resetForm();
-        $('#form-StudentSection-closeSession').find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
-        $('#form-StudentSection-closeSession').trigger('reset');
+        let closeSessionsForm = $('#form-StudentSection-closeSession');
+        closeSessionsForm.validate().resetForm();
+        closeSessionsForm.find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
+        closeSessionsForm.trigger('reset');
         $('#id_closeSession-student').val('');
+    }
+
+    function ShowOpenSessionForm(schoolId, firstName){
+        $('#text-StudentSection-studentName').text("Welcome Back, {0}!".format(firstName));
+        $('#form-StudentSection-openSession').find("input[name='student']").val(schoolId);
+        $('#modal-StudentSection-openSessionModal').modal('show');
+    }
+
+    function ShowCloseSessionForm(schoolId, firstName){
+        $('#text-StudentSection-goodbye').text('Thanks for visiting the MAC, {0}!'.format(firstName));
+        $('#form-StudentSection-closeSession').find("input[name='student']").val(schoolId);
+        $('#modal-StudentSection-closeSessionModal').modal('show');
+    }
+
+    function ShowNewStudentForm(schoolId){
+        $('#id_schoolId').val(schoolId);
+        $('#input-StudentSection-schoolId').val('');
+        $('#modal-StudentSection-newStudentModal').modal('show');
     }
 
 </script>

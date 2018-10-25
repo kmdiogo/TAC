@@ -1,7 +1,7 @@
 {% extends 'Base.html' %}
 {% load static %}
 
-{% block title %}TAC &middot; Sign-In{% endblock %}
+{% block title %}TAC &middot; Home{% endblock %}
 
 {% block styles %}
     <style>
@@ -81,7 +81,6 @@
         transition: all 0.45s ease-out;
     }
     .section.off-screen{
-
         transform: translateX(100%);
     }
     .section.active {
@@ -89,6 +88,12 @@
     }
     .section-button {
         transition: background-color 0.2s linear;
+    }
+    .seasonal-insert {
+        transform: rotate(30deg);
+        position: absolute;
+        right: 50px;
+        top: 50px;
     }
 
 </style>
@@ -116,6 +121,25 @@
         </div>
     </div>
 </div>
+<template id="spooky-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>Boo! Spooky Season!</h5>
+        <i class="fas fa-ghost fa-3x pulse"></i>
+    </div>
+</template>
+<template id="christmas-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>HO HO HO!</h5>
+        <h5>Happy Holidays!</h5>
+        <i class="fas fa-gift fa-3x pulse"></i>
+    </div>
+</template>
+<template id="turkey-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>Yum! Turkey Season!</h5>
+        <i class="fas fa-utensils fa-3x pulse"></i>
+    </div>
+</template>
 {% endblock %}
 
 
@@ -127,8 +151,19 @@
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
+        SeasonalInserts();
     });
 
+    function SeasonalInserts(){
+        let month = (new Date()).getMonth();
+        if (month === 9)
+            $('#home-section').append($('#spooky-season').html());
+        else if (month === 10)
+            $('#home-section').append($('#turkey-season').html());
+        else if (month === 11)
+            $('#home-section').append($('#christmas-season').html());
+
+    }
     function BindIndexEvents(){
         $('#button-sidebar').click(function(){
             $('#sidebar').toggleClass('active');
@@ -140,6 +175,13 @@
      * @Param {string} sectionId - The id of the target section with #
      */
     function ChangeSection(sectionId){
+        let sectionName;
+        if (sectionId.includes('home'))
+            sectionName = 'Home';
+        else if (sectionId.includes('student'))
+            sectionName = 'Student';
+        else
+            sectionName = 'Employee';
         // Get the DOM objects for the target section/button and the currently active section/button
         let targetButton = $($(sectionId).data('button'));
         let targetSection = $($(sectionId));
@@ -160,6 +202,7 @@
         setTimeout(function(){
             targetSection.fadeIn().removeClass('off-screen');
         },200);
+        $('title').first().text('TAC \267 {0}'.format(sectionName));
     }
 
 
@@ -182,5 +225,6 @@
 
 {% include 'SignIn/HomeSection/Scripts/Scripts_HomeSection.html' %}
 {% include 'SignIn/StudentSection/Scripts/Scripts_StudentSection.html' %}
+{% include 'SignIn/EmployeeSection/Scripts/Scripts_EmployeeSection.html' %}
 
 {% endblock %}

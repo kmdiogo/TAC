@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Student, Session
+from .models import *
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -29,4 +29,17 @@ class CloseSessionSerializer(serializers.ModelSerializer):
         model = Session
         fields = ['rating', 'comments']
 
+
+class EmployeeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Employee
+        fields = ['id', 'firstName', 'lastName']
+
+
+class OpenShiftSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Shift
+        fields = ['employee']
 
