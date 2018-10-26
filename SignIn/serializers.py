@@ -17,6 +17,8 @@ class CreateStudentSerializer(serializers.ModelSerializer):
 
 
 class OpenSessionSerializer(serializers.ModelSerializer):
+    #firstName = serializers.PrimaryKeyRelatedField(source='student.firstName', read_only=True)
+    #lastName = serializers.PrimaryKeyRelatedField(source='student.lastName', read_only=True)
 
     class Meta:
         model = Session

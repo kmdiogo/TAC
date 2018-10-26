@@ -71,7 +71,7 @@
                 headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
                 url: POST_OPEN_SESSION_URL,
                 success: function(){
-                    $('#modal-StudentSection-openSessionModal').modal('hide');
+                    ShowOpenSessionSuccessScreen();
                 }
             });
         });
@@ -86,8 +86,8 @@
                   data: putData,
                    headers: {'X-CSRFToken': $('#form-StudentSection-closeSession').find("input[name='csrfmiddlewaretoken']").val()},
                   url: CloseSessionURL(schoolId),
-                   success: function(){
-                      $('#modal-StudentSection-closeSessionModal').modal('hide');
+                   success: function(data){
+                      ShowCloseSessionSuccessScreen(data.firstName);
                    }
                });
            }
@@ -217,6 +217,9 @@
         openSessionForm.validate().resetForm();
         openSessionForm.find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
         openSessionForm.trigger('reset');
+        $('#StudentSection-openSessionSuccess').hide();
+        $('#StudentSection-openSessionFormBody').show();
+        $('#button-StudentSection-openSessionSubmit').show();
         $('#id_student').val("");
     }
 
@@ -225,6 +228,9 @@
         closeSessionsForm.validate().resetForm();
         closeSessionsForm.find('.is-invalid,.is-valid').removeClass('is-invalid').removeClass('is-valid');
         closeSessionsForm.trigger('reset');
+        $('#StudentSection-closeSessionSuccess').hide();
+        $('#StudentSection-closeSessionFormBody').show();
+        $('#button-StudentSection-closeSessionSubmit').show();
         $('#id_closeSession-student').val('');
     }
 
@@ -244,6 +250,21 @@
         $('#id_schoolId').val(schoolId);
         $('#input-StudentSection-schoolId').val('');
         $('#modal-StudentSection-newStudentModal').modal('show');
+    }
+
+    function ShowOpenSessionSuccessScreen(){
+        $('#button-StudentSection-openSessionSubmit').hide();
+        $('#StudentSection-openSessionFormBody').fadeOut().promise().done(function(){
+            $('#StudentSection-openSessionSuccess').fadeIn();
+        })
+    }
+
+    function ShowCloseSessionSuccessScreen(){
+        $('#button-StudentSection-closeSessionSubmit').hide();
+        //$('#text-StudentSection-closeSessionName').val(studentName);
+        $('#StudentSection-closeSessionFormBody').fadeOut().promise().done(function(){
+            $('#StudentSection-closeSessionSuccess').fadeIn();
+        });
     }
 
 </script>
