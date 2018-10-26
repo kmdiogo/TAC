@@ -38,8 +38,10 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
 
 class OpenShiftSerializer(serializers.ModelSerializer):
+    firstName = serializers.PrimaryKeyRelatedField(source='employee.firstName', read_only=True)
+    lastName = serializers.PrimaryKeyRelatedField(source='employee.lastName', read_only=True)
 
     class Meta:
         model = Shift
-        fields = ['employee']
+        fields = ['employee', 'firstName', 'lastName']
 

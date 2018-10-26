@@ -30,7 +30,7 @@
     }
 
     #content{
-        transition: all 2s ease-in-out;
+        transition: transform 2s ease-in-out;
         overflow: hidden;
         /*animation: slide-down 1s;*/
     }
@@ -94,12 +94,17 @@
     }
 
     @media (max-width: 768px) {
-        /*#sidebar {
-            margin-left: -250px;
+        #sidebar {
+            /*margin-left: -250px;*/
+            display: none !important;
         }
         #sidebar.active {
-            margin-left: 0;
-        }*/
+            /*margin-left: 0;*/
+            display: none !important;
+        }
+        #button-sidebar{
+            display: none!important;
+        }
         #col-button-employee, #col-button-student {
             margin-top: 20px;
             margin-bottom: 20px;
@@ -111,12 +116,7 @@
         .seasonal-insert{
             display: none !important;
         }
-        #sidebar{
-            display: none !important;
-        }
-        #button-sidebar{
-            display: none!important;
-        }
+
         #content{
             margin: 5%;
         }
@@ -136,7 +136,7 @@
         {% include 'SignIn/_Sidebar.html' %}
     </nav>
 
-    <button type="button" id="button-sidebar" class="btn btn-secondary"><span>III</span></button>
+    <button type="button" id="button-sidebar" class="btn btn-secondary">III</button>
 
     <div class="start-up" id="content" style="min-height: 100vh;width: 100%;">
         <div class="section active" id="home-section" data-button="#home-button">

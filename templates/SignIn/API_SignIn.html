@@ -1,7 +1,7 @@
 <script>
     const POST_STUDENT_URL = '/tac-api/students/';
     const POST_OPEN_SESSION_URL = '/tac-api/sessions/';
-    const POST_OPEN_SHIFT_URL = 'tac-api/shifts/'
+    const POST_OPEN_SHIFT_URL = 'tac-api/shifts/';
 
     if (!String.prototype.format) {
       String.prototype.format = function() {
@@ -31,8 +31,12 @@
         return $(formElem).find("input[name='" + fieldName + "']");
     }
 
-    function GetEmployeeURL(schoolId){
-        return POST_OPEN_SHIFT_URL + schoolId;
+    function GetEmployeeURL(employeeId){
+        return 'tac-api/employees/' + employeeId;
+    }
+
+    function GetOpenShiftURL(employeeId){
+        return 'tac-api/shifts/' + employeeId;
     }
 
 

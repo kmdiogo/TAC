@@ -36,7 +36,7 @@
         $('#button-StudentSection-newStudentSubmit').click(function(){
             if (!$('#form-StudentSection-newStudent').valid() || !$('#id_schoolId').inputmask("isComplete"))
                 return;
-            let postData =$('#form-StudentSection-newStudent').serialize();
+            let postData = $('#form-StudentSection-newStudent').serialize();
             $.ajax({
                 url: GetStudent($('#id_schoolId').val()),
                 statusCode: {

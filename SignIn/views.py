@@ -86,7 +86,7 @@ class OpenShiftView(APIView):
         shift = self.get_object(pk)
         shift.endTime = datetime.now()
         shift.save()
-        return Response({'employee':shift.employee}, status=status.HTTP_200_OK)
+        return Response(OpenShiftSerializer(shift).data, status=status.HTTP_200_OK)
 
 
 class CreateOpenShiftView(APIView):
