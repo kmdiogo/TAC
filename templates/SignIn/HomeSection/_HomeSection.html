@@ -1,11 +1,33 @@
 {% load static %}
-<div class="container d-flex align-items-center justify-content-center h-100 flex-grow-0 flex-column">
-    <div class="row justify-content-center">
-        <img src="{% static 'images/SignIn/TAC_Logo.png' %}" style="height:10%;width:25%;"/>
+
+<div class="d-flex position-absolute twitter-feed h-100 align-items-center" id="twitter-feed" style="right: 0;">
+    <div class="d-flex" style="width: 110%" id="social-media">
+        <div class="d-flex flex-column">
+            <div class="btn-group-vertical" id="HomeSection-socialMediaGroup">
+                <a class="btn btn-twitter" id="HomeSection-twitterToggle" href="https://twitter.com/ysu_mac?lang=en">
+                    <i class="fab fa-twitter" style="color:white;"></i>
+                </a>
+                <a class="btn btn-instagram" id="HomeSection-instagramToggle" href="https://www.instagram.com/ysu_mac/?hl=en">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="btn btn-facebook" id="HomeSection-facebookToggle" href="https://www.facebook.com/YsuMathematicsAssistanceCenter/">
+                    <i class="fab fa-facebook-f" style="color:white;"></i>
+                </a>
+            </div>
+        </div>
+        <div class="border shadow-lg" id="twitter-timeline">
+            <a class="twitter-timeline" data-width="250" data-height="500" data-theme="light" data-link-color="#E81C4F" href="https://twitter.com/YSU_MAC?ref_src=twsrc%5Etfw">Tweets by YSU_MAC</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </div>
+</div>
+<div class="container d-flex align-items-center justify-content-center h-100  flex-column">
+    <div class="row justify-content-center align-items-center d-flex">
+        <img class="w-100 h-100" src="{% static 'images/SignIn/MAC_Logo.png' %}" /><!--style="height:10%;width:25%;"-->
     </div>
 
     <div class="row">
-        <h1>Welcome to the Tutoring Assistance Computer</h1>
+        <h1>Welcome to the Math Assistance Center</h1>
     </div>
 
     <div class="row" style="padding-top: 10px;">
