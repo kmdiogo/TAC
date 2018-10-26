@@ -1,17 +1,33 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented. Uncomment and add any additional imports needed to the
-// "Required" section.
+// implemented.
 
-$TAC-Blue: #001C59 !default;
+// THANKSGIVING THEME
+
+$TAC-Brown: #77553C !default;
+$TAC-Orange: #FF6C00 !default;
 
 $theme-colors: (
-  "primary": $TAC-Blue
+  "primary": $TAC-Brown,
+  "secondary": $TAC-Orange
 );
 
+.btn-secondary {
+  color: #fff !important;
+  background-color: $TAC-Orange !important;
+  border-color: $TAC-Orange !important;
+}
+
 .btn-outline-primary {
-  color: #fff;
-  background-color: black;
-  border-color: $TAC-Blue;
+  color: #fff !important;
+  background-color: $TAC-Orange !important;
+  border-color: $TAC-Brown !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: $TAC-Brown !important;
+  border-color: $TAC-Brown !important;
 }
 
 //@import "bootstrap";

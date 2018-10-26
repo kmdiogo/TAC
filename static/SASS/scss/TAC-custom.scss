@@ -1,6 +1,5 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented. Uncomment and add any additional imports needed to the
-// "Required" section.
+// implemented
 
 $YSU-red: #a2182f !default;
 
@@ -8,10 +7,23 @@ $theme-colors: (
   "primary": $YSU-red
 );
 
+.btn-secondary {
+  color: #fff !important;
+  background-color: black !important;
+  border-color: black !important;
+}
+
 .btn-outline-primary {
-  color: #fff;
-  background-color: black;
-  border-color: $YSU-red;
+  color: #fff !important;
+  background-color: black !important;
+  border-color: $YSU-red !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: #a2182f !important;
+  border-color: #a2182f !important;
 }
 
 //@import "bootstrap";
