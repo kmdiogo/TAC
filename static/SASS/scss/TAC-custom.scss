@@ -1,29 +1,31 @@
 // All customizations MUST be added above the imports or they will not be
 // implemented
 
-$YSU-red: #a2182f !default;
+$YSU-Red: #a2182f !default;
+$YSU-Grey: #696969 !default;
 
 $theme-colors: (
-  "primary": $YSU-red
+  "primary": $YSU-Red,
+  "secondary": $YSU-Grey
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: black !important;
+  background-color: $YSU-Red !important;
   border-color: black !important;
 }
 
 .btn-outline-primary {
   color: #fff !important;
   background-color: black !important;
-  border-color: $YSU-red !important;
+  border-color: $YSU-Red !important;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: #a2182f !important;
-  border-color: #a2182f !important;
+  background-color: $YSU-Red !important;
+  border-color: $YSU-Red !important;
 }
 
 //@import "bootstrap";
