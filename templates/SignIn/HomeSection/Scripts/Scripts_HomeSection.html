@@ -1,6 +1,8 @@
 <script id="HomeSection-homeScripts">
     $(document).ready(function(){
         BindHomeSectionEvents();
+        SeasonalInserts();
+        //$('[data-toggle="popover"]').popover()
     });
 
     function BindHomeSectionEvents(){
@@ -14,9 +16,17 @@
         },function(){
             $('#twitter-feed').removeClass('active');
         });
+    }
 
-
-
+    function SeasonalInserts(){
+        let month = (new Date()).getMonth();
+        if (month === 9){
+            $('#seasonal-insert').append($('#spooky-season').html());
+        }
+        else if (month === 10)
+            $('#seasonal-insert').append($('#turkey-season').html());
+        else if (month === 11)
+            $('#seasonal-insert').append($('#christmas-season').html());
     }
 
 

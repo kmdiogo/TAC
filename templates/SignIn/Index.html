@@ -53,25 +53,6 @@
     #sidebar.active{
         margin-left: -250px;
     }
-    @media (max-width: 768px) {
-        /*#sidebar {
-            margin-left: -250px;
-        }
-        #sidebar.active {
-            margin-left: 0;
-        }*/
-        #col-button-employee, #col-button-student {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .student-or-employee {
-            width: 100%;
-            height: 100%;
-        }
-        .seasonal-insert{
-            display: none !important;
-        }
-    }
     #sidebar-links > li > button{
         width: 100%;
         margin-top: 5px;
@@ -105,10 +86,44 @@
     }
     .twitter-feed.active{
         margin-right: 0px;
+        z-index: 1000000000000;
     }
     .btn-facebook{
         background-color: rgb(59,89,152);
         border-color: rgb(59,89,152);
+    }
+
+    @media (max-width: 768px) {
+        /*#sidebar {
+            margin-left: -250px;
+        }
+        #sidebar.active {
+            margin-left: 0;
+        }*/
+        #col-button-employee, #col-button-student {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .student-or-employee {
+            width: 100%;
+            height: 150%;
+        }
+        .seasonal-insert{
+            display: none !important;
+        }
+        #sidebar{
+            display: none !important;
+        }
+        #button-sidebar{
+            display: none!important;
+        }
+        #content{
+            margin: 5%;
+        }
+        .twitter-feed{
+            display: none!important;
+        }
+
     }
 
 </style>
@@ -136,25 +151,7 @@
         </div>
     </div>
 </div>
-<template id="spooky-season">
-    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
-        <h5>Boo! Spooky Season!</h5>
-        <i class="fas fa-ghost fa-3x pulse"></i>
-    </div>
-</template>
-<template id="christmas-season">
-    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
-        <h5>HO HO HO!</h5>
-        <h5>Happy Holidays!</h5>
-        <i class="fas fa-gift fa-3x pulse"></i>
-    </div>
-</template>
-<template id="turkey-season">
-    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
-        <h5>Yum! Turkey Season!</h5>
-        <i class="fas fa-utensils fa-3x pulse"></i>
-    </div>
-</template>
+
 {% endblock %}
 
 
@@ -166,19 +163,10 @@
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
-        SeasonalInserts();
+
     });
 
-    function SeasonalInserts(){
-        let month = (new Date()).getMonth();
-        if (month === 9)
-            $('#home-section').append($('#spooky-season').html());
-        else if (month === 10)
-            $('#home-section').append($('#turkey-season').html());
-        else if (month === 11)
-            $('#home-section').append($('#christmas-season').html());
 
-    }
     function BindIndexEvents(){
         $('#button-sidebar').click(function(){
             $('#sidebar').toggleClass('active');

@@ -1,5 +1,7 @@
 {% load static %}
 
+<span id="seasonal-insert"></span>
+
 <div class="d-flex position-absolute twitter-feed h-100 align-items-center" id="twitter-feed" style="right: 0;">
     <div class="d-flex" style="width: 110%" id="social-media">
         <div class="d-flex flex-column">
@@ -49,3 +51,23 @@
         <div class="col-md-3"></div>
     </div>
 </div>
+
+<template id="spooky-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>Boo! Spooky Season!</h5>
+        <i class="fas fa-ghost fa-3x pulse" id="seasonal-icon"></i>
+    </div>
+</template>
+<template id="christmas-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>HO HO HO!</h5>
+        <h5>Happy Holidays!</h5>
+        <i class="fas fa-gift fa-3x pulse"></i>
+    </div>
+</template>
+<template id="turkey-season">
+    <div class="seasonal-insert d-flex align-items-center justify-content-center flex-column">
+        <h5>Yum! Turkey Season!</h5>
+        <i class="fas fa-utensils fa-3x pulse"></i>
+    </div>
+</template>
