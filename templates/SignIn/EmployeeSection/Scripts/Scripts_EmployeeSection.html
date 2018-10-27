@@ -20,31 +20,27 @@
                             type: 'GET',
                             url: GetOpenShiftURL(employeeId),
                             statusCode: {
-                                200: function(data){
+                                200: function(){
                                     $.ajax({
                                         type: 'PUT',
                                         headers: {'X-CSRFToken': $('#form-EmployeeSection-schoolId').find("input[name='csrfmiddlewaretoken']").val()},
                                         url: GetOpenShiftURL(employeeId),
                                         statusCode:{
-                                            200: function(data){
-                                                $('#EmployeeSection-clockOutName').text(data.firstName);
-                                                $('#modal-EmployeeSection-closeShiftModal').modal('show');
-                                                $('#input-EmployeeSection-employeeId').val('');
+                                            200: function(){
+                                                ShowCloseShiftModal(data.firstName);
                                             }
                                         }
                                     });
                                 },
-                                404: function(data){
+                                404: function(){
                                     $.ajax({
                                         type: 'POST',
                                         headers: {'X-CSRFToken': $('#form-EmployeeSection-schoolId').find("input[name='csrfmiddlewaretoken']").val()},
                                         url: POST_OPEN_SHIFT_URL,
                                         data: postData,
                                         statusCode:{
-                                            201: function(data){
-                                                $('#EmployeeSection-clockInName').text(data.firstName);
-                                                $('#modal-EmployeeSection-openShiftModal').modal('show');
-                                                $('#input-EmployeeSection-employeeId').val('');
+                                            201: function(){
+                                                ShowOpenShiftModal(data.firstName);
                                             }
                                         }
                                     })
@@ -66,5 +62,17 @@
     }
     function RegisterEmployeeSection_InputMasks(){
         $('#input-EmployeeSection-employeeId').inputmask(SCHOOL_ID_FORMAT);
+    }
+
+    function ShowOpenShiftModal(firstName){
+        $('#EmployeeSection-clockInName').text(firstName);
+        $('#modal-EmployeeSection-openShiftModal').modal('show');
+        $('#input-EmployeeSection-employeeId').val('');
+    }
+
+    function ShowCloseShiftModal(firstName){
+        $('#EmployeeSection-clockOutName').text(firstName);
+        $('#modal-EmployeeSection-closeShiftModal').modal('show');
+        $('#input-EmployeeSection-employeeId').val('');
     }
 </script>

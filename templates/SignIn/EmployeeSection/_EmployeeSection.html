@@ -5,7 +5,7 @@
     <button class="btn btn-primary hover-jump home-button" onclick="ChangeSection('#home-section')">
         <i class="fas fa-home"></i>
     </button>
-    <h2>Enter Your Y-Number to Clock-in/Clock-out</h2>
+    <h2 class="text-center">Enter Your Y-Number to Clock-in/Clock-out</h2>
     <form class="w-100 tac-center" method="post" id="form-EmployeeSection-schoolId">
         {% csrf_token %}
         <input class="form-control w-50 text-center" type="text" id="input-EmployeeSection-employeeId" style="font-size: 150%;" name="employee"/>

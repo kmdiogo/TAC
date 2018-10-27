@@ -120,6 +120,7 @@
                 let schoolId = $('#input-StudentSection-schoolId').val();
                 // First check if student exists (404 = DNE, 200 = exists)
                 $.ajax({
+                    type: 'GET',
                     url: GetStudent(schoolId),
                     statusCode: {
                         // If DNE, take user to new student form
