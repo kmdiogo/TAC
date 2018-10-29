@@ -1,17 +1,31 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented. Uncomment and add any additional imports needed to the
-// "Required" section.
+// implemented.
 
 $TAC-Light-Blue: #43AFD2 !default;
+$TAC-Light-Grey: #A4A4A4 !default;
 
 $theme-colors: (
-  "primary": $TAC-Light-Blue
+  "primary": $TAC-Light-Blue,
+  "secondary": $TAC-Light-Grey
 );
 
+.btn-secondary {
+  color: #fff !important;
+  background-color: $TAC-Light-Grey !important;
+  border-color: $TAC-Light-Grey !important;
+}
+
 .btn-outline-primary {
-  color: #fff;
-  background-color: darkgrey;
-  border-color: $TAC-Light-Blue;
+  color: #fff !important;
+  background-color: $TAC-Light-Grey !important;
+  border-color: $TAC-Light-Blue !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: $TAC-Light-Blue !important;
+  border-color: $TAC-Light-Blue !important;
 }
 
 //@import "bootstrap";

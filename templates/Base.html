@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/Custom Bootstrap/TAC-custom.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/site.css' %}" />
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/SignIn/TAC_Logo.png' %}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/SignIn/TAC_Logo.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-social.css' %}" />
     {% block styles %}
     {% endblock %}
 </head>
@@ -18,7 +19,7 @@
     {% endblock %}
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery.inputmask.bundle.js' %}"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
     {% include 'SignIn/API_SignIn.html' %}

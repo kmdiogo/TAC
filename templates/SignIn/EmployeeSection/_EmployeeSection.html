@@ -1,3 +1,20 @@
 {% load static %}
 
-<h1>Employee Sign-In Form Goes Here</h1>
+<div class="container h-100 tac-center">
+    <h1 class="text-center m-5"><i class="fas fa-user-tie fa-4x"></i></h1>
+    <button class="btn btn-primary hover-jump home-button" onclick="ChangeSection('#home-section')">
+        <i class="fas fa-home"></i>
+    </button>
+    <h2 class="text-center">Enter Your Y-Number to Clock-in/Clock-out</h2>
+    <form class="w-100 tac-center" method="post" id="form-EmployeeSection-schoolId">
+        {% csrf_token %}
+        <input class="form-control w-50 text-center" type="text" id="input-EmployeeSection-employeeId" style="font-size: 150%;" name="employee"/>
+    </form>
+
+    <hr />
+    <button class="btn btn-primary hover-jump w-25" id="button-EmployeeSection-employeeIdSubmit" style="height: 7%;">Submit</button>
+</div>
+
+
+{% include 'SignIn/EmployeeSection/_OpenShiftFormModal.html' %}
+{% include 'SignIn/EmployeeSection/_CloseShiftFormModal.html' %}

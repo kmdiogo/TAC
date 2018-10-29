@@ -1,0 +1,78 @@
+{% load static %}
+<script id="employee-scripts">
+    $(document).ready(function(){
+        RegisterEmployeeSection_InputMasks();
+        RegisterEmployeeSection_Events();
+    });
+
+    function RegisterEmployeeSection_Events(){
+        $('#button-EmployeeSection-employeeIdSubmit').click(function(){
+            if (!$("#input-EmployeeSection-employeeId").inputmask('isComplete')) return;
+            let employeeId = $('#input-EmployeeSection-employeeId').val();
+            let postData = $('#form-EmployeeSection-schoolId').serialize();
+            $.ajax({
+                type: 'GET',
+                //headers: {'X-CSRFToken': $('#form-EmployeeSection-schoolId').find("input[name='csrfmiddlewaretoken']").val()},
+                url: GetEmployeeURL(employeeId),
+                statusCode:{
+                    200: function(data){
+                        $.ajax({
+                            type: 'GET',
+                            url: GetOpenShiftURL(employeeId),
+                            statusCode: {
+                                200: function(){
+                                    $.ajax({
+                                        type: 'PUT',
+                                        headers: {'X-CSRFToken': $('#form-EmployeeSection-schoolId').find("input[name='csrfmiddlewaretoken']").val()},
+                                        url: GetOpenShiftURL(employeeId),
+                                        statusCode:{
+                                            200: function(){
+                                                ShowCloseShiftModal(data.firstName);
+                                            }
+                                        }
+                                    });
+                                },
+                                404: function(){
+                                    $.ajax({
+                                        type: 'POST',
+                                        headers: {'X-CSRFToken': $('#form-EmployeeSection-schoolId').find("input[name='csrfmiddlewaretoken']").val()},
+                                        url: POST_OPEN_SHIFT_URL,
+                                        data: postData,
+                                        statusCode:{
+                                            201: function(){
+                                                ShowOpenShiftModal(data.firstName);
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        })
+                    },
+                    404: function(){
+                        alert('Sorry, an employee under that id does not exist');
+                    }
+                }
+            });
+        });
+
+        $('#input-EmployeeSection-employeeId').on('keypress', function(e){
+            if (e.which === 13) $('#button-EmployeeSection-employeeIdSubmit').trigger('click');
+            e.preventDefault();
+        });
+    }
+    function RegisterEmployeeSection_InputMasks(){
+        $('#input-EmployeeSection-employeeId').inputmask(SCHOOL_ID_FORMAT);
+    }
+
+    function ShowOpenShiftModal(firstName){
+        $('#EmployeeSection-clockInName').text(firstName);
+        $('#modal-EmployeeSection-openShiftModal').modal('show');
+        $('#input-EmployeeSection-employeeId').val('');
+    }
+
+    function ShowCloseShiftModal(firstName){
+        $('#EmployeeSection-clockOutName').text(firstName);
+        $('#modal-EmployeeSection-closeShiftModal').modal('show');
+        $('#input-EmployeeSection-employeeId').val('');
+    }
+</script>

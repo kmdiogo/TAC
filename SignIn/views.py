@@ -14,6 +14,15 @@ from datetime import datetime
 from django_filters.rest_framework import DjangoFilterBackend
 
 
+class EmployeeView(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    http_method_names = ['get']
+    serializer_class = EmployeeSerializer
+
+    def list(self, request, *args, **kwargs):
+        raise MethodNotAllowed("GET")
+
+
 class StudentView(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     http_method_names = ['get', 'post']
@@ -48,13 +57,41 @@ class OpenSessionsView(APIView):
             serializer = CloseSessionSerializer(session, data=request.data)
             if serializer.is_valid():
                 serializer.save()
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CreateOpenSessionView(APIView):
     def post(self, request, format=None):
         serializer = OpenSessionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OpenShiftView(APIView):
+    def get_object(self, pk):
+        try:
+            return Shift.objects.get(employee__id__iexact=pk, endTime__isnull=True)
+        except Shift.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        shift = self.get_object(pk)
+        serializer = OpenShiftSerializer(shift)
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        shift = self.get_object(pk)
+        shift.endTime = datetime.now()
+        shift.save()
+        return Response(OpenShiftSerializer(shift).data, status=status.HTTP_200_OK)
+
+
+class CreateOpenShiftView(APIView):
+    def post(self, request, format=None):
+        serializer = OpenShiftSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

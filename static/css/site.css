@@ -34,7 +34,7 @@ body{
     100% { transform: rotate(360deg); }
 }
 @keyframes pulse {
-    50% { transform: scale(1.5,1.5)}
+    50% { transform: scale(1.25,1.25)}
     100% {transform: scale(1,1)}
 }
 @keyframes shake {
@@ -58,6 +58,34 @@ body{
 .shake-3{
     animation: shake 0.1s linear 3;
 }
+@keyframes spinPulse {
+    50% {transform: rotate(360deg);}
+    75% {transform: scale(1.1,1.1);}
+    100%{transform: scale(1,1);}
+}
+.spin-pulse{
+    animation: spinPulse 0.7s ease-in-out;
+    animation-delay: 0.2s;
+}
+.home-button{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 100px;
+}
+
+.tac-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#twitter-widget-0{
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+
 
 
 

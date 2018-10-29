@@ -1,7 +1,7 @@
 {% extends 'Base.html' %}
 {% load static %}
 
-{% block title %}TAC &middot; Sign-In{% endblock %}
+{% block title %}TAC &middot; Home{% endblock %}
 
 {% block styles %}
     <style>
@@ -30,7 +30,7 @@
     }
 
     #content{
-        transition: all 2s ease-in-out;
+        transition: transform 2s ease-in-out;
         overflow: hidden;
         /*animation: slide-down 1s;*/
     }
@@ -53,22 +53,6 @@
     #sidebar.active{
         margin-left: -250px;
     }
-    @media (max-width: 768px) {
-        /*#sidebar {
-            margin-left: -250px;
-        }
-        #sidebar.active {
-            margin-left: 0;
-        }*/
-        #col-button-employee, #col-button-student {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .student-or-employee {
-            width: 100%;
-            height: 100%;
-        }
-    }
     #sidebar-links > li > button{
         width: 100%;
         margin-top: 5px;
@@ -76,12 +60,12 @@
     }
     .section {
         display: none;
+        position: relative;
         width: 100%;
         height: 100%;
         transition: all 0.45s ease-out;
     }
     .section.off-screen{
-
         transform: translateX(100%);
     }
     .section.active {
@@ -89,6 +73,57 @@
     }
     .section-button {
         transition: background-color 0.2s linear;
+    }
+    .seasonal-insert {
+        transform: rotate(30deg);
+        position: absolute;
+        right: 50px;
+        top: 50px;
+    }
+    .twitter-feed{
+        margin-right: -250px;
+        transition: margin-right 0.5s ease-in-out;
+    }
+    .twitter-feed.active{
+        margin-right: 0px;
+        z-index: 1000000000000;
+    }
+    .btn-facebook{
+        background-color: rgb(59,89,152);
+        border-color: rgb(59,89,152);
+    }
+
+    @media (max-width: 768px) {
+        #sidebar {
+            /*margin-left: -250px;*/
+            display: none !important;
+        }
+        #sidebar.active {
+            /*margin-left: 0;*/
+            display: none !important;
+        }
+        #button-sidebar{
+            display: none!important;
+        }
+        #col-button-employee, #col-button-student {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .student-or-employee {
+            width: 100%;
+            height: 150%;
+        }
+        .seasonal-insert{
+            display: none !important;
+        }
+
+        #content{
+            margin: 5%;
+        }
+        .twitter-feed{
+            display: none!important;
+        }
+
     }
 
 </style>
@@ -101,7 +136,7 @@
         {% include 'SignIn/_Sidebar.html' %}
     </nav>
 
-    <button type="button" id="button-sidebar" class="btn btn-primary"><span>III</span></button>
+    <button type="button" id="button-sidebar" class="btn btn-primary"><i class="fas fa-bars fa-lg"></i></button>
 
     <div class="start-up" id="content" style="min-height: 100vh;width: 100%;">
         <div class="section active" id="home-section" data-button="#home-button">
@@ -116,6 +151,7 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 
@@ -127,7 +163,9 @@
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
+
     });
+
 
     function BindIndexEvents(){
         $('#button-sidebar').click(function(){
@@ -140,6 +178,13 @@
      * @Param {string} sectionId - The id of the target section with #
      */
     function ChangeSection(sectionId){
+        let sectionName;
+        if (sectionId.includes('home'))
+            sectionName = 'Home';
+        else if (sectionId.includes('student'))
+            sectionName = 'Student';
+        else
+            sectionName = 'Employee';
         // Get the DOM objects for the target section/button and the currently active section/button
         let targetButton = $($(sectionId).data('button'));
         let targetSection = $($(sectionId));
@@ -160,6 +205,7 @@
         setTimeout(function(){
             targetSection.fadeIn().removeClass('off-screen');
         },200);
+        $('title').first().text('TAC \267 {0}'.format(sectionName));
     }
 
 
@@ -182,5 +228,6 @@
 
 {% include 'SignIn/HomeSection/Scripts/Scripts_HomeSection.html' %}
 {% include 'SignIn/StudentSection/Scripts/Scripts_StudentSection.html' %}
+{% include 'SignIn/EmployeeSection/Scripts/Scripts_EmployeeSection.html' %}
 
 {% endblock %}

@@ -1,13 +1,16 @@
 MODEL CHANGES
-- Add employee model (schoolId, name, sex, classes-taught, DOB, availability)
-- Add session model (schoolId, time-in, time-out, academic class, feedback, reason-for-visit)
-- Add shift model (schoolId, time-in, time-out)
 - Add availability (schoolId, DOW, 0,1,2,3........,24)
 
 
+-----STUDENT SECTION----
+Add success screens to sign-out/sign-in screens
+redirect create student to sign-in screen
+are you sure screen for student creation
 
+------EMPLOYEE SECTION----
+add clock-in/clock-out screen
 
-MISC
-- Ensure views adhere to RESTful API standards
-- change JSON format for REST
-- create JSON API template
+Fix timezones
+add duration field for shifts and sessions
+
+change secondary button color to silver for color set 1

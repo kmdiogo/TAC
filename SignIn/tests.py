@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test import Client
 from rest_framework.test import APIClient
-from SignIn.models import Student
+from SignIn.models import Student, Session
 
 
 # Create your tests here.
@@ -16,6 +16,8 @@ class ViewsTests(TestCase):
                                              lastName="Doe", sex="M",
                                              email="john.doe@generic.com")
 
+        cls.session = Session.objects.create(student="Y00123456", course="MATH 1510", reason="test review")
+
     def test_student_retrieve_valid(self):
         response = self.client.get('/tac-api/students/Y00123456', follow=True)
         self.assertEqual(response.status_code, 200)
@@ -23,6 +25,10 @@ class ViewsTests(TestCase):
     def test_student_retrieve_invalid(self):
         response = self.client.get('/tac-api/students/Y00654321', follow=True)
         self.assertEqual(response.status_code, 404)
+
+    def test_open_session_retrieve_valid(self):
+        response = self.client.get('/tac-api/sessions/Y00123465', follow=True)
+        self.assertEqual(response.status_code, 200)
 
     def test_school_id_taken(self):
         # Issue a GET request.

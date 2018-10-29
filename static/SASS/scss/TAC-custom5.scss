@@ -1,17 +1,33 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented. Uncomment and add any additional imports needed to the
-// "Required" section.
+// implemented.
 
-$TAC-Orange: #DC6E00 !default;
+// HALLOWEEN THEME
+
+$TAC-Orange: #FF6C00 !default;
+$indigo:  #6610f2 !default;
 
 $theme-colors: (
-  "primary": $TAC-Orange
+  "primary": $TAC-Orange,
+  "seconday": $indigo
 );
 
+.btn-secondary {
+  color: #fff !important;
+  background-color: indigo !important;
+  border-color: indigo !important;
+}
+
 .btn-outline-primary {
-  color: #fff;
-  background-color: black;
-  border-color: $TAC-Orange;
+  color: #fff !important;
+  background-color: black !important;
+  border-color: $TAC-Orange !important;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: #FF6C00 !important;
+  border-color: #FF6C00 !important;
 }
 
 //@import "bootstrap";
