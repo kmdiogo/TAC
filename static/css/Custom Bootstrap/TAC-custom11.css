@@ -1,28 +1,28 @@
-/* line 19, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 16, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom11.scss */
 .btn-secondary {
   color: #fff !important;
-  background-color: #696969 !important;
-  border-color: #696969 !important;
+  background-color: blue !important;
+  border-color: blue !important;
 }
 
-/* line 25, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 22, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom11.scss */
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important;
-  border-color: #a2182f !important;
+  background-color: blue !important;
+  border-color: red !important;
 }
 
-/* line 31, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 28, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom11.scss */
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: #a2182f !important;
-  border-color: #a2182f !important;
+  background-color: silver !important;
+  border-color: silver !important;
 }
 
-/* line 38, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 35, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom11.scss */
 .fa-bars {
-  color: #696969;
+  color: blue;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -56,7 +56,7 @@
 /* line 23, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn:focus, .btn.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 30, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -78,81 +78,81 @@ fieldset:disabled a.btn {
 /* line 63, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn-primary {
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 13, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .btn-primary:hover {
   color: #fff;
-  background-color: #811325;
-  border-color: #761122;
+  background-color: #d90000;
+  border-color: #cc0000;
 }
 
 /* line 18, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 /* line 29, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 36, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color: #761122;
-  border-color: #6a101f;
+  background-color: #cc0000;
+  border-color: #bf0000;
 }
 
 /* line 46, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 /* line 63, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn-secondary {
   color: #fff;
-  background-color: #696969;
-  border-color: #696969;
+  background-color: blue;
+  border-color: blue;
 }
 
 /* line 13, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .btn-secondary:hover {
   color: #fff;
-  background-color: #565656;
-  border-color: #505050;
+  background-color: #0000d9;
+  border-color: #0000cc;
 }
 
 /* line 18, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-secondary:focus, .btn-secondary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(105, 105, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 255, 0.5);
 }
 
 /* line 29, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-secondary.disabled, .btn-secondary:disabled {
   color: #fff;
-  background-color: #696969;
-  border-color: #696969;
+  background-color: blue;
+  border-color: blue;
 }
 
 /* line 36, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active,
 .show > .btn-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #505050;
-  border-color: #494949;
+  background-color: #0000cc;
+  border-color: #0000bf;
 }
 
 /* line 46, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(105, 105, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 255, 0.5);
 }
 
 /* line 63, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -397,27 +397,27 @@ fieldset:disabled a.btn {
 
 /* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn-outline-primary {
-  color: #a2182f;
+  color: red;
   background-color: transparent;
   background-image: none;
-  border-color: #a2182f;
+  border-color: red;
 }
 
 /* line 63, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-primary:focus, .btn-outline-primary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 /* line 74, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-primary.disabled, .btn-outline-primary:disabled {
-  color: #a2182f;
+  color: red;
   background-color: transparent;
 }
 
@@ -425,39 +425,39 @@ fieldset:disabled a.btn {
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 87, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-primary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.5);
 }
 
 /* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn-outline-secondary {
-  color: #696969;
+  color: blue;
   background-color: transparent;
   background-image: none;
-  border-color: #696969;
+  border-color: blue;
 }
 
 /* line 63, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #696969;
-  border-color: #696969;
+  background-color: blue;
+  border-color: blue;
 }
 
 /* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-secondary:focus, .btn-outline-secondary.focus {
-  box-shadow: 0 0 0 0.2rem rgba(105, 105, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 255, 0.5);
 }
 
 /* line 74, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-secondary.disabled, .btn-outline-secondary:disabled {
-  color: #696969;
+  color: blue;
   background-color: transparent;
 }
 
@@ -465,14 +465,14 @@ fieldset:disabled a.btn {
 .btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-secondary.dropdown-toggle {
   color: #fff;
-  background-color: #696969;
-  border-color: #696969;
+  background-color: blue;
+  border-color: blue;
 }
 
 /* line 87, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_buttons.scss */
 .btn-outline-secondary:not(:disabled):not(.disabled):active:focus, .btn-outline-secondary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-secondary.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(105, 105, 105, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 255, 0.5);
 }
 
 /* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -808,9 +808,9 @@ input[type="button"].btn-block {
 .form-control:focus {
   color: #495057;
   background-color: #fff;
-  border-color: #e6546c;
+  border-color: #ff8080;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 41, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_forms.scss */
@@ -2866,26 +2866,26 @@ mark,
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_background-variant.scss */
 .bg-primary {
-  background-color: #a2182f !important;
+  background-color: red !important;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #761122 !important;
+  background-color: #cc0000 !important;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_background-variant.scss */
 .bg-secondary {
-  background-color: #696969 !important;
+  background-color: blue !important;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-  background-color: #505050 !important;
+  background-color: #0000cc !important;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_background-variant.scss */
@@ -3022,12 +3022,12 @@ button.bg-dark:focus {
 
 /* line 20, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/utilities/_borders.scss */
 .border-primary {
-  border-color: #a2182f !important;
+  border-color: red !important;
 }
 
 /* line 20, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/utilities/_borders.scss */
 .border-secondary {
-  border-color: #696969 !important;
+  border-color: blue !important;
 }
 
 /* line 20, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/utilities/_borders.scss */
@@ -6132,22 +6132,22 @@ button.bg-dark:focus {
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_text-emphasis.scss */
 .text-primary {
-  color: #a2182f !important;
+  color: red !important;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 a.text-primary:hover, a.text-primary:focus {
-  color: #761122 !important;
+  color: #cc0000 !important;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_text-emphasis.scss */
 .text-secondary {
-  color: #696969 !important;
+  color: blue !important;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 a.text-secondary:hover, a.text-secondary:focus {
-  color: #505050 !important;
+  color: #0000cc !important;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_text-emphasis.scss */
@@ -6284,36 +6284,36 @@ a.text-dark:hover, a.text-dark:focus {
 
 /* line 48, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_alert.scss */
 .alert-primary {
-  color: #540c18;
-  background-color: #ecd1d5;
-  border-color: #e5bec5;
+  color: #850000;
+  background-color: #ffcccc;
+  border-color: #ffb8b8;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_alert.scss */
 .alert-primary hr {
-  border-top-color: #deacb5;
+  border-top-color: #ff9f9f;
 }
 
 /* line 10, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_alert.scss */
 .alert-primary .alert-link {
-  color: #27060b;
+  color: #520000;
 }
 
 /* line 48, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_alert.scss */
 .alert-secondary {
-  color: #373737;
-  background-color: #e1e1e1;
-  border-color: #d5d5d5;
+  color: #000085;
+  background-color: #ccccff;
+  border-color: #b8b8ff;
 }
 
 /* line 6, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_alert.scss */
 .alert-secondary hr {
-  border-top-color: #c8c8c8;
+  border-top-color: #9f9fff;
 }
 
 /* line 10, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_alert.scss */
 .alert-secondary .alert-link {
-  color: #1e1e1e;
+  color: #000052;
 }
 
 /* line 48, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_alert.scss */
@@ -6452,27 +6452,27 @@ a.text-dark:hover, a.text-dark:focus {
 /* line 44, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_badge.scss */
 .badge-primary {
   color: #fff;
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .badge-primary[href]:hover, .badge-primary[href]:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #761122;
+  background-color: #cc0000;
 }
 
 /* line 44, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_badge.scss */
 .badge-secondary {
   color: #fff;
-  background-color: #696969;
+  background-color: blue;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .badge-secondary[href]:hover, .badge-secondary[href]:focus {
   color: #fff;
   text-decoration: none;
-  background-color: #505050;
+  background-color: #0000cc;
 }
 
 /* line 44, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_badge.scss */
@@ -7395,18 +7395,18 @@ pre code {
 /* line 27, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-control-input:checked ~ .custom-control-label::before {
   color: #fff;
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 33, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-control-input:focus ~ .custom-control-label::before {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 38, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-control-input:active ~ .custom-control-label::before {
   color: #fff;
-  background-color: #ec8092;
+  background-color: #ffb3b3;
 }
 
 /* line 45, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7460,7 +7460,7 @@ pre code {
 
 /* line 104, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 107, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7470,7 +7470,7 @@ pre code {
 
 /* line 113, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 117, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7480,12 +7480,12 @@ pre code {
 
 /* line 123, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: #a2182f, 0.5;
+  background-color: red, 0.5;
 }
 
 /* line 126, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
-  background-color: #a2182f, 0.5;
+  background-color: red, 0.5;
 }
 
 /* line 137, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7495,7 +7495,7 @@ pre code {
 
 /* line 142, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 145, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7505,7 +7505,7 @@ pre code {
 
 /* line 151, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
-  background-color: #a2182f, 0.5;
+  background-color: red, 0.5;
 }
 
 /* line 164, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7526,9 +7526,9 @@ pre code {
 
 /* line 183, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-select:focus {
-  border-color: #e6546c;
+  border-color: #ff8080;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(230, 84, 108, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 128, 128, 0.5);
 }
 
 /* line 192, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7592,13 +7592,13 @@ pre code {
 
 /* line 256, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-file-input:focus ~ .custom-file-label {
-  border-color: #e6546c;
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  border-color: #ff8080;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 260, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-file-input:focus ~ .custom-file-label::after {
-  border-color: #e6546c;
+  border-color: #ff8080;
 }
 
 /* line 265, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7660,17 +7660,17 @@ pre code {
 
 /* line 326, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 327, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 328, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 331, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7683,7 +7683,7 @@ pre code {
   width: 1rem;
   height: 1rem;
   margin-top: -0.25rem;
-  background-color: #a2182f;
+  background-color: red;
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -7699,7 +7699,7 @@ pre code {
 
 /* line 346, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range::-webkit-slider-thumb:active {
-  background-color: #ec8092;
+  background-color: #ffb3b3;
 }
 
 /* line 351, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7717,7 +7717,7 @@ pre code {
 .custom-range::-moz-range-thumb {
   width: 1rem;
   height: 1rem;
-  background-color: #a2182f;
+  background-color: red;
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -7733,7 +7733,7 @@ pre code {
 
 /* line 372, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range::-moz-range-thumb:active {
-  background-color: #ec8092;
+  background-color: #ffb3b3;
 }
 
 /* line 377, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -7754,7 +7754,7 @@ pre code {
   margin-top: 0;
   margin-right: 0.2rem;
   margin-left: 0.2rem;
-  background-color: #a2182f;
+  background-color: red;
   border: 0;
   border-radius: 1rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -7770,7 +7770,7 @@ pre code {
 
 /* line 401, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
 .custom-range::-ms-thumb:active {
-  background-color: #ec8092;
+  background-color: #ffb3b3;
 }
 
 /* line 406, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_custom-forms.scss */
@@ -8013,7 +8013,7 @@ pre code {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 136, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_dropdown.scss */
@@ -8349,8 +8349,8 @@ pre code {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 88, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_list-group.scss */
@@ -8372,40 +8372,40 @@ pre code {
 
 /* line 4, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_list-group.scss */
 .list-group-item-primary {
-  color: #540c18;
-  background-color: #e5bec5;
+  color: #850000;
+  background-color: #ffb8b8;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
-  color: #540c18;
-  background-color: #deacb5;
+  color: #850000;
+  background-color: #ff9f9f;
 }
 
 /* line 14, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_list-group.scss */
 .list-group-item-primary.list-group-item-action.active {
   color: #fff;
-  background-color: #540c18;
-  border-color: #540c18;
+  background-color: #850000;
+  border-color: #850000;
 }
 
 /* line 4, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_list-group.scss */
 .list-group-item-secondary {
-  color: #373737;
-  background-color: #d5d5d5;
+  color: #000085;
+  background-color: #b8b8ff;
 }
 
 /* line 17, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
-  color: #373737;
-  background-color: #c8c8c8;
+  color: #000085;
+  background-color: #9f9fff;
 }
 
 /* line 14, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_list-group.scss */
 .list-group-item-secondary.list-group-item-action.active {
   color: #fff;
-  background-color: #373737;
-  border-color: #373737;
+  background-color: #000085;
+  border-color: #000085;
 }
 
 /* line 4, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_list-group.scss */
@@ -8795,7 +8795,7 @@ pre code {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #a2182f;
+  background-color: red;
 }
 
 /* line 92, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_nav.scss */
@@ -9294,7 +9294,7 @@ pre code {
 .page-link:focus {
   z-index: 2;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(162, 24, 47, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
 }
 
 /* line 32, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_pagination.scss */
@@ -9319,8 +9319,8 @@ pre code {
 .page-item.active .page-link {
   z-index: 1;
   color: #fff;
-  background-color: #a2182f;
-  border-color: #a2182f;
+  background-color: red;
+  border-color: red;
 }
 
 /* line 57, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_pagination.scss */
@@ -9696,7 +9696,7 @@ pre code {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: #a2182f;
+  background-color: red;
   transition: width 0.6s ease;
 }
 
@@ -9743,8 +9743,8 @@ pre code {
   --gray: #6c757d;
   --gray-dark: #343a40;
   --$YSU-Grey: #696969;
-  --primary: #a2182f;
-  --secondary: #696969;
+  --primary: red;
+  --secondary: blue;
   --success: #28a745;
   --info: #17a2b8;
   --warning: #ffc107;
@@ -9836,36 +9836,36 @@ pre code {
 .table-primary,
 .table-primary > th,
 .table-primary > td {
-  background-color: #e5bec5;
+  background-color: #ffb8b8;
 }
 
 /* line 13, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .table-hover .table-primary:hover {
-  background-color: #deacb5;
+  background-color: #ff9f9f;
 }
 
 /* line 23, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_table-row.scss */
 .table-hover .table-primary:hover > td,
 .table-hover .table-primary:hover > th {
-  background-color: #deacb5;
+  background-color: #ff9f9f;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_table-row.scss */
 .table-secondary,
 .table-secondary > th,
 .table-secondary > td {
-  background-color: #d5d5d5;
+  background-color: #b8b8ff;
 }
 
 /* line 13, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_hover.scss */
 .table-hover .table-secondary:hover {
-  background-color: #c8c8c8;
+  background-color: #9f9fff;
 }
 
 /* line 23, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_table-row.scss */
 .table-hover .table-secondary:hover > td,
 .table-hover .table-secondary:hover > th {
-  background-color: #c8c8c8;
+  background-color: #9f9fff;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/mixins/_table-row.scss */
@@ -10275,4 +10275,4 @@ pre code {
   }
 }
 
-/*# sourceMappingURL=../../css/Custom Bootstrap/TAC-custom.map */
+/*# sourceMappingURL=../../css/Custom Bootstrap/TAC-custom11.map */

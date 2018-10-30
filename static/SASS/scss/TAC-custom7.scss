@@ -1,42 +1,43 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented
+// implemented.
 
-// THEME NAME: YSU - DEFAULT
+// THEME NAME: ST. PATRICK'S DAY - MARCH
 
 // THEME COLORS
-// PRIMARY: YSU-RED
-// SECONDARY: YSU-GREY
-// TERTIARY: BLACK
+// PRIMARY: TAC-LIME
+// SECONDARY: TAC-ORANGE
+// TERTIARY: TAC-YELLOW
 
-$YSU-Red: #a2182f !default;
-$YSU-Grey: #696969 !default;
+$TAC-Lime:       #20AE00 !default;
+$TAC-Orange:     #FF6C00 !default;
+$TAC-Yellow:     #FFE000 !default;
 
 $theme-colors: (
-  "primary": $YSU-Red,
-  "secondary": $YSU-Grey
+  "primary": $TAC-Lime,
+  "secondary": $TAC-Orange
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: $YSU-Grey !important; //secondary
-  border-color: $YSU-Grey !important; //secondary
+  background-color: $TAC-Orange !important; //secondary
+  border-color: $TAC-Orange !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important; //tertiary
-  border-color: $YSU-Red !important; //primary
+  background-color: $TAC-Orange !important; //secondary
+  border-color: $TAC-Lime !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $YSU-Red !important; //primary
-  border-color: $YSU-Red !important; //primary
+  background-color: $TAC-Yellow !important; //tertiary
+  border-color: $TAC-Yellow !important; //tertiary
 }
 
 .fa-bars{
-  color: $YSU-Grey //secondary
+  color: $TAC-Orange //secondary
 }
 
 //@import "bootstrap";

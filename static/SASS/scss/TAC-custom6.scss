@@ -1,42 +1,41 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented
+// implemented.
 
-// THEME NAME: YSU - DEFAULT
+// THEME NAME: VALENTINE'S DAY - FEBRUARY
 
 // THEME COLORS
-// PRIMARY: YSU-RED
-// SECONDARY: YSU-GREY
-// TERTIARY: BLACK
+// PRIMARY: TAC-PINK
+// SECONDARY: RED
+// TERTIARY: NONE
 
-$YSU-Red: #a2182f !default;
-$YSU-Grey: #696969 !default;
+$TAC-Pink: #FF93C4 !default;
 
 $theme-colors: (
-  "primary": $YSU-Red,
-  "secondary": $YSU-Grey
+  "primary": $TAC-Pink,
+  "secondary": red
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: $YSU-Grey !important; //secondary
-  border-color: $YSU-Grey !important; //secondary
+  background-color: red !important; //secondary
+  border-color: red !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important; //tertiary
-  border-color: $YSU-Red !important; //primary
+  background-color: red !important; //secondary
+  border-color: $TAC-Pink !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $YSU-Red !important; //primary
-  border-color: $YSU-Red !important; //primary
+  background-color: purple !important; //tertiary
+  border-color: purple !important; //tertiary
 }
 
 .fa-bars{
-  color: $YSU-Grey //secondary
+  color: red //secondary
 }
 
 //@import "bootstrap";

@@ -1,42 +1,39 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented
+// implemented.
 
-// THEME NAME: YSU - DEFAULT
+// THEME NAME: SCHOOL (couldn't think of anything) - AUGUST
 
 // THEME COLORS
-// PRIMARY: YSU-RED
-// SECONDARY: YSU-GREY
-// TERTIARY: BLACK
-
-$YSU-Red: #a2182f !default;
-$YSU-Grey: #696969 !default;
+// PRIMARY: SILVER
+// SECONDARY: BLACK
+// TERTIARY: NONE
 
 $theme-colors: (
-  "primary": $YSU-Red,
-  "secondary": $YSU-Grey
+  "primary": black,
+  "secondary": silver
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: $YSU-Grey !important; //secondary
-  border-color: $YSU-Grey !important; //secondary
+  background-color: silver !important; //secondary
+  border-color: silver !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important; //tertiary
-  border-color: $YSU-Red !important; //primary
+  background-color: silver !important; //secondary
+  border-color: black !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $YSU-Red !important; //primary
-  border-color: $YSU-Red !important; //primary
+  background-color: black !important; //tertiary
+  border-color: black !important; //tertiary
 }
 
 .fa-bars{
-  color: $YSU-Grey //secondary
+  color: black //secondary
 }
 
 //@import "bootstrap";

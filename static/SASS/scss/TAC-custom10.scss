@@ -1,42 +1,41 @@
 // All customizations MUST be added above the imports or they will not be
-// implemented
+// implemented.
 
-// THEME NAME: YSU - DEFAULT
+// THEME NAME: FATHER'S DAY - JUNE
 
 // THEME COLORS
-// PRIMARY: YSU-RED
-// SECONDARY: YSU-GREY
-// TERTIARY: BLACK
+// PRIMARY: BLUE
+// SECONDARY: RED
+// TERTIARY: TAC-YELLOW
 
-$YSU-Red: #a2182f !default;
-$YSU-Grey: #696969 !default;
+$TAC-Yellow: #FFE000 !default;
 
 $theme-colors: (
-  "primary": $YSU-Red,
-  "secondary": $YSU-Grey
+  "primary": blue,
+  "secondary": red
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: $YSU-Grey !important; //secondary
-  border-color: $YSU-Grey !important; //secondary
+  background-color: red !important; //secondary
+  border-color: red !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important; //tertiary
-  border-color: $YSU-Red !important; //primary
+  background-color: red !important; //secondary
+  border-color: blue !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $YSU-Red !important; //primary
-  border-color: $YSU-Red !important; //primary
+  background-color: $TAC-Yellow !important; //tertiary
+  border-color: $TAC-Yellow !important; //tertiary
 }
 
 .fa-bars{
-  color: $YSU-Grey //secondary
+  color: red //secondary
 }
 
 //@import "bootstrap";

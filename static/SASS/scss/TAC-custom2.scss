@@ -1,33 +1,42 @@
 // All customizations MUST be added above the imports or they will not be
 // implemented.
 
-// CHRISTMAS THEME
+// THEME NAME: HALLOWEEN - OCTOBER
 
+// THEME COLORS
+// PRIMARY: TAC-ORANGE
+// SECONDARY: INDIGO
+// TERTIARY: TAC-GREEN
+
+$TAC-Orange: #FF6C00 !default;
 $TAC-Green: #398B20 !default;
-$red: red !default;
 
 $theme-colors: (
-  "primary": $TAC-Green,
-  "secondary": $red
+  "primary": $TAC-Orange,
+  "seconday": indigo
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: red !important;
-  border-color: red !important;
+  background-color: indigo !important; //secondary
+  border-color: indigo !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: red !important;
-  border-color: $TAC-Green !important;
+  background-color: indigo !important; //secondary
+  border-color: $TAC-Orange !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $TAC-Green !important;
-  border-color: $TAC-Green !important;
+  background-color: $TAC-Green !important; //tertiary
+  border-color: $TAC-Green !important; //tertiary
+}
+
+.fa-bars{
+  color: indigo; //secondary
 }
 
 //@import "bootstrap";

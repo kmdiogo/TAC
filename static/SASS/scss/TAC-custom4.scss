@@ -1,31 +1,41 @@
 // All customizations MUST be added above the imports or they will not be
 // implemented.
 
-$TAC-Light-Blue: #43AFD2 !default;
-$TAC-Light-Grey: #A4A4A4 !default;
+// THEME NAME: CHRISTMAS/HOLIDAY - DECEMBER
+
+// THEME COLORS
+// PRIMARY: TAC-GREEN
+// SECONDARY: RED
+// TERTIARY: NONE
+
+$TAC-Green: #398B20 !default;
 
 $theme-colors: (
-  "primary": $TAC-Light-Blue,
-  "secondary": $TAC-Light-Grey
+  "primary": $TAC-Green,
+  "secondary": red
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: $TAC-Light-Grey !important;
-  border-color: $TAC-Light-Grey !important;
+  background-color: red !important; //secondary
+  border-color: red !important; //secondary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: $TAC-Light-Grey !important;
-  border-color: $TAC-Light-Blue !important;
+  background-color: red !important; //secondary
+  border-color: $TAC-Green !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: $TAC-Light-Blue !important;
-  border-color: $TAC-Light-Blue !important;
+  background-color: $TAC-Green !important; //primary
+  border-color: $TAC-Green !important; //primary
+}
+
+.fa-bars{
+  color: red //secondary
 }
 
 //@import "bootstrap";
