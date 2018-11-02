@@ -90,6 +90,8 @@ def open_session(request, pk):
     request.data['student'] = pk
     open_serializer = OpenSessionSerializer(data=request.data)
     if open_serializer.is_valid():
+        if Session.objects.filter(student__schoolId__iexact=pk, endTime__isnull=True):
+            return Response({'detail': 'An open session already exists for this student'}, status=status.HTTP_400_BAD_REQUEST)
         open_serializer.save()
         return Response(open_serializer.data, status=status.HTTP_201_CREATED)
     return Response(open_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -110,7 +112,7 @@ def close_session(request, pk):
             return Response(close_serializer.data, status=status.HTTP_201_CREATED)
         return Response(close_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    return Response({"detail": 'An open session does exist for the student'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({"detail": 'An open session does not exist for the student'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 

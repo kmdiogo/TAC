@@ -20,27 +20,29 @@ class CreateStudentSerializer(serializers.ModelSerializer):
 
 
 class OpenSessionSerializer(serializers.ModelSerializer):
+    firstName = serializers.ReadOnlyField(source='student.firstName')
 
     class Meta:
         model = Session
-        fields = ['course', 'reason', 'student']
+        fields = ['course', 'reason', 'student', 'firstName']
 
 
 class CloseSessionSerializer(serializers.ModelSerializer):
+    firstName = serializers.ReadOnlyField(source='student.firstName')
 
     class Meta:
         model = Session
-        fields = ['rating', 'comments', 'student']
+        fields = ['rating', 'comments', 'student', 'firstName']
 
 
 class ShiftSerializer(serializers.ModelSerializer):
-    first_name = serializers.ReadOnlyField(source='user.first_name')
-    last_name = serializers.ReadOnlyField(source='user.last_name')
+    firsName = serializers.ReadOnlyField(source='user.first_name')
+    lastName = serializers.ReadOnlyField(source='user.last_name')
     username = serializers.ReadOnlyField(source="user.username")
 
     class Meta:
         model = Shift
-        fields = ['user', 'username', 'first_name', 'last_name']
+        fields = ['user', 'username', 'firstName', 'lastName']
 
 
 class GetUserSerializer(serializers.Serializer):
