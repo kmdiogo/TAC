@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'SignIn',
     'widget_tweaks',
     'rest_framework',
-    'django_filters'
+    'django_filters',
+    'Dashboard'
 ]
 
 MIDDLEWARE = [
