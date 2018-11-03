@@ -40,7 +40,7 @@ class Session(Log):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.CharField(max_length=50, verbose_name="Course Seeking Help For", choices=COURSE_CHOICES)
     reason = models.CharField(max_length=50, verbose_name="Reason for Visit")
-    rating = models.PositiveSmallIntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    rating = models.PositiveSmallIntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(4)])
     comments = models.TextField(null=True, blank=True, max_length=1000)
 
     def __str__(self):

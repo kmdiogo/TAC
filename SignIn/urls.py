@@ -14,8 +14,6 @@ urlpatterns = [
     path('tac-api/sessions/<pk>/', views.OpenSessionsView.as_view()),
     path('tac-api/shifts/clockin/<pk>', views.clock_in_shift),
     path('tac-api/shifts/clockout/<pk>', views.clock_out_shift),
-    path('tac-api/sessions/open/<pk>', views.open_session),
-    path('tac-api/sessions/close/<pk>', views.close_session),
     url(r'^tac-api/', include(router.urls)),
 
 ]

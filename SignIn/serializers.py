@@ -27,10 +27,11 @@ class OpenSessionSerializer(serializers.ModelSerializer):
 
 
 class CloseSessionSerializer(serializers.ModelSerializer):
+    firstName = serializers.ReadOnlyField(source='student.firstName')
 
     class Meta:
         model = Session
-        fields = ['rating', 'comments', 'student']
+        fields = ['rating', 'comments', 'firstName']
 
 
 class ShiftSerializer(serializers.ModelSerializer):
