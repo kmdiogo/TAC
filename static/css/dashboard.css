@@ -373,3 +373,15 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+tbody > tr > th {
+    text-align: center;
+    /*white-space: nowrap;
+    width: 1px;*/
+}
+
+td.active{
+    background-color: green;
+}
+
+

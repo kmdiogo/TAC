@@ -9,8 +9,7 @@ from rest_framework.response import Response
 from django.views.decorators.http import require_POST, require_GET
 from .serializers import *
 from django.utils import timezone
-from django.contrib.auth.models import User
-from Dashboard.models import *
+from django.contrib.auth import logout
 from rest_framework.decorators import api_view
 from .TAC_Helpers import *
 
@@ -73,6 +72,7 @@ class CreateOpenSessionView(APIView):
 
 @require_GET
 def index(request):
+    #logout(request)
     studentForm = StudentForm()
     openSessionForm = OpenSessionForm()
     closeSessionForm = CloseSessionForm()

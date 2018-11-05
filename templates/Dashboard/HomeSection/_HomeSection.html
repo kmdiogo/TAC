@@ -1,0 +1,11 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Work Schedule of {{ name }}</li>
+    </ol>
+
+    {% include 'Dashboard/HomeSection/_ScheduleTable.html' %}
+
+</div>

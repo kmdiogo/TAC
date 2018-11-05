@@ -4,5 +4,6 @@ from Dashboard import views
 from Dashboard.views import *
 
 urlpatterns = [
-    path('', views.index)
+    path('', views.index, name='employeeDashboard'),
+    path('logout', views.employee_logout, name='employee_logout')
 ]

@@ -3,11 +3,14 @@ SCHOOL_ID_ALIAS = "Y Number"
 EMPLOYEE_ID_ALIAS = "Y Number"
 SCHOOL_ID_REGEX = 'Y00\d{6}'
 EMPLOYEE_ID_REGEX = 'Y00\d{6}'
+DOW_ALLOWED_MIN = 1
+DOW_ALLOWED_MAX = 5
 # ---------------------------------------------------------------------------
 # --------------------PROGRAMMING CONSTANTS----------------------------------
 ERROR_OPEN_OBJECT = 1
 ERROR_PERSON_DNE = 2
 ERROR_BAD__DATA = 3
+DOW_DICT = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
 # ---------------------------------------------------------------------------
 # -------------------CHOICE TUPLES FOR FIELDS--------------------------------
 SEX_CHOICES = (

@@ -2,6 +2,17 @@ from django.db import models
 from SignIn.CONSTANTS import *
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
+from SignIn.CONSTANTS import *
+from django.db.models.signals import post_save
+
+
+def custom_user_string_method(self):
+    if self.first_name and self.last_name:
+        return '{user} - {last}, {first}'.format(user=self.username, last=self.last_name, first=self.first_name)
+    return self.username
+
+
+User.add_to_class("__str__", custom_user_string_method)
 
 
 class Employee(models.Model):
@@ -33,9 +44,9 @@ class CourseOffer(models.Model):
     course = models.CharField(max_length=50, verbose_name="Course Number")
 
 
-class Availability(models.Model):
+class AbstractAvailSched(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    dayOfWeek = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
+    dayOfWeek = models.PositiveSmallIntegerField(validators=[MinValueValidator(DOW_ALLOWED_MIN), MaxValueValidator(DOW_ALLOWED_MAX)])
     h0600 = models.BooleanField(default=False)
     h0700 = models.BooleanField(default=False)
     h0800 = models.BooleanField(default=False)
@@ -50,7 +61,40 @@ class Availability(models.Model):
     h1700 = models.BooleanField(default=False)
     h1800 = models.BooleanField(default=False)
     h1900 = models.BooleanField(default=False)
-    h2000 = models.BooleanField(default=False)
+
+    class Meta:
+        abstract = True
+        unique_together = (('user', 'dayOfWeek'),)
+
+
+class Availability(AbstractAvailSched):
 
     def __str__(self):
-        return 'Availability for - {id}'.format(id=self.user.username)
+
+        return '{dow} Availability for {id} - {last}, {first}'.format(id=self.user.username,
+                                                                      last=self.user.last_name,
+                                                                      first=self.user.first_name,
+                                                                      dow=DOW_DICT[self.dayOfWeek])
+
+
+class Schedule(AbstractAvailSched):
+
+    def __str__(self):
+        return '{dow} Schedule for {id} - {last}, {first}'.format(id=self.user.username,
+                                                                  last=self.user.last_name,
+                                                                  first=self.user.first_name,
+                                                                  dow=DOW_DICT[self.dayOfWeek])
+
+
+# ----------MODEL SIGNALS FOR USER----------
+def create_profile(sender, **kwargs):
+    user = kwargs['instance']
+    if kwargs['created']:
+        # Create empty schedules and availabilities for the created user
+        for dow in range(DOW_ALLOWED_MIN, DOW_ALLOWED_MAX+1):
+            sched = Schedule(user=user, dayOfWeek=dow)
+            avail = Availability(user=user, dayOfWeek=dow)
+            sched.save()
+            avail.save()
+
+post_save.connect(create_profile, sender=User)

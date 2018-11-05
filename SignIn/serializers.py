@@ -11,6 +11,11 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = ('schoolId', 'firstName', 'lastName')
 
+class EmployeeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Employee
+        fields = ('employeeId', 'firstName')
 
 class CreateStudentSerializer(serializers.ModelSerializer):
 
