@@ -2,6 +2,10 @@ body{
     font-family: 'Krub', sans-serif;
 }
 
+.hover-jump:hover{
+    animation: jump 1s infinite ease-in-out;
+}
+
 .hover-expand{
     transition: all 0.2s ease-in-out;
 }

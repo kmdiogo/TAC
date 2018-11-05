@@ -22,6 +22,10 @@ $theme-colors: (
   border-color: $YSU-Grey !important; //secondary
 }
 
+.btn-secondary:hover{
+  background-color: black !important; //tertiary
+}
+
 .btn-outline-primary {
   color: #fff !important;
   background-color: black !important; //tertiary
@@ -37,6 +41,33 @@ $theme-colors: (
 
 .fa-bars{
   color: $YSU-Grey //secondary
+}
+
+.table-bordered{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.table-bordered th,
+.table-bordered td{
+  border-color: $YSU-Grey !important;
+}
+
+.table-bordered thead,
+.table-bordered th{
+  background-color: #A9A9A9 !important;
+}
+
+.breadcrumb{
+  background-color: grey !important;
+}
+
+.sticky-footer{
+  background-color: $YSU-Grey !important;
+}
+
+.dropdown-item{
+  font-weight: bold !important;
 }
 
 //@import "bootstrap";

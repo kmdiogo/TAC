@@ -6,13 +6,18 @@
 }
 
 /* line 25, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.btn-secondary:hover {
+  background-color: black !important;
+}
+
+/* line 29, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .btn-outline-primary {
   color: #fff !important;
   background-color: black !important;
   border-color: #a2182f !important;
 }
 
-/* line 31, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 35, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
@@ -20,9 +25,42 @@
   border-color: #a2182f !important;
 }
 
-/* line 38, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 42, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .fa-bars {
   color: #696969;
+}
+
+/* line 46, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.table-bordered {
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+/* line 51, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.table-bordered th,
+.table-bordered td {
+  border-color: #696969 !important;
+}
+
+/* line 56, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.table-bordered thead,
+.table-bordered th {
+  background-color: #A9A9A9 !important;
+}
+
+/* line 61, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.breadcrumb {
+  background-color: grey !important;
+}
+
+/* line 65, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.sticky-footer {
+  background-color: #696969 !important;
+}
+
+/* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.dropdown-item {
+  font-weight: bold !important;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */

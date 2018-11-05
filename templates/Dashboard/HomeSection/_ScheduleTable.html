@@ -26,7 +26,7 @@
             <tr>
                 <th scope="row">7:00 AM</th>
                 {% for dow in schedules %}
-                    {% if dow.h0700 or dow.h0600 %}
+                    {% if dow.h0700 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -36,7 +36,7 @@
             <tr>
                 <th scope="row">8:00 AM</th>
                 {% for dow in schedules %}
-                    {% if dow.h0800 or dow.h0700 %}
+                    {% if dow.h0800 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -46,7 +46,7 @@
             <tr>
                 <th scope="row">9:00 AM</th>
                 {% for dow in schedules %}
-                    {% if dow.h0900 or dow.h0800 %}
+                    {% if dow.h0900 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -56,7 +56,7 @@
             <tr>
                 <th scope="row">10:00 AM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1000 or dow.h0900 %}
+                    {% if dow.h1000 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -66,7 +66,7 @@
             <tr>
                 <th scope="row">11:00 AM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1100 or dow.h1000 %}
+                    {% if dow.h1100 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -76,7 +76,7 @@
             <tr>
                 <th scope="row">12:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1200 or dow.h1100 %}
+                    {% if dow.h1200 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -86,7 +86,7 @@
             <tr>
                 <th scope="row">1:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1300 or dow.h1200 %}
+                    {% if dow.h1300 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -96,7 +96,7 @@
             <tr>
                 <th scope="row">2:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1400 or dow.h1300 %}
+                    {% if dow.h1400 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -106,7 +106,7 @@
             <tr>
                 <th scope="row">3:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1500 or dow.h1400 %}
+                    {% if dow.h1500 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -116,7 +116,7 @@
             <tr>
                 <th scope="row">4:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1600 or dow.h1500 %}
+                    {% if dow.h1600 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
@@ -126,37 +126,7 @@
             <tr>
                 <th scope="row">5:00 PM</th>
                 {% for dow in schedules %}
-                    {% if dow.h1700 or dow.h1600 %}
-                        <td class="active"></td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-                <th scope="row">6:00 PM</th>
-                {% for dow in schedules %}
-                    {% if dow.h1800 or dow.h1700 %}
-                        <td class="active"></td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-                <th scope="row">7:00 PM</th>
-                {% for dow in schedules %}
-                    {% if dow.h1900 or dow.h1800 %}
-                        <td class="active"></td>
-                    {% else %}
-                        <td></td>
-                    {% endif %}
-                {% endfor %}
-            </tr>
-            <tr>
-                <th scope="row">8:00 PM</th>
-                {% for dow in schedules %}
-                    {% if dow.h1900 %}
+                    {% if dow.h1700 %}
                         <td class="active"></td>
                     {% else %}
                         <td></td>
