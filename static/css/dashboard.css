@@ -381,7 +381,7 @@ tbody > tr > th {
 }
 
 td.active{
-    background-color: green;
+    background-color: rgba(50,205,50,0.8);
 }
 
 ol > li > h5{
