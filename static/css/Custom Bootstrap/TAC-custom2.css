@@ -6,13 +6,18 @@
 }
 
 /* line 25, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+.btn-secondary:hover {
+  background-color: #398B20 !important;
+}
+
+/* line 29, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .btn-outline-primary {
   color: #fff !important;
   background-color: indigo !important;
   border-color: #FF6C00 !important;
 }
 
-/* line 31, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 35, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
@@ -20,42 +25,64 @@
   border-color: #398B20 !important;
 }
 
-/* line 38, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 42, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .fa-bars {
   color: indigo;
 }
 
-/* line 42, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 46, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .table-bordered {
   border-width: 3px !important;
   border-color: #343a40 !important;
 }
 
-/* line 47, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 51, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .table-bordered th,
 .table-bordered td {
   border-color: #696969 !important;
 }
 
-/* line 52, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 56, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .table-bordered thead,
 .table-bordered th {
   background-color: #A9A9A9 !important;
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
 }
 
-/* line 57, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 64, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+.table-bordered td {
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+}
+
+/* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .breadcrumb {
-  background-color: grey !important;
+  background-color: indigo !important;
 }
 
-/* line 61, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 73, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .sticky-footer {
   background-color: #696969 !important;
 }
 
-/* line 65, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+/* line 77, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
 .dropdown-item {
   font-weight: bold !important;
+}
+
+/* line 81, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+.sidebar {
+  background-color: #398B20 !important;
+}
+
+/* line 85, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom2.scss */
+.sidebar .nav-item .nav-link {
+  background-color: #FF6C00 !important;
+  border: #fff 2px solid !important;
+  border-radius: 15px;
+  margin: 8px 5px 0px 5px !important;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -9909,7 +9936,7 @@ pre code {
 
 /* line 1, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_root.scss */
 :root {
-  --$TAC-Light-Blue: #43AFD2;
+  --TAC-Light-Blue: #43AFD2;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9931,7 +9958,7 @@ pre code {
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --$YSU-Grey: #696969;
+  --YSU-Grey: #696969;
   --primary: #FF6C00;
   --secondary: #6c757d;
   --success: #28a745;
