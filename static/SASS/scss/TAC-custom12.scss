@@ -36,6 +36,33 @@ $theme-colors: (
   color: black //secondary
 }
 
+.table-bordered{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.table-bordered th,
+.table-bordered td{
+  border-color: #696969 !important;
+}
+
+.table-bordered thead,
+.table-bordered th{
+  background-color: #A9A9A9 !important;
+}
+
+.breadcrumb{
+  background-color: grey !important;
+}
+
+.sticky-footer{
+  background-color: #696969 !important;
+}
+
+.dropdown-item{
+  font-weight: bold !important;
+}
+
 //@import "bootstrap";
 
 // Required

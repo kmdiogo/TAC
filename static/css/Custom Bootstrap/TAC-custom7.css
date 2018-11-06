@@ -25,6 +25,39 @@
   color: #FF6C00;
 }
 
+/* line 43, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.table-bordered {
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+/* line 48, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.table-bordered th,
+.table-bordered td {
+  border-color: #696969 !important;
+}
+
+/* line 53, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.table-bordered thead,
+.table-bordered th {
+  background-color: #A9A9A9 !important;
+}
+
+/* line 58, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.breadcrumb {
+  background-color: grey !important;
+}
+
+/* line 62, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.sticky-footer {
+  background-color: #696969 !important;
+}
+
+/* line 66, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom7.scss */
+.dropdown-item {
+  font-weight: bold !important;
+}
+
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
 .btn {
   display: inline-block;
