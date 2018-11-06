@@ -31,30 +31,27 @@
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="">
+        <li class="nav-item active" id="home-item">
+          <a class="nav-link" href="" id="home-link">
             <i class="fas fa-home"></i>
             <span>Home</span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
+        <li class="nav-item" id="availability-item">
+          <a class="nav-link" href='' id="availability-link">
             <i class="far fa-calendar-alt"></i>
-            <span>Availability</span></a>
+            <span>Availability</span>
+          </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
+        <li class="nav-item" id="time-off-item">
+          <a class="nav-link" href="" id="time-off-link">
             <i class="fas fa-plane-departure"></i>
             <span>Time-Off</span></a>
         </li>
       </ul>
 
       <div id="content-wrapper">
-
-        <div class="container-fluid">
-            {% include 'Dashboard/HomeSection/_HomeSection.html' %}
-        </div>
-
+          <!-- CONTENT UPDATED WITH AJAX -->
       </div>
 
         <!-- /.container-fluid -->
@@ -98,5 +95,49 @@
       </div>
     </div>
 
+    <template id="loading-screen-template">
+        <div class="tac-center h-100">
+            <i class="fas fa-spinner fa-5x spin"></i>
+        </div>
+    </template>
 
+{% endblock %}
+
+{% block scripts %}
+<script id="dashboard-scripts">
+    $(document).ready(function(){
+        ShowHomeSection();
+        BindDashboardEvents();
+    });
+
+    function BindDashboardEvents(){
+        $('#availability-link').click(function(e){
+            e.preventDefault();
+            ShowAvailabilitySection();
+        });
+
+        $('#home-link').click(function(e){
+           e.preventDefault();
+           ShowHomeSection();
+        });
+    }
+
+    function ShowAvailabilitySection(){
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'availability_view' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#availability-item').addClass('active');
+        });
+    }
+
+    function ShowHomeSection(){
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'home_view' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#home-item').addClass('active');
+        });
+    }
+</script>
 {% endblock %}
