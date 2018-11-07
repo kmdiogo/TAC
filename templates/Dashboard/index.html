@@ -119,6 +119,11 @@
            e.preventDefault();
            ShowHomeSection();
         });
+
+        $('#time-off-link').click(function(e){
+           e.preventDefault();
+           ShowTimeOffSection();
+        });
     }
 
     function ShowAvailabilitySection(){
@@ -136,6 +141,15 @@
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
             $('#home-item').addClass('active');
+        });
+    }
+
+    function ShowTimeOffSection(){
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'timeoff_view' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#time-off-item').addClass('active');
         });
     }
 </script>

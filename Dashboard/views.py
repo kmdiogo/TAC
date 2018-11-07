@@ -41,6 +41,16 @@ def availability_view(request):
         return HttpResponse(html)
 
 
+@staff_member_required
+@require_GET
+def timeoff_view(request):
+    timeoffs = TimeOff.objects.filter(user=request.user).order_by('date')
+    print(timeoffs)
+    context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+    return HttpResponse(render_to_string("Dashboard/TimeOffSection/_TimeOffSection.html", context))
+
+
+
 def employee_logout(request):
     logout(request)
     return redirect('index')
