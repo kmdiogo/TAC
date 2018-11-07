@@ -46,21 +46,43 @@
 .table-bordered thead,
 .table-bordered th {
   background-color: #A9A9A9 !important;
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
 }
 
-/* line 61, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 64, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.table-bordered td {
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+}
+
+/* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .breadcrumb {
-  background-color: grey !important;
+  background-color: #696969 !important;
 }
 
-/* line 65, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 73, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sticky-footer {
   background-color: #696969 !important;
 }
 
-/* line 69, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 77, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .dropdown-item {
   font-weight: bold !important;
+}
+
+/* line 81, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.sidebar {
+  background-color: black !important;
+}
+
+/* line 85, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.sidebar .nav-item .nav-link {
+  background-color: #a2182f !important;
+  border: #fff 2px solid !important;
+  border-radius: 15px;
+  margin: 8px 5px 0px 5px !important;
 }
 
 /* line 7, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_buttons.scss */
@@ -9758,7 +9780,7 @@ pre code {
 
 /* line 1, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/_root.scss */
 :root {
-  --$TAC-Light-Blue: #43AFD2;
+  --TAC-Light-Blue: #43AFD2;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -9780,7 +9802,7 @@ pre code {
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --$YSU-Grey: #696969;
+  --YSU-Grey: #696969;
   --primary: #a2182f;
   --secondary: #696969;
   --success: #28a745;

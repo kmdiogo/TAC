@@ -65,7 +65,7 @@ $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $colors: map-merge(
   (
-    "$TAC-Light-Blue": $TAC-Light-Blue,
+    "TAC-Light-Blue":  $TAC-Light-Blue,
     "blue":            $blue,
     "indigo":          $indigo,
     "purple":          $purple,
@@ -87,7 +87,7 @@ $colors: map-merge(
     "white":           $white,
     "gray":            $gray-600,
     "gray-dark":       $gray-800,
-    "$YSU-Grey":       $YSU-Grey
+    "YSU-Grey":        $YSU-Grey
   ),
   $colors
 );

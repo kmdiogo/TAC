@@ -22,6 +22,10 @@ $theme-colors: (
   border-color: $TAC-Light-Grey !important; //secondary
 }
 
+.btn-secondary:hover{
+  background-color: blue !important; //tertiary
+}
+
 .btn-outline-primary {
   color: #fff !important;
   background-color: $TAC-Light-Grey !important; //secondary

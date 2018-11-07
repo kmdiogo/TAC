@@ -21,6 +21,10 @@ $theme-colors: (
   border-color: red !important; //secondary
 }
 
+.btn-secondary:hover{
+  background-color: #870000 !important; //darker secondary
+}
+
 .btn-outline-primary {
   color: #fff !important;
   background-color: red !important; //secondary
@@ -51,10 +55,18 @@ $theme-colors: (
 .table-bordered thead,
 .table-bordered th{
   background-color: #A9A9A9 !important;
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
+}
+
+.table-bordered td{
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
 }
 
 .breadcrumb{
-  background-color: grey !important;
+  background-color: red !important; //secondary
 }
 
 .sticky-footer{
@@ -63,6 +75,17 @@ $theme-colors: (
 
 .dropdown-item{
   font-weight: bold !important;
+}
+
+.sidebar{
+  background-color: red !important; //secondary
+}
+
+.sidebar .nav-item .nav-link {
+  background-color: $TAC-Green !important; //primary
+  border: #fff 2px solid !important;
+  border-radius: 15px;
+  margin: 8px 5px 0px 5px !important;
 }
 
 //@import "bootstrap";
