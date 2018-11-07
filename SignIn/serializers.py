@@ -1,5 +1,8 @@
 from rest_framework import serializers
 from .models import *
+from Dashboard.models import *
+from SignIn.CONSTANTS import *
+from django.core.validators import RegexValidator
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -8,6 +11,11 @@ class StudentSerializer(serializers.ModelSerializer):
         model = Student
         fields = ('schoolId', 'firstName', 'lastName')
 
+class EmployeeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Employee
+        fields = ('employeeId', 'firstName')
 
 class CreateStudentSerializer(serializers.ModelSerializer):
 
@@ -17,8 +25,6 @@ class CreateStudentSerializer(serializers.ModelSerializer):
 
 
 class OpenSessionSerializer(serializers.ModelSerializer):
-    #firstName = serializers.PrimaryKeyRelatedField(source='student.firstName', read_only=True)
-    #lastName = serializers.PrimaryKeyRelatedField(source='student.lastName', read_only=True)
 
     class Meta:
         model = Session
@@ -26,24 +32,26 @@ class OpenSessionSerializer(serializers.ModelSerializer):
 
 
 class CloseSessionSerializer(serializers.ModelSerializer):
+    firstName = serializers.ReadOnlyField(source='student.firstName')
 
     class Meta:
         model = Session
-        fields = ['rating', 'comments']
+        fields = ['rating', 'comments', 'firstName']
 
 
-class EmployeeSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Employee
-        fields = ['id', 'firstName', 'lastName']
-
-
-class OpenShiftSerializer(serializers.ModelSerializer):
-    firstName = serializers.PrimaryKeyRelatedField(source='employee.firstName', read_only=True)
-    lastName = serializers.PrimaryKeyRelatedField(source='employee.lastName', read_only=True)
+class ShiftSerializer(serializers.ModelSerializer):
+    first_name = serializers.ReadOnlyField(source='user.first_name')
+    last_name = serializers.ReadOnlyField(source='user.last_name')
+    username = serializers.ReadOnlyField(source="user.username")
 
     class Meta:
         model = Shift
-        fields = ['employee', 'firstName', 'lastName']
+        fields = ['user', 'username', 'first_name', 'last_name']
+
+
+class GetUserSerializer(serializers.Serializer):
+    username_validator = RegexValidator(EMPLOYEE_ID_REGEX, "The username does not match the correct format")
+    username = serializers.CharField(validators=[username_validator])
+
+
 

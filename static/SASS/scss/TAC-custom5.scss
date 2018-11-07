@@ -1,33 +1,73 @@
 // All customizations MUST be added above the imports or they will not be
 // implemented.
 
-// HALLOWEEN THEME
+// THEME NAME: WINTER - JANUARY
 
-$TAC-Orange: #FF6C00 !default;
-$indigo:  #6610f2 !default;
+// THEME COLORS
+// PRIMARY: TAC-LIGHT-BLUE
+// SECONDARY: TAC-LIGHT-GREY
+// TERTIARY: BLUE
+
+$TAC-Light-Blue: #43AFD2 !default;
+$TAC-Light-Grey: #A4A4A4 !default;
 
 $theme-colors: (
-  "primary": $TAC-Orange,
-  "seconday": $indigo
+  "primary": $TAC-Light-Blue,
+  "secondary": $TAC-Light-Grey
 );
 
 .btn-secondary {
   color: #fff !important;
-  background-color: indigo !important;
-  border-color: indigo !important;
+  background-color: $TAC-Light-Grey !important; //secondary
+  border-color: $TAC-Light-Grey !important; //secondary
+}
+
+.btn-secondary:hover{
+  background-color: blue !important; //tertiary
 }
 
 .btn-outline-primary {
   color: #fff !important;
-  background-color: black !important;
-  border-color: $TAC-Orange !important;
+  background-color: $TAC-Light-Grey !important; //secondary
+  border-color: $TAC-Light-Blue !important; //primary
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
-  background-color: #FF6C00 !important;
-  border-color: #FF6C00 !important;
+  background-color: blue !important; //tertiary
+  border-color: blue !important; //tertiary
+}
+
+.fa-bars{
+  color: $TAC-Light-Grey //secondary
+}
+
+.table-bordered{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.table-bordered th,
+.table-bordered td{
+  border-color: #696969 !important;
+}
+
+.table-bordered thead,
+.table-bordered th{
+  background-color: #A9A9A9 !important;
+}
+
+.breadcrumb{
+  background-color: grey !important;
+}
+
+.sticky-footer{
+  background-color: #696969 !important;
+}
+
+.dropdown-item{
+  font-weight: bold !important;
 }
 
 //@import "bootstrap";

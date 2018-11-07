@@ -1,7 +1,7 @@
 <script>
     const POST_STUDENT_URL = '/tac-api/students/';
     const POST_OPEN_SESSION_URL = '/tac-api/sessions/';
-    const POST_OPEN_SHIFT_URL = 'tac-api/shifts/';
+
 
     if (!String.prototype.format) {
       String.prototype.format = function() {
@@ -35,8 +35,12 @@
         return 'tac-api/employees/' + employeeId;
     }
 
-    function GetOpenShiftURL(employeeId){
-        return 'tac-api/shifts/' + employeeId;
+    function ClockInURL(employeeId){
+        return 'tac-api/shifts/clockin/' + employeeId;
+    }
+
+    function ClockOutURL(employeeId){
+        return 'tac-api/shifts/clockout/' + employeeId;
     }
 
 

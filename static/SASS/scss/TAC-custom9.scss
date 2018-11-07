@@ -1,0 +1,130 @@
+// All customizations MUST be added above the imports or they will not be
+// implemented.
+
+// THEME NAME: MOTHER'S DAY - MAY
+
+// THEME COLORS
+// PRIMARY: TAC-YELLOW
+// SECONDARY: TAC-PINK
+// TERTIARY: RED
+
+$TAC-Yellow: #FFE000 !default;
+$TAC-Pink:   #FF93C4 !default;
+
+$theme-colors: (
+  "primary": $TAC-Yellow,
+  "secondary": $TAC-Pink
+);
+
+.btn-secondary {
+  color: #fff !important;
+  background-color: $TAC-Pink !important; //secondary
+  border-color: $TAC-Pink !important; //secondary
+}
+
+.btn-secondary:hover{
+  background-color: red !important; //tertiary
+}
+
+.btn-outline-primary {
+  color: #fff !important;
+  background-color: $TAC-Pink !important; //secondary
+  border-color: $TAC-Yellow !important; //primary
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #fff !important;
+  background-color: red !important; //tertiary
+  border-color: red !important; //tertiary
+}
+
+.fa-bars{
+  color: $TAC-Pink //secondary
+}
+
+.table-bordered{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.table-bordered th,
+.table-bordered td{
+  border-color: #696969 !important;
+}
+
+.table-bordered thead,
+.table-bordered th{
+  background-color: #A9A9A9 !important;
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
+}
+
+.table-bordered td{
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+}
+
+.breadcrumb{
+  background-color: $TAC-Pink !important; //secondary
+}
+
+.sticky-footer{
+  background-color: #696969 !important;
+}
+
+.dropdown-item{
+  font-weight: bold !important;
+}
+
+.sidebar{
+  background-color: red !important; //tertiary
+}
+
+.sidebar .nav-item .nav-link {
+  background-color: $TAC-Yellow !important; //primary
+  border: #fff 2px solid !important;
+  border-radius: 15px;
+  margin: 8px 5px 0px 5px !important;
+}
+
+//@import "bootstrap";
+
+// Required
+@import "functions";
+//@import "variables";
+@import "mixins";
+@import "TAC-custom-Variables";
+@import "buttons";
+@import "forms";
+@import "grid";
+@import "reboot";
+@import "type";
+@import "utilities";
+@import "alert";
+@import "badge";
+@import "breadcrumb";
+@import "button-group";
+@import "card";
+@import "carousel";
+@import "close";
+@import "code";
+@import "custom-forms";
+@import "dropdown";
+@import "images";
+@import "input-group";
+@import "jumbotron";
+@import "list-group";
+@import "media";
+@import "modal";
+@import "nav";
+@import "navbar";
+@import "pagination";
+@import "popover";
+@import "print";
+@import "progress";
+@import "root";
+@import "tables";
+@import "tooltip";
+@import "transitions";
