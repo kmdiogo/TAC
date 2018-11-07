@@ -10,8 +10,6 @@ def custom_user_string_method(self):
     if self.first_name and self.last_name:
         return '{user} - {last}, {first}'.format(user=self.username, last=self.last_name, first=self.first_name)
     return self.username
-
-
 User.add_to_class("__str__", custom_user_string_method)
 
 
@@ -24,7 +22,9 @@ class Employee(models.Model):
     created = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return '{id} - {last}, {first}'.format(id=self.user, last=self.user.last_name, first=self.user.first_name)
+        return '{id} - {last}, {first}'.format(id=self.user.username,
+                                               last=self.user.last_name,
+                                               first=self.user.first_name)
 
 
 class Shift(models.Model):

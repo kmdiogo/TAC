@@ -33,7 +33,7 @@ def home_view(request):
 @require_http_methods(['GET', 'POST'])
 def availability_view(request):
     if request.method == 'GET' and request.is_ajax():
-        context = {'availabilities': []}
+        context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
         availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
         for avail in availabilities:
             context['availabilities'].append(AvailabilityForm(instance=avail))
