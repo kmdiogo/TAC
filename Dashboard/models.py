@@ -85,6 +85,14 @@ class Schedule(AbstractAvailSched):
                                                                   first=self.user.first_name,
                                                                   dow=DOW_DICT[self.dayOfWeek])
 
+class TimeOff(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField()
+    reason = models.CharField(max_length=280, verbose_name="Reason")
+    comment = models.CharField(max_length=280, verbose_name="Comment")
+    status = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(3)],default=2)
+    def __str__(self):
+        return 'Time off request for {username} - {lastname}, {firstname}'.format(username=self.user.username, lastname=self.user.last_name, firstname=self.user.first_name)
 
 # ----------MODEL SIGNALS FOR USER----------
 def create_profile(sender, **kwargs):

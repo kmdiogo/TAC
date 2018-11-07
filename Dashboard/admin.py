@@ -30,3 +30,5 @@ admin.site.register(CourseOffer)
 admin.site.register(Availability)
 admin.site.register(Schedule)
 admin.site.register(Shift, LogAdmin)
+admin.site.register(TimeOff)
+
