@@ -74,8 +74,14 @@ $theme-colors: (
   background-color: #696969 !important;
 }
 
-.dropdown-item{
+.dropdown-item,
+.dropdown-header{
   font-weight: bold !important;
+  color: black !important;
+}
+
+.dropdown-header{
+  font-style: italic !important;
 }
 
 .sidebar{

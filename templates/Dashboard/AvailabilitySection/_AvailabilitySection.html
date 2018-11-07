@@ -1,0 +1,97 @@
+{% load widget_tweaks %}
+<div class="container">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <h5 class="font-weight-bold">Availability of {{ firstName }} {{ lastName }}</h5>
+        </li>
+    </ol>
+<form method="post">
+    <table class="table table-bordered" style="table-layout: fixed">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">Hour/Day</th>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thursday</th>
+                <th scope="col">Friday</th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">6:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h0600 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">7:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h0700 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">8:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h0800 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">9:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h0900 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">10:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1000 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">11:00 AM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1100 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">12:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1200 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">1:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1300 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">2:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1400 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">3:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1500 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">4:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1600 %}</td>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th scope="row">5:00 PM</th>
+                    {% for avail in availabilities %}
+                        <td class="text-center">{% render_field avail.h1700 %}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+    </table>
+</form>
+</div>
+

@@ -68,16 +68,23 @@
 }
 
 /* line 77, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
-.dropdown-item {
+.dropdown-item,
+.dropdown-header {
   font-weight: bold !important;
+  color: black !important;
 }
 
-/* line 81, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 83, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+.dropdown-header {
+  font-style: italic !important;
+}
+
+/* line 87, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sidebar {
   background-color: black !important;
 }
 
-/* line 85, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 91, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sidebar .nav-item .nav-link {
   background-color: #a2182f !important;
   border: #fff 2px solid !important;
