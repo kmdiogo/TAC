@@ -14,69 +14,72 @@
 .btn-outline-primary {
   color: #fff !important;
   background-color: black !important;
-  border-color: #a2182f !important;
-  border-width: 2px !important;
+  border: #a2182f 2px solid !important;
 }
 
-/* line 38, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 37, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
   background-color: #a2182f !important;
-  border-color: black !important;
-  border-width: 2px !important;
+  border: black 2px solid !important;
 }
 
-/* line 46, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 44, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .fa-bars {
   color: #696969;
 }
 
-/* line 50, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 48, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 #sidebar {
   background-color: #696969 !important;
 }
 
-/* line 54, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 52, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .hr-home {
   color: #fff !important;
   border-width: 2px !important;
 }
 
-/* line 59, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 57, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 #home-button,
 #student-button,
 #employee-button,
 #button-tools,
-#student-section,
-#employee-section,
 #button-homeReturn,
-#button-StudentSection-yNumberSubmit,
 #button-StudentSection-openSessionSubmit,
 #button-StudentSection-openSessionSubmitClose,
 #button-StudentSection-closeSessionSubmit,
 #button-StudentSection-closeSessionSubmitClose,
 #button-StudentSection-newStudentSubmit,
 #button-StudentSection-newStudentClose,
-#button-EmployeeSection-employeeIdSubmit,
 #EmployeeSection-openShiftClose,
 #EmployeeSection-closeShiftClose {
   border-radius: 15px !important;
 }
 
-/* line 81, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 73, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+#student-sectionHome,
+#employee-sectionHome,
+#button-StudentSection-yNumberSubmit,
+#button-EmployeeSection-employeeIdSubmit {
+  border-radius: 15px !important;
+  border: black 2px solid !important;
+}
+
+/* line 83, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .table-bordered {
   border-width: 3px !important;
   border-color: #343a40 !important;
 }
 
-/* line 86, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 88, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .table-bordered th,
 .table-bordered td {
   border-color: #696969 !important;
 }
 
-/* line 91, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 93, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .table-bordered thead,
 .table-bordered th {
   background-color: #A9A9A9 !important;
@@ -85,40 +88,40 @@
   border-bottom-width: 2px !important;
 }
 
-/* line 99, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 101, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .table-bordered td {
   border-right-width: 2px !important;
   border-left-width: 2px !important;
 }
 
-/* line 104, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 106, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .breadcrumb {
   background-color: #696969 !important;
 }
 
-/* line 108, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 110, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sticky-footer {
   background-color: #696969 !important;
 }
 
-/* line 112, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 114, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .dropdown-item,
 .dropdown-header {
   font-weight: bold !important;
   color: black !important;
 }
 
-/* line 118, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 120, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .dropdown-header {
   font-style: italic !important;
 }
 
-/* line 122, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 124, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sidebar {
   background-color: black !important;
 }
 
-/* line 126, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 128, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 .sidebar .nav-item .nav-link {
   background-color: #a2182f !important;
   border: #fff 2px solid !important;
@@ -126,7 +129,7 @@
   margin: 8px 5px 0px 5px !important;
 }
 
-/* line 133, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 135, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 #made-by {
   color: white !important;
   margin: 0 0 0 0 !important;
@@ -134,7 +137,7 @@
   font-style: italic !important;
 }
 
-/* line 140, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
+/* line 142, C:/Users/Nick Petho/OneDrive/Documents/Codes/Python/TAC/static/SASS/scss/TAC-custom.scss */
 #dashboard-logo {
   padding-top: 5px !important;
 }
