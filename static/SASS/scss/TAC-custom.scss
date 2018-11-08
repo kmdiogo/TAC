@@ -32,26 +32,48 @@ $theme-colors: (
   color: #fff !important;
   background-color: black !important; //tertiary
   border-color: $YSU-Red !important; //primary
+  border-width: 2px !important;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
 .show > .btn-outline-primary.dropdown-toggle {
   color: #fff !important;
   background-color: $YSU-Red !important; //primary
-  border-color: $YSU-Red !important; //primary
+  border-color: black !important; //tertiary
+  border-width: 2px !important;
 }
 
 .fa-bars{
   color: $YSU-Grey //secondary
 }
 
-/*#sidebar{
+#sidebar {
   background-color: $YSU-Grey !important;
-}*/
+}
 
 .hr-home{
   color: #fff !important;
   border-width: 2px !important;
+}
+
+#home-button,
+#student-button,
+#employee-button,
+#button-tools,
+#student-section,
+#employee-section,
+#button-homeReturn,
+#button-StudentSection-yNumberSubmit,
+#button-StudentSection-openSessionSubmit,
+#button-StudentSection-openSessionSubmitClose,
+#button-StudentSection-closeSessionSubmit,
+#button-StudentSection-closeSessionSubmitClose,
+#button-StudentSection-newStudentSubmit,
+#button-StudentSection-newStudentClose,
+#button-EmployeeSection-employeeIdSubmit,
+#EmployeeSection-openShiftClose,
+#EmployeeSection-closeShiftClose{
+  border-radius: 15px !important;
 }
 
 // Dashboard Page
