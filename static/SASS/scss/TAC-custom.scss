@@ -16,6 +16,8 @@ $theme-colors: (
   "secondary": $YSU-Grey
 );
 
+// Home Page
+
 .btn-secondary {
   color: #fff !important;
   background-color: $YSU-Grey !important; //secondary
@@ -42,6 +44,17 @@ $theme-colors: (
 .fa-bars{
   color: $YSU-Grey //secondary
 }
+
+/*#sidebar{
+  background-color: $YSU-Grey !important;
+}*/
+
+.hr-home{
+  color: #fff !important;
+  border-width: 2px !important;
+}
+
+// Dashboard Page
 
 .table-bordered{
   border-width: 3px !important;
@@ -93,6 +106,17 @@ $theme-colors: (
   border: #fff 2px solid !important;
   border-radius: 15px;
   margin: 8px 5px 0px 5px !important;
+}
+
+#made-by{
+  color: white !important;
+  margin: 0 0 0 0 !important;
+  padding-top: 100px !important;
+  font-style: italic !important;
+}
+
+#dashboard-logo{
+  padding-top: 5px !important;
 }
 
 //@import "bootstrap";
