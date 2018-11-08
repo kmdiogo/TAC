@@ -49,6 +49,12 @@
                 <span>Time-Off</span>
             </a>
         </li>
+        <li class="nav-item" id="shifts-item">
+            <a class="nav-link" href="" id="shifts-link">
+                <i class="fas fa-plane-departure"></i>
+                <span>Shifts</span>
+            </a>
+        </li>
         <p class="d-flex justify-content-center sidebar-header row" id="made-by">
             Made For You By
         </p>
@@ -131,6 +137,11 @@
            e.preventDefault();
            ShowTimeOffSection();
         });
+
+        $('#shifts-link').click(function(e){
+            e.preventDefault();
+            ShowShiftsSection();
+        })
     }
 
     function ShowAvailabilitySection(){
@@ -154,6 +165,15 @@
     function ShowTimeOffSection(){
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'timeoff_view' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#time-off-item').addClass('active');
+        });
+    }
+
+    function ShowShiftsSection(){
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'shifts_view' %}", function(data){
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
             $('#time-off-item').addClass('active');

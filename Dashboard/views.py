@@ -7,7 +7,7 @@ from django.views.decorators.http import require_http_methods, require_GET
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.contrib.admin.views.decorators import staff_member_required
-
+from datetime import datetime,timedelta
 # Create your views here.
 
 
@@ -48,6 +48,19 @@ def timeoff_view(request):
     print(timeoffs)
     context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
     return HttpResponse(render_to_string("Dashboard/TimeOffSection/_TimeOffSection.html", context))
+
+@staff_member_required
+@require_GET
+def shifts_view(request):
+    if request.method == 'GET' and request.is_ajax():
+        currentDate = datetime.now()
+        starOfWeek = currentDate - timedelta(days=currentDate.weekday())
+        endWeek = starOfWeek + timedelta(days=6)
+        shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False).distinct()
+        context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+        return HttpResponse(render_to_string("Dashboard/ShiftsSection/_ShiftsSection.html", context))
+
+
 
 
 
