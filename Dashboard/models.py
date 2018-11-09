@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, MinValueValidator, MaxValueValidator
 from SignIn.CONSTANTS import *
 from django.db.models.signals import post_save
+from django.utils import timezone
+from django.core.exceptions import ValidationError
+
+# ------------------VALIDATORS----------------------
+def validate_date(date):
+    if date < timezone.now().date():
+        raise ValidationError("Date cannot be in the past")
+# --------------------------------------------------
 
 
 def custom_user_string_method(self):
@@ -88,7 +96,7 @@ class Schedule(AbstractAvailSched):
 
 class TimeOff(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.DateField(validators=[validate_date])
     reason = models.CharField(max_length=280, verbose_name="Reason")
     comment = models.CharField(max_length=280, verbose_name="Comment", null=True, blank=True)
     status = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(3)], default=2)
@@ -110,5 +118,7 @@ def create_profile(sender, **kwargs):
             avail = Availability(user=user, dayOfWeek=dow)
             sched.save()
             avail.save()
+
+
 
 post_save.connect(create_profile, sender=User)
