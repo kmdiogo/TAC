@@ -6,3 +6,9 @@ class AvailabilityForm(ModelForm):
     class Meta:
         model = Availability
         exclude = ['user']
+
+
+class TimeOffForm(ModelForm):
+    class Meta:
+        model = TimeOff
+        fields = ['date', 'reason']

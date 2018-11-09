@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from SignIn.CONSTANTS import *
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from Dashboard.models import Schedule
@@ -36,7 +37,7 @@ def availability_view(request):
         context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
         availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
         for avail in availabilities:
-            context['availabilities'].append(AvailabilityForm(instance=avail))
+            context['availabilities'].append(AvailabilityForm(instance=avail, prefix=DOW_DICT[avail.dayOfWeek]))
         html = render_to_string('Dashboard/AvailabilitySection/_AvailabilitySection.html', context)
         return HttpResponse(html)
 
@@ -44,8 +45,8 @@ def availability_view(request):
 @staff_member_required
 @require_GET
 def timeoff_view(request):
+    form = Shift
     timeoffs = TimeOff.objects.filter(user=request.user).order_by('date')
-    print(timeoffs)
     context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
     return HttpResponse(render_to_string("Dashboard/TimeOffSection/_TimeOffSection.html", context))
 
@@ -59,7 +60,6 @@ def shifts_view(request):
         shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False).distinct()
         context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
         return HttpResponse(render_to_string("Dashboard/ShiftsSection/_ShiftsSection.html", context))
-
 
 
 

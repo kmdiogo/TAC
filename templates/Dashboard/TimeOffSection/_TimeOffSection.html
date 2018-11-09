@@ -1,5 +1,36 @@
-{% load static %}
+{% load widget_tweaks %}
 
-{% for t in timeoffs %}
-    <h5>{{ t }}</h5>
-{% endfor %}
+<div class="container">
+<table class="table" style="table-layout: fixed">
+    <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">Date</th>
+            <th scope="col">Reason</th>
+            <th scope="col">Admin Comments</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if timeoffs %}
+            {% for t in timeoffs %}
+                <tr class="text-center">
+                    <th scope="row">{{ t.date }}</th>
+                    <td>{{ t.reason }}</td>
+                    <td>{{ t.comment }}</td>
+                    {% if t.status == 1 %}
+                        <td><i class="fas fa-check" style="color:green;" data-toggle="tooltip" title="Approved"></i></td>
+                    {% elif t.status == 2 %}
+                        <td><i class="far fa-clock" style="color: yellowgreen;" data-toggle="tooltip" title="Pending"></i></td>
+                    {% else %}
+                        <td><i class="far fa-times-circle" style="color:red;" data-toggle="tooltip" title="Denied"></i></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No Time-off requests to show</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+</div>
