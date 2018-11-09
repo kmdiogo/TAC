@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/SignIn/TAC_Logo.png' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap-social.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.min.css' %}" />
     {% block styles %}
     {% endblock %}
 </head>
@@ -21,6 +22,7 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/jquery.inputmask.bundle.js' %}"></script>
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
     {% include 'SignIn/API_SignIn.html' %}
     {% block scripts %}
     {% endblock %}

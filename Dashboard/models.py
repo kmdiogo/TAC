@@ -99,6 +99,7 @@ class TimeOff(models.Model):
                                                                                   firstname=self.user.first_name)
 
 
+
 # ----------MODEL SIGNALS FOR USER----------
 def create_profile(sender, **kwargs):
     user = kwargs['instance']

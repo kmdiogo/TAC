@@ -19,7 +19,7 @@
                         ShowOpenShiftModal(data.firstName);
                     },
                     404: function(){
-                        alert("Employee with given ID does not exist");
+                        $('#employeeSection-employeeDNE').show();
                         $('#input-EmployeeSection-employeeId').val('');
                     },
                     400: function(){
@@ -39,8 +39,13 @@
         });
 
         $('#input-EmployeeSection-employeeId').on('keypress', function(e){
-            if (e.which === 13) $('#button-EmployeeSection-employeeIdSubmit').trigger('click');
             e.preventDefault();
+            if (e.which === 13) $('#button-EmployeeSection-employeeIdSubmit').trigger('click');
+        });
+
+        $('#input-EmployeeSection-employeeId').on('keyup', function(e){
+            if (e.which !== 13)
+                $('#employeeSection-employeeDNE').hide();
         });
     }
     function RegisterEmployeeSection_InputMasks(){

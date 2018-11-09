@@ -9,6 +9,7 @@
     <form class="w-100 tac-center" method="post" id="form-EmployeeSection-schoolId">
         {% csrf_token %}
         <input class="form-control w-50 text-center" type="text" id="input-EmployeeSection-employeeId" style="font-size: 150%;" name="employee"/>
+        <h6 style="display: none; color: red;" id="employeeSection-employeeDNE">Sorry, an employee with that ID does not exist</h6>
     </form>
 
     <hr />

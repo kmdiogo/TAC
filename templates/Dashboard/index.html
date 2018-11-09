@@ -168,6 +168,25 @@
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
             $('#time-off-item').addClass('active');
+            $('[data-toggle="tooltip"]').tooltip();
+            $('#id_date').datepicker({
+                format: 'yyyy-mm-dd'
+            }).inputmask('datetime',{
+            inputFormat: 'yyyy-mm-dd',
+            placeholder: 'YYYY-MM-DD'
+            });
+            $('#button-submitTimeOff').click(function(e){
+                e.preventDefault();
+                data = $('#form-timeoff').serialize();
+                $.ajax({
+                    method: 'POST',
+                    url: "{% url 'timeoff_view' %}",
+                    data: data,
+                    success: function(data){
+                        ShowTimeOffSection();
+                    }
+                });
+            });
         });
     }
 
