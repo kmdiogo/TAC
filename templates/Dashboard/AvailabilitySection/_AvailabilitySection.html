@@ -1,12 +1,19 @@
 {% load widget_tweaks %}
 <div class="container">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <h5 class="font-weight-bold">Availability of {{ firstName }} {{ lastName }}</h5>{% csrf_token %}
-        </li>
-    </ol>
-<form method="post">
+
+    <h1 class="text-center">Availability of {{ firstName }} {{ lastName }}</h1>
+    <hr />
+
+
+
+
+
+
+<form method="post" id="form-availability">
     {% csrf_token %}
+    {% for avail in availabilities %}
+        {{ avail.dayOfWeek.as_hidden }}
+    {% endfor %}
     <table class="table table-bordered" style="table-layout: fixed">
         <thead>
             <tr class="text-center">
@@ -18,7 +25,7 @@
                 <th scope="col">Friday</th>
             </tr>
         </thead>
-            <tbody>
+            <tbody id="availability-TBody">
                 <tr>
                     <th scope="row">6:00 AM</th>
                     {% for avail in availabilities %}
@@ -94,5 +101,8 @@
             </tbody>
     </table>
 </form>
+<div class="row w-100 justify-content-center mb-2">
+    <button class="btn btn-primary" id="button-SubmitAvailability">Save Changes</button>
+</div>
 </div>
 

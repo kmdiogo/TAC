@@ -159,7 +159,9 @@
         $('.wrapper').removeClass('hidden');
         $('#content').removeClass('start-up');
         BindIndexEvents();
-
+        $('input').each(function(){
+           $(this).attr('autocomplete', 'nope');
+        });
     });
 
 

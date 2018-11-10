@@ -1,6 +1,8 @@
 {% load widget_tweaks %}
 
 <div class="container">
+<h1 class="text-center">Time-Off</h1>
+<hr />
 <table class="table" style="table-layout: fixed">
     <thead class="thead-light">
         <tr class="text-center">
@@ -14,7 +16,7 @@
         {% if timeoffs %}
             {% for t in timeoffs %}
                 <tr class="text-center">
-                    <th scope="row">{{ t.date }}</th>
+                    <td>{{ t.date }}</td>
                     <td>{{ t.reason }}</td>
                     <td>{{ t.comment }}</td>
                     {% if t.status == 1 %}
@@ -48,7 +50,7 @@
                         </div>
                         <div class="col-md-3">{{ form.reason.label_tag }}</div>
                         <div class="col-md-9">
-                            {% render_field form.reason class="form-control" %}
+                            {% render_field form.reason class="form-control" autocomplete="off" %}
                         </div>
                     <button class="btn btn-primary" id="button-submitTimeOff">Submit</button>
                 </div>

@@ -2,11 +2,8 @@
 {% load widget_tweaks %}
 
 <div class="container">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <h5 class="font-weight-bold">Work Schedule of {{ firstName }} {{ lastName }}</h5>
-        </li>
-    </ol>
+    <h1 class="text-center">Work Schedule</h1>
+    <hr />
 
     {% include 'Dashboard/HomeSection/_ScheduleTable.html' %}
 </div>

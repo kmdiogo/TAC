@@ -38,15 +38,25 @@ def home_view(request):
 
 
 @staff_member_required
-@require_http_methods(['GET', 'POST'])
+@api_view(['GET', 'POST'])
 def availability_view(request):
     if request.method == 'GET' and request.is_ajax():
         context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
         availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
         for avail in availabilities:
-            context['availabilities'].append(AvailabilityForm(instance=avail, prefix=DOW_DICT[avail.dayOfWeek]))
+            context['availabilities'].append(AvailabilityForm(instance=avail))#, prefix=DOW_DICT[avail.dayOfWeek]))
         html = render_to_string('Dashboard/AvailabilitySection/_AvailabilitySection.html', context, request)
         return HttpResponse(html)
+    else:
+        form = AvailabilityForm(request.POST)
+        if form.is_valid():
+            instance = Availability.objects.get(user=request.user, dayOfWeek=form.cleaned_data['dayOfWeek'])
+            form = AvailabilityForm(request.POST, instance=instance)
+            if form.is_valid():
+                form.save()
+            return Response(form.data, status=status.HTTP_200_OK)
+        context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+        return HttpResponse(render_to_string('Dashboard/AvailabilitySection/_AvailabilitySection.html', context, request))
 
 
 @staff_member_required
@@ -76,7 +86,11 @@ def shifts_view(request):
         starOfWeek = currentDate - timedelta(days=currentDate.weekday())
         endWeek = starOfWeek + timedelta(days=6)
         shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False).distinct()
-        context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+        hoursWorked = 0
+        for shift in shifts:
+            dt = shift.endTime - shift.startTime
+            hoursWorked += round(dt.days * 24 + dt.seconds / 3600, 3)
+        context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'hoursWorked': hoursWorked}
         return HttpResponse(render_to_string("Dashboard/ShiftsSection/_ShiftsSection.html", context, request))
 
 

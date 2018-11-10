@@ -1,3 +1,30 @@
-{% for shift in shifts %}
-    <h5>{{ shift.startTime }}</h5>
-{% endfor %}
+
+<div class="container">
+<h1 class="text-center">Shifts</h1>
+<hr />
+<table class="table" style="table-layout: fixed">
+    <thead class="thead-light">
+        <tr class="text-center">
+            <th scope="col">Date</th>
+            <th scope="col">Time-In</th>
+            <th scope="col">Time-Out</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if shifts %}
+            {% for s in shifts %}
+                <tr class="text-center">
+                    <td>{{ s.startTime.date }}</td>
+                    <td>{{ s.startTime.time }}</td>
+                    <td>{{ s.endTime.time }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="4" class="text-center">You have clocked-in this week</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
+<h5>Hours worked: {{ hoursWorked }}</h5>
+</div>
