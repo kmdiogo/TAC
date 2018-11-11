@@ -1,5 +1,8 @@
 {% extends 'Base.html' %}
 {% load static %}
+{% block title %}
+    Dashboard &middot; Employee &middot; TAC
+{% endblock %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
 {% endblock %}
@@ -127,10 +130,11 @@
         BindDashboardEvents();
     });
 
+
     function BindDashboardEvents(){
         $('#availability-link').click(function(e){
             e.preventDefault();
-            ShowAvailabilitySection();
+            ShowAvailabilitySection(false);
         });
 
         $('#home-link').click(function(e){
@@ -148,53 +152,16 @@
             ShowShiftsSection();
         })
     }
-    function BindAvailabilitySectionEvents(){
-        $('#button-SubmitAvailability').click(function(){
-            PostAvailability();
-        });
-    }
-    function PostAvailability(){
-        let token = $('#form-availability').find("input[name='csrfmiddlewaretoken']").val();
-        // For every day of the week in table (column)
-        for (let dow = 1; dow < 6; dow++){
-            //console.log(dow);
-            let data = {'dayOfWeek': dow};
-            // Iterate through all cells in the DOW column
-            $('#availability-TBody').find('tr').each(function(){
-                let hourInput = $(this).find('td').eq(dow-1).find('input').get(0);
-                data[$(hourInput).attr('name')] = $(hourInput).prop('checked');
-                //console.log($(this).find('td').eq(dow-1).find('input').get(0));
-            });
-            // Only refresh after last post is successful
-            if (dow < 5){
-                $.ajax({
-                    type: 'POST',
-                    data: data,
-                    url: "{% url 'availability_view' %}",
-                    headers: {'X-CSRFToken': token},
-                    error: function(data){
-                        alert("Something went wrong!");
-                    }
-                });
-            }
-            else{
-                $.ajax({
-                    type: 'POST',
-                    data: data,
-                    url: "{% url 'availability_view' %}",
-                    headers: {'X-CSRFToken': token},
-                    success: function(data){
-                        ShowAvailabilitySection();
-                    }
-                });
-            }
-        }
-    }
 
-    function ShowAvailabilitySection(){
+
+    function ShowAvailabilitySection(post){
+        //history.pushState(null, null, 'availability');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'availability_view' %}", function(data){
             $('#content-wrapper').html(data);
+            if (post) {
+                $('#availability-success').show();
+            }
             $('.nav-item.active').removeClass('active');
             $('#availability-item').addClass('active');
             BindAvailabilitySectionEvents();
@@ -202,6 +169,7 @@
     }
 
     function ShowHomeSection(){
+        //history.pushState(null, null, 'home');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'home_view' %}", function(data){
             $('#content-wrapper').html(data);
@@ -211,34 +179,17 @@
     }
 
     function ShowTimeOffSection(){
+        //history.pushState(null, null, 'time-off');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'timeoff_view' %}", function(data){
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
             $('#time-off-item').addClass('active');
-            $('[data-toggle="tooltip"]').tooltip();
-            $('#id_date').datepicker({
-                format: 'yyyy-mm-dd'
-            }).inputmask('datetime',{
-            inputFormat: 'yyyy-mm-dd',
-            placeholder: 'YYYY-MM-DD'
-            });
-            $('#button-submitTimeOff').click(function(e){
-                e.preventDefault();
-                data = $('#form-timeoff').serialize();
-                $.ajax({
-                    method: 'POST',
-                    url: "{% url 'timeoff_view' %}",
-                    data: data,
-                    success: function(data){
-                        ShowTimeOffSection();
-                    }
-                });
-            });
+            TimeOffBindings();
         });
     }
-
     function ShowShiftsSection(){
+        //history.pushState(null, null, 'shifts');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'shifts_view' %}", function(data){
             $('#content-wrapper').html(data);
@@ -247,4 +198,7 @@
         });
     }
 </script>
+
+{% include 'Dashboard/Scripts/Availability_Scripts.html' %}
+{% include 'Dashboard/Scripts/TimeOff_Scripts.html' %}
 {% endblock %}

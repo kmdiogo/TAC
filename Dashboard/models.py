@@ -99,12 +99,13 @@ class TimeOff(models.Model):
     date = models.DateField(validators=[validate_date])
     reason = models.CharField(max_length=280, verbose_name="Reason")
     comment = models.CharField(max_length=280, verbose_name="Comment", null=True, blank=True)
-    status = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(3)], default=2)
+    status = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(2)], default=0)
 
     def __str__(self):
-        return 'Time off request for {username} - {lastname}, {firstname}'.format(username=self.user.username,
-                                                                                  lastname=self.user.last_name,
-                                                                                  firstname=self.user.first_name)
+        return '{status} Time off request for {username} - {lastname}, {firstname}'.format(username=self.user.username,
+                                                                                           lastname=self.user.last_name,
+                                                                                           firstname=self.user.first_name,
+                                                                                           status=STATUS_DICT[self.status])
 
 
 

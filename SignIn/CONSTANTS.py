@@ -11,6 +11,7 @@ ERROR_OPEN_OBJECT = 1
 ERROR_PERSON_DNE = 2
 ERROR_BAD__DATA = 3
 DOW_DICT = {0: 'Sunday', 1: 'Monday', 2: 'Tuesday', 3: 'Wednesday', 4: 'Thursday', 5: 'Friday', 6: 'Saturday'}
+STATUS_DICT = {0: 'Pending', 1: 'Approved', 2: 'Denied'}
 # ---------------------------------------------------------------------------
 # -------------------CHOICE TUPLES FOR FIELDS--------------------------------
 SEX_CHOICES = (

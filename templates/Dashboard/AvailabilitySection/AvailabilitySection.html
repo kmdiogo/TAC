@@ -1,0 +1,20 @@
+{% load widget_tweaks %}
+<div class="container">
+
+    <div class="card">
+        <div class="card-header">
+            <h1 class="text-center">Availability</h1>
+        </div>
+        <div class="card-body">
+            {% include 'Dashboard/AvailabilitySection/_AvailabilityTable.html' %}
+            <div class="row w-100 justify-content-center mb-2">
+                <button class="btn btn-primary" id="button-SubmitAvailability">Save Changes</button>
+            </div>
+            <div class="alert alert-success text-center" role="alert" style="display: none;" id="availability-success">
+                <span class="btn"><i class="fas fa-check" style="color: green;"></i> Changes saved successfully!</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+

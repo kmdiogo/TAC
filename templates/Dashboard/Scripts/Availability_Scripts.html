@@ -1,0 +1,44 @@
+<script id="availability-scripts">
+    function BindAvailabilitySectionEvents(){
+        $('#button-SubmitAvailability').click(function(){
+            PostAvailability();
+        });
+    }
+    function PostAvailability(){
+        let token = $('#form-availability').find("input[name='csrfmiddlewaretoken']").val();
+        // For every day of the week in table (column)
+        for (let dow = 1; dow < 6; dow++){
+            //console.log(dow);
+            let data = {'dayOfWeek': dow};
+            // Iterate through all cells in the DOW column
+            $('#availability-TBody').find('tr').each(function(){
+                let hourInput = $(this).find('td').eq(dow-1).find('input').get(0);
+                data[$(hourInput).attr('name')] = $(hourInput).prop('checked');
+                //console.log($(this).find('td').eq(dow-1).find('input').get(0));
+            });
+            // Only refresh after last post is successful
+            if (dow < 5){
+                $.ajax({
+                    type: 'POST',
+                    data: data,
+                    url: "{% url 'availability_view' %}",
+                    headers: {'X-CSRFToken': token},
+                    error: function(data){
+                        alert("Something went wrong!");
+                    }
+                });
+            }
+            else{
+                $.ajax({
+                    type: 'POST',
+                    data: data,
+                    url: "{% url 'availability_view' %}",
+                    headers: {'X-CSRFToken': token},
+                    success: function(data){
+                        ShowAvailabilitySection(true);
+                    }
+                });
+            }
+        }
+    }
+</script>

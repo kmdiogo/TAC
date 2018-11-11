@@ -1,13 +1,5 @@
+{% load static %}
 {% load widget_tweaks %}
-<div class="container">
-
-    <h1 class="text-center">Availability of {{ firstName }} {{ lastName }}</h1>
-    <hr />
-
-
-
-
-
 
 <form method="post" id="form-availability">
     {% csrf_token %}
@@ -101,8 +93,3 @@
             </tbody>
     </table>
 </form>
-<div class="row w-100 justify-content-center mb-2">
-    <button class="btn btn-primary" id="button-SubmitAvailability">Save Changes</button>
-</div>
-</div>
-

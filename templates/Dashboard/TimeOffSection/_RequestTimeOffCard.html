@@ -1,0 +1,21 @@
+{% load widget_tweaks %}
+
+<form method="post" enctype="multipart/form-data" id="form-timeoff">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">Request Time-Off</div>
+      <div class="card-body">
+        <div class="row">
+                <div class="col-md-3">{{ form.date.label_tag }}</div>
+                <div class="col-md-9">
+                    {% render_field form.date class="form-control" %}
+                </div>
+                <div class="col-md-3">{{ form.reason.label_tag }}</div>
+                <div class="col-md-9">
+                    {% render_field form.reason class="form-control" autocomplete="off" %}
+                </div>
+            <button class="btn btn-primary" id="button-submitTimeOff">Submit</button>
+        </div>
+      </div>
+    </div>
+</form>

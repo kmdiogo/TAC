@@ -34,7 +34,7 @@ def home_view(request):
     if request.is_ajax():
         schedules = Schedule.objects.filter(user=request.user).order_by('dayOfWeek')
         context = {'schedules': schedules, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
-        return HttpResponse(render_to_string('Dashboard/HomeSection/_HomeSection.html', context, request))
+        return HttpResponse(render_to_string('Dashboard/HomeSection/HomeSection.html', context, request))
 
 
 @staff_member_required
@@ -45,7 +45,7 @@ def availability_view(request):
         availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
         for avail in availabilities:
             context['availabilities'].append(AvailabilityForm(instance=avail))#, prefix=DOW_DICT[avail.dayOfWeek]))
-        html = render_to_string('Dashboard/AvailabilitySection/_AvailabilitySection.html', context, request)
+        html = render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request)
         return HttpResponse(html)
     else:
         form = AvailabilityForm(request.POST)
@@ -56,7 +56,7 @@ def availability_view(request):
                 form.save()
             return Response(form.data, status=status.HTTP_200_OK)
         context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
-        return HttpResponse(render_to_string('Dashboard/AvailabilitySection/_AvailabilitySection.html', context, request))
+        return HttpResponse(render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request))
 
 
 @staff_member_required
@@ -67,7 +67,7 @@ def timeoff_view(request):
         today = timezone.now()
         timeoffs = TimeOff.objects.filter(user=request.user, date__gte=today).order_by('date')
         context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'form': form}
-        return HttpResponse(render_to_string("Dashboard/TimeOffSection/_TimeOffSection.html", context, request))
+        return HttpResponse(render_to_string("Dashboard/TimeOffSection/TimeOffSection.html", context, request))
     else:
         form = TimeOffForm(request.POST)
         if form.is_valid():
@@ -89,9 +89,10 @@ def shifts_view(request):
         hoursWorked = 0
         for shift in shifts:
             dt = shift.endTime - shift.startTime
-            hoursWorked += round(dt.days * 24 + dt.seconds / 3600, 3)
+            hoursWorked += dt.days * 24 + dt.seconds / 3600
+        hoursWorked = round(hoursWorked, 2)
         context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'hoursWorked': hoursWorked}
-        return HttpResponse(render_to_string("Dashboard/ShiftsSection/_ShiftsSection.html", context, request))
+        return HttpResponse(render_to_string("Dashboard/ShiftsSection/ShiftsSection.html", context, request))
 
 
 def employee_logout(request):
