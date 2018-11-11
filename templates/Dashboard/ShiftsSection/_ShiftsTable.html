@@ -1,20 +1,20 @@
 {% load widget_tweaks %}
 
-<table class="table" style="table-layout: fixed">
+<table class="table" style="table-layout: fixed" id="table-shifts">
     <thead class="thead-light">
         <tr class="text-center">
-            <th scope="col">Date</th>
-            <th scope="col">Time-In</th>
-            <th scope="col">Time-Out</th>
+            <th scope="col">Date <i class="fas fa-sort"></i></th>
+            <th scope="col">Time-In <i class="fas fa-sort"></i></th>
+            <th scope="col">Time-Out <i class="fas fa-sort"></i></th>
         </tr>
     </thead>
     <tbody>
         {% if shifts %}
             {% for s in shifts %}
                 <tr class="text-center">
-                    <td>{{ s.startTime.date }}</td>
-                    <td>{{ s.startTime.time }}</td>
-                    <td>{{ s.endTime.time }}</td>
+                    <td><span class="d-none">{{ s.startTime.date|date:"Y/m/d" }}</span>{{ s.startTime.date }}</td>
+                    <td><span class="d-none">{{ s.startTime.time|date:"H" }}</span>{{ s.startTime.time }}</td>
+                    <td><span class="d-none">{{ s.endTime.time|date:"H" }}</span>{{ s.endTime.time }}</td>
                 </tr>
             {% endfor %}
         {% else %}

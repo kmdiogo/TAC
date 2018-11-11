@@ -5,6 +5,7 @@
 {% endblock %}
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/datatables.min.css' %}" />
 {% endblock %}
 {% block content %}
 
@@ -125,6 +126,7 @@
 
 {% block scripts %}
 <script id="dashboard-scripts">
+
     $(document).ready(function(){
         ShowHomeSection();
         BindDashboardEvents();
@@ -194,11 +196,13 @@
         $.get("{% url 'shifts_view' %}", function(data){
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
-            $('#time-off-item').addClass('active');
+            $('#shifts-item').addClass('active');
+            $('#table-shifts').DataTable();
         });
     }
 </script>
 
 {% include 'Dashboard/Scripts/Availability_Scripts.html' %}
 {% include 'Dashboard/Scripts/TimeOff_Scripts.html' %}
+<script src="{% static 'js/datatables.min.js' %}"></script>
 {% endblock %}

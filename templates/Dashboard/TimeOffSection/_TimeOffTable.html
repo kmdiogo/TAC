@@ -1,27 +1,27 @@
 {% load widget_tweaks %}
 
-<table class="table" style="table-layout: fixed">
+<table class="table" style="table-layout: fixed" id="table-time-off">
     <thead class="thead-light">
         <tr class="text-center">
-            <th scope="col">Date</th>
-            <th scope="col">Reason</th>
-            <th scope="col">Admin Comments</th>
-            <th scope="col">Status</th>
+            <th scope="col">Date <i class="fas fa-sort"></i></th>
+            <th scope="col">Reason <i class="fas fa-sort"></i></th>
+            <th scope="col">Admin Comments <i class="fas fa-sort"></i></th>
+            <th scope="col">Status <i class="fas fa-sort"></i></th>
         </tr>
     </thead>
     <tbody>
         {% if timeoffs %}
             {% for t in timeoffs %}
                 <tr class="text-center">
-                    <td>{{ t.date }}</td>
+                    <td><span class="d-none">{{ t.date|date:"Y/m/d" }}</span>{{ t.date }}</td>
                     <td>{{ t.reason }}</td>
                     <td>{{ t.comment }}</td>
                     {% if t.status == 1 %}
-                        <td><i class="fas fa-check" style="color:green;" data-toggle="tooltip" title="Approved"></i></td>
+                        <td><i class="fas fa-check" style="color:green;" data-toggle="tooltip" title="Approved"><span class="d-none">0</span></i></td>
                     {% elif t.status == 0 %}
-                        <td><i class="far fa-clock" style="color: rgb(255, 220, 0);" data-toggle="tooltip" title="Pending"></i></td>
+                        <td><i class="far fa-clock" style="color: rgb(255, 220, 0);" data-toggle="tooltip" title="Pending"><span class="d-none">1</span></i></td>
                     {% else %}
-                        <td><i class="far fa-times-circle" style="color:red;" data-toggle="tooltip" title="Denied"></i></td>
+                        <td><i class="far fa-times-circle" style="color:red;" data-toggle="tooltip" title="Denied"><span class="d-none">2</span></i></td>
                     {% endif %}
                 </tr>
             {% endfor %}
