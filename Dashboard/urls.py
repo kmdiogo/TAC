@@ -9,5 +9,5 @@ urlpatterns = [
     path('home', views.home_view, name='home_view'),
     path('availability', views.availability_view, name='availability_view'),
     path('timeoff', views.timeoff_view, name='timeoff_view'),
-    path('schedule', views.shifts_view, name='shifts_view'),
+    path('shifts', views.shifts_view, name='shifts_view'),
 ]

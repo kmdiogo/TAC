@@ -24,7 +24,7 @@ def index(request):
     #schedules = Schedule.objects.filter(user__username="Y00123456").order_by('dayOfWeek')
     #context = {'schedules': schedules}
 
-    context = {'firstName': request.user.first_name, 'lastName': request.user.last_name}
+    context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'start': 'home'}
     return render(request, 'Dashboard/index.html', context)
 
 
@@ -35,57 +35,68 @@ def home_view(request):
         schedules = Schedule.objects.filter(user=request.user).order_by('dayOfWeek')
         context = {'schedules': schedules, 'firstName': request.user.first_name, 'lastName': request.user.last_name}
         return HttpResponse(render_to_string('Dashboard/HomeSection/HomeSection.html', context, request))
+    else:
+        context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'start': 'home'}
+        return render(request, 'Dashboard/index.html', context)
 
 
 @staff_member_required
 @api_view(['GET', 'POST'])
 def availability_view(request):
-    if request.method == 'GET' and request.is_ajax():
-        context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
-        availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
-        for avail in availabilities:
-            context['availabilities'].append(AvailabilityForm(instance=avail))#, prefix=DOW_DICT[avail.dayOfWeek]))
-        html = render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request)
-        return HttpResponse(html)
-    else:
-        form = AvailabilityForm(request.POST)
-        if form.is_valid():
-            instance = Availability.objects.get(user=request.user, dayOfWeek=form.cleaned_data['dayOfWeek'])
-            form = AvailabilityForm(request.POST, instance=instance)
+    if request.is_ajax():
+        if request.method == 'GET':
+            context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+            availabilities = Availability.objects.filter(user=request.user).order_by('dayOfWeek')
+            for avail in availabilities:
+                context['availabilities'].append(AvailabilityForm(instance=avail))#, prefix=DOW_DICT[avail.dayOfWeek]))
+            html = render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request)
+            return HttpResponse(html)
+        else:
+            form = AvailabilityForm(request.POST)
             if form.is_valid():
-                form.save()
-            return Response(form.data, status=status.HTTP_200_OK)
-        context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
-        return HttpResponse(render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request))
+                instance = Availability.objects.get(user=request.user, dayOfWeek=form.cleaned_data['dayOfWeek'])
+                form = AvailabilityForm(request.POST, instance=instance)
+                if form.is_valid():
+                    form.save()
+                return Response(form.data, status=status.HTTP_200_OK)
+            context = {'availabilities': [], 'firstName': request.user.first_name, 'lastName': request.user.last_name}
+            return HttpResponse(render_to_string('Dashboard/AvailabilitySection/AvailabilitySection.html', context, request))
+    else:
+        context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'start': 'availability'}
+        return render(request, 'Dashboard/index.html', context)
 
 
 @staff_member_required
 @api_view(['GET', 'POST'])
 def timeoff_view(request):
-    if request.method == 'GET':
-        form = TimeOffForm()
-        today = timezone.now()
-        timeoffs = TimeOff.objects.filter(user=request.user, date__gte=today).order_by('date')
-        context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'form': form}
-        return HttpResponse(render_to_string("Dashboard/TimeOffSection/TimeOffSection.html", context, request))
+    if request.is_ajax():
+        if request.method == 'GET':
+            form = TimeOffForm()
+            today = timezone.now()
+            timeoffs = TimeOff.objects.filter(user=request.user, date__gte=today).order_by('date')
+            context = {'timeoffs': timeoffs, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'form': form}
+            return HttpResponse(render_to_string("Dashboard/TimeOffSection/TimeOffSection.html", context, request))
+        else:
+            form = TimeOffForm(request.POST)
+            if form.is_valid():
+                newTimeOff = form.save(commit=False)
+                newTimeOff.user = request.user
+                newTimeOff.save()
+                return Response(form.data, status=status.HTTP_201_CREATED)
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        form = TimeOffForm(request.POST)
-        if form.is_valid():
-            newTimeOff = form.save(commit=False)
-            newTimeOff.user = request.user
-            newTimeOff.save()
-            return Response(form.data, status=status.HTTP_201_CREATED)
-        return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+        context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'start': 'timeoff'}
+        return render(request, 'Dashboard/index.html', context)
 
 
 @staff_member_required
 @require_GET
 def shifts_view(request):
-    if request.method == 'GET' and request.is_ajax():
+    if request.is_ajax():
         currentDate = timezone.now()
         starOfWeek = currentDate - timedelta(days=currentDate.weekday())
         endWeek = starOfWeek + timedelta(days=6)
-        shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False).distinct()
+        shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False, user=request.user).distinct()
         hoursWorked = 0
         for shift in shifts:
             dt = shift.endTime - shift.startTime
@@ -93,6 +104,9 @@ def shifts_view(request):
         hoursWorked = round(hoursWorked, 2)
         context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'hoursWorked': hoursWorked}
         return HttpResponse(render_to_string("Dashboard/ShiftsSection/ShiftsSection.html", context, request))
+    else:
+        context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'start': 'shifts'}
+        return render(request, 'Dashboard/index.html', context)
 
 
 def employee_logout(request):

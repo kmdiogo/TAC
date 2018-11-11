@@ -11,7 +11,9 @@
 
 <nav class="navbar navbar-expand navbar-dark bg-primary static-top">
 
-    <a class="navbar-brand mr-auto" href="">Employee - {{ firstName }} {{ lastName }}</a>
+    <a class="navbar-brand mr-auto" href="">
+        Employee - {{ firstName }} {{ lastName }}
+    </a>
 
       {% comment %}<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -121,6 +123,7 @@
             <i class="fas fa-spinner fa-5x spin"></i>
         </div>
     </template>
+    <input type="hidden" id="startSection" value="{{ start }}" />
 
 {% endblock %}
 
@@ -128,7 +131,15 @@
 <script id="dashboard-scripts">
 
     $(document).ready(function(){
-        ShowHomeSection();
+        let startSection = $('#startSection').val();
+        if (startSection === 'home')
+            ShowHomeSection();
+        else if (startSection === 'availability')
+            ShowAvailabilitySection(false);
+        else if (startSection === 'timeoff')
+            ShowTimeOffSection();
+        else
+            ShowShiftsSection();
         BindDashboardEvents();
     });
 
@@ -157,7 +168,7 @@
 
 
     function ShowAvailabilitySection(post){
-        //history.pushState(null, null, 'availability');
+        //history.pushState({section: 'availability'}, null, 'availability');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'availability_view' %}", function(data){
             $('#content-wrapper').html(data);
@@ -171,7 +182,7 @@
     }
 
     function ShowHomeSection(){
-        //history.pushState(null, null, 'home');
+        //history.pushState({section: 'home'}, null, 'home');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'home_view' %}", function(data){
             $('#content-wrapper').html(data);
@@ -181,7 +192,7 @@
     }
 
     function ShowTimeOffSection(){
-        //history.pushState(null, null, 'time-off');
+        //history.pushState({section: 'timeoff'}, null, 'timeoff');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'timeoff_view' %}", function(data){
             $('#content-wrapper').html(data);
@@ -191,7 +202,7 @@
         });
     }
     function ShowShiftsSection(){
-        //history.pushState(null, null, 'shifts');
+        //history.pushState({section: 'shifts'}, null, 'shifts');
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'shifts_view' %}", function(data){
             $('#content-wrapper').html(data);
