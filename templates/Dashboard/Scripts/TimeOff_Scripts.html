@@ -4,21 +4,33 @@
         $('[data-toggle="tooltip"]').tooltip();
         $('#id_date').datepicker({
             format: 'yyyy-mm-dd'
-        }).inputmask('datetime',{
-        inputFormat: 'yyyy-mm-dd',
-        placeholder: 'YYYY-MM-DD'
         });
+        $('#id_date').inputmask('datetime',{
+            inputFormat: 'yyyy-mm-dd',
+            placeholder: 'YYYY-MM-DD'
+        });
+        $('#form-timeoff').validate({
+            rules: {
+                date: {required: true, noPastDate: true }
+            },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
+
         $('#button-submitTimeOff').click(function(e){
-            e.preventDefault();
-            data = $('#form-timeoff').serialize();
-            $.ajax({
-                method: 'POST',
-                url: "{% url 'timeoff_view' %}",
-                data: data,
-                success: function(data){
-                    ShowTimeOffSection();
-                }
-            });
+            if ($('#form-timeoff').valid()){
+                e.preventDefault();
+                data = $('#form-timeoff').serialize();
+                console.log($("#id_date").val());
+                $.ajax({
+                    method: 'POST',
+                    url: "{% url 'timeoff_view' %}",
+                    data: data,
+                    success: function(data){
+                        ShowTimeOffSection();
+                    }
+                });
+            }
         });
 
         $('#table-time-off').DataTable({

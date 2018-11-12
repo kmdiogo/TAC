@@ -94,9 +94,10 @@ def timeoff_view(request):
 def shifts_view(request):
     if request.is_ajax():
         currentDate = timezone.now()
-        starOfWeek = currentDate - timedelta(days=currentDate.weekday())
-        endWeek = starOfWeek + timedelta(days=6)
-        shifts = Shift.objects.filter(startTime__range=(starOfWeek, endWeek), endTime__isnull=False, user=request.user).distinct()
+        startOfWeek = currentDate - timedelta(days=currentDate.weekday())
+        startOfWeek = startOfWeek.replace(hour=0, minute=0, second=0, microsecond=0)
+        endOfWeek = startOfWeek + timedelta(days=6)
+        shifts = Shift.objects.filter(startTime__range=(startOfWeek, endOfWeek), endTime__isnull=False, user=request.user).distinct()
         hoursWorked = 0
         for shift in shifts:
             dt = shift.endTime - shift.startTime

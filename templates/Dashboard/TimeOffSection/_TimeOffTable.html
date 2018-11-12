@@ -15,7 +15,7 @@
                 <tr class="text-center">
                     <td><span class="d-none">{{ t.date|date:"Y/m/d" }}</span>{{ t.date }}</td>
                     <td>{{ t.reason }}</td>
-                    <td>{{ t.comment }}</td>
+                    <td>{{ t.comment|default_if_none:"&nbsp" }}</td>
                     {% if t.status == 1 %}
                         <td><i class="fas fa-check" style="color:green;" data-toggle="tooltip" title="Approved"><span class="d-none">0</span></i></td>
                     {% elif t.status == 0 %}
