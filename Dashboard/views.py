@@ -92,6 +92,7 @@ def timeoff_view(request):
 @staff_member_required
 @require_GET
 def shifts_view(request):
+    PRECISION = 1
     if request.is_ajax():
         currentDate = timezone.now()
         startOfWeek = currentDate - timedelta(days=currentDate.weekday())
@@ -102,7 +103,7 @@ def shifts_view(request):
         for shift in shifts:
             dt = shift.endTime - shift.startTime
             hoursWorked += dt.days * 24 + dt.seconds / 3600
-        hoursWorked = round(hoursWorked, 2)
+        hoursWorked = round(hoursWorked, PRECISION)
         context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'hoursWorked': hoursWorked}
         return HttpResponse(render_to_string("Dashboard/ShiftsSection/ShiftsSection.html", context, request))
     else:
