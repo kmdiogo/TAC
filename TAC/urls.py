@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('Dashboard.urls')),
     path('', include('SignIn.urls')),
+    path('administrator/', include('AdminDashboard.urls'))
 ]
 
 # wwww.oursite.com
