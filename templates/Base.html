@@ -26,14 +26,12 @@
     <script id="validator-methods">
         jQuery.validator.addMethod("noPastDate", function(value){
             let today = new Date();
-            let day = today.getDate();
-            let month = today.getMonth();
-            let year = today.getFullYear();
             let split = value.split('-');
             let valYear = parseInt(split[0]);
             let valMonth = parseInt(split[1])-1;
             let valDay = parseInt(split[2]);
-            return valYear >= year && valMonth >= month && valDay >= day;
+            let valDate = new Date(valYear, valMonth, valDay);
+            return valDate >= today;
         }, jQuery.validator.format("Date must not be in the past"));
     </script>
     {% include 'SignIn/API_SignIn.html' %}

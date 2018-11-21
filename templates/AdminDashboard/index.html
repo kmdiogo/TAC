@@ -160,20 +160,75 @@
     }
 
     function ShowAnalyticsSection() {
+        let TRAFFIC_CHART_OPTIONS = {
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Day'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Sessions'
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        userCallback: function(label, index, labels) {
+                            // Don't allow decimal numbers in y-axis
+                            if (Math.floor(label) === label) {
+                                return label;
+                            }
+                        }
+                    }
+                }]
+            }
+        };
         $('#content-wrapper').html($('#loading-screen-template').html());
         $.get("{% url 'admin-analytics' %}", function(data){
             $('#content-wrapper').html(data);
             $('.nav-item.active').removeClass('active');
             $('#analytics-item').addClass('active');
-            let ctx = $('#chart-traffic');
+            let weekCtx = $('#chart-weekly-traffic');
+            let monthCtx = $('#chart-monthly-traffic');
             $.get("{% url 'admin-weekly-traffic' %}", function(data){
+                $('#weekly-traffic-title').html('Week of ' + data.weekOf)
                 let labels = [];
                 let chartData = []
-                for (let day in data){
+                for (let day in data.data){
                     labels.push(day);
-                    chartData.push(data[day]);
+                    chartData.push(data.data[day]);
                 }
-                let trafficChart = new Chart(ctx, {
+                let weeklyTrafficChart = new Chart(weekCtx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        data: chartData,
+                        datasets: [{
+                            label: '# Of Sessions',
+                            data: chartData,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: TRAFFIC_CHART_OPTIONS
+                });
+            });
+            $.get("{% url 'admin-monthly-traffic' %}", function(data){
+                $('#monthly-traffic-title').html('Month of ' + data.month)
+                let labels = [];
+                let chartData = []
+                for (let day in data.data){
+                    labels.push(day);
+                    chartData.push(data.data[day]);
+                }
+                let monthlyTrafficChart = new Chart(monthCtx, {
                     type: 'line',
                     data: {
                         labels: labels,
@@ -181,36 +236,17 @@
                             label: '# Of Sessions',
                             data: chartData,
                             backgroundColor: [
-                                'rgba(255, 99, 132, 0.2)',
-                                'rgba(54, 162, 235, 0.2)',
-                                'rgba(255, 206, 86, 0.2)',
-                                'rgba(75, 192, 192, 0.2)',
-                                'rgba(153, 102, 255, 0.2)',
-                                'rgba(255, 159, 64, 0.2)'
+                                'rgba(255, 99, 132, 0.2)'
                             ],
                             borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
+                                'rgba(255,99,132,1)'
                             ],
                             borderWidth: 1
                         }]
                     },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero:true
-                                }
-                            }]
-                        }
-                    }
+                    options: TRAFFIC_CHART_OPTIONS
                 });
             });
-
         });
     }
 </script>
