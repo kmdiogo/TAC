@@ -387,4 +387,24 @@ ol > li > h5{
     margin-bottom: 0px;
 }
 
+ul > li{
+    margin: 8px 5px 0px 5px !important;
+}
+
+.sidebar{
+  background-color: black !important; //tertiary
+}
+
+#made-by{
+  color: white !important;
+  margin: 0 0 0 0 !important;
+  padding-top: 100px !important;
+  font-style: italic !important;
+}
+
+#dashboard-logo{
+  padding-top: 5px !important;
+}
+
+
 
