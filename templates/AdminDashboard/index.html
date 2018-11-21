@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block content %}
-<nav class="navbar navbar-expand navbar-dark bg-primary static-top">
+<nav class="navbar navbar-expand navbar-dark bg-primary static-top shadow">
 
     <a class="navbar-brand mr-auto" href="">
         Administrator - {{ firstName }} {{ lastName }}
@@ -42,33 +42,33 @@
 
 <div id="wrapper">
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav shadow-lg">
         <li class="nav-item active" id="home-item">
-            <a class="nav-link btn btn-primary-light-outline" href="" id="home-link">
+            <a class="nav-link btn btn-primary-dark-outline" href="" id="home-link">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
         </li>
-        <li class="nav-item" id="availability-item">
-            <a class="nav-link btn btn-primary-light-outline" href='' id="availability-link">
+        <li class="nav-item" id="analytics-item">
+            <a class="nav-link btn btn-primary-dark-outline" href='' id="analytics-link">
                 <i class="fas fa-chart-area"></i>
                 <span>Analytics</span>
             </a>
         </li>
-        <li class="nav-item" id="time-off-item">
-            <a class="nav-link btn btn-primary-light-outline" href="" id="time-off-link">
+        <li class="nav-item" id="schedule-item">
+            <a class="nav-link btn btn-primary-dark-outline" href="" id="schedule-link">
                 <i class="far fa-calendar-alt"></i>
                 <span>Schedule</span>
             </a>
         </li>
-        <li class="nav-item" id="shifts-item">
-            <a class="nav-link btn btn-primary-light-outline" href="" id="shifts-link">
+        <li class="nav-item" id="time-off-item">
+            <a class="nav-link btn btn-primary-dark-outline" href="" id="time-off-link">
                 <i class="fas fa-plane-departure"></i>
                 <span>Time-Off Requests</span>
             </a>
         </li>
-        <li class="nav-item" id="shifts-item">
-            <a class="nav-link btn btn-primary-light-outline" href="" id="shifts-link">
+        <li class="nav-item" id="employees-item">
+            <a class="nav-link btn btn-primary-dark-outline" href="" id="employees-link">
                 <i class="fas fa-user-tie"></i>
                 <span>Employees</span>
             </a>
@@ -87,7 +87,7 @@
     </div>
 
     <!-- Sticky Footer -->
-    <footer class="sticky-footer">
+    <footer class="sticky-footer shadow-lg">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
                 <span>Copyright © TAC</span>
@@ -130,10 +130,89 @@
             <i class="fas fa-spinner fa-5x spin"></i>
         </div>
     </template>
-    <input type="hidden" id="startSection" value="{{ start }}" />
 {% endblock %}
 
 {% block scripts %}
+<script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+<script>
 
+    $(document).ready(function(){
+        ShowHomeSection();
+        $('#home-link').click(function(e){
+            e.preventDefault();
+            ShowHomeSection();
+        })
+
+        $('#analytics-link').click(function(e){
+            e.preventDefault();
+            ShowAnalyticsSection();
+        })
+    });
+
+    function ShowHomeSection(){
+        //history.pushState({section: 'availability'}, null, 'availability');
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'admin-home' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#home-item').addClass('active');
+        });
+    }
+
+    function ShowAnalyticsSection() {
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'admin-analytics' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#analytics-item').addClass('active');
+            let ctx = $('#chart-traffic');
+            $.get("{% url 'admin-weekly-traffic' %}", function(data){
+                let labels = [];
+                let chartData = []
+                for (let day in data){
+                    labels.push(day);
+                    chartData.push(data[day]);
+                }
+                let trafficChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: '# Of Sessions',
+                            data: chartData,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.2)',
+                                'rgba(54, 162, 235, 0.2)',
+                                'rgba(255, 206, 86, 0.2)',
+                                'rgba(75, 192, 192, 0.2)',
+                                'rgba(153, 102, 255, 0.2)',
+                                'rgba(255, 159, 64, 0.2)'
+                            ],
+                            borderColor: [
+                                'rgba(255,99,132,1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(255, 159, 64, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+
+        });
+    }
+</script>
 {% endblock %}
 

@@ -45,9 +45,11 @@ class Session(Log):
 
     def __str__(self):
         if not self.endTime:
-            return 'Open {course} session for {student}'.format(course=self.course, student=self.student)
+            return '{date} - Open {course} session for {student}'.format(course=self.course, student=self.student,
+                                                                         date=self.startTime.date())
         else:
-            return 'Closed {course} session for {student}'.format(course=self.course, student=self.student)
+            return '{date} - Closed {course} session for {student}'.format(course=self.course, student=self.student,
+                                                                           date=self.startTime.date())
 
 
 # --------------------------EMPLOYEE----------------------------
