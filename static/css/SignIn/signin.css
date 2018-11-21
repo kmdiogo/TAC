@@ -113,27 +113,3 @@
         display: none!important;
     }
 }
-
-#home-button,
-#student-button,
-#employee-button,
-#button-tools,
-#button-StudentSection-openSessionSubmit,
-#button-StudentSection-openSessionSubmitClose,
-#button-StudentSection-closeSessionSubmit,
-#button-StudentSection-closeSessionSubmitClose,
-#button-StudentSection-newStudentSubmit,
-#button-StudentSection-newStudentClose,
-#EmployeeSection-openShiftClose,
-#EmployeeSection-closeShiftClose{
-  border-radius: 15px !important;
-}
-
-#student-sectionHome,
-#employee-sectionHome,
-#button-homeReturn,
-#button-StudentSection-yNumberSubmit,
-#button-EmployeeSection-employeeIdSubmit{
-  border-radius: 15px !important;
-  border: black 2px solid !important; //tertiary
-}

@@ -32,6 +32,7 @@ $theme-colors: (
   color: #fff !important;
   background-color: black !important; //tertiary
   border: $YSU-Red 2px solid !important; //primary
+  border-radius: 15px !important;
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
@@ -54,7 +55,7 @@ $theme-colors: (
   border-width: 2px !important;
 }
 
-#home-button,
+/*#home-button,
 #student-button,
 #employee-button,
 #button-tools,
@@ -76,14 +77,22 @@ $theme-colors: (
 #button-EmployeeSection-employeeIdSubmit{
   border-radius: 15px !important;
   border: black 2px solid !important; //tertiary
-}
+}*/
 
 // Dashboard Page
 .btn-primary-light-outline{
+  color: white;
   background-color: $YSU-Red !important; //primary
   border: #fff 2px solid !important;
   border-radius: 15px !important;
   /*margin: 8px 5px 0px 5px !important;*/
+}
+
+.btn-primary-dark-outline{
+  color: white;
+  background-color: $YSU-Red !important;
+  border: black 2px solid !important;
+  border-radius: 15px !important
 }
 
 //@import "bootstrap";
