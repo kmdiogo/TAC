@@ -159,6 +159,14 @@
         });
     }
 
+    // Return random rgba(r,g,b,a) format string for use with chart.js
+    function randColorStr(){
+        let r = Math.floor(Math.random()*255);
+        let g = Math.floor(Math.random()*255);
+        let b = Math.floor(Math.random()*255);
+        return 'rgba(' + r + ',' + g + ',' + b + ',1)';
+    }
+
     function ShowAnalyticsSection() {
         let TRAFFIC_CHART_OPTIONS = {
             scales: {
@@ -245,6 +253,25 @@
                         }]
                     },
                     options: TRAFFIC_CHART_OPTIONS
+                });
+            });
+
+            $.get("{% url 'admin-monthly-course-traffic' %}", function(data){
+                let ctx = $('#chart-monthly-course-traffic');
+                let colors = [];
+                for (let l in data.labels){
+                    colors.push(randColorStr());
+                }
+                let monthlyCourseTrafficChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: '# Of Sessions with course',
+                            data: data.values,
+                            backgroundColor: data.colors
+                        }]
+                    },
                 });
             });
         });

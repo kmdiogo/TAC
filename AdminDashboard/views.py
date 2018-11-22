@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 import calendar
 from django.utils import timezone
 from SignIn.models import *
+from django.db.models import Count
 
 @staff_member_required
 @user_passes_test(lambda u: u.is_superuser)
@@ -64,5 +65,23 @@ def monthly_traffic(request):
                                                     endTime__isnull=False).count()
     context['month'] = currentDate.strftime('%B')
     return JsonResponse(context)
+
+
+@staff_member_required
+@user_passes_test(lambda u: u.is_superuser)
+@api_view(['GET'])
+def monthly_course_traffic(request):
+    currentDate = timezone.now()
+    daysInMonth = calendar.monthrange(currentDate.year, currentDate.month)[1]
+    context = {'labels': [], 'values': [], 'colors': []}
+    query = Session.objects.all().values('course').annotate(count=Count('course')).order_by('-count')[:5]
+    for o in query:
+        context['labels'].append(o['course'])
+        context['values'].append(o['count'])
+        context['colors'].append(COURSE_COLORS[o['course']])
+
+    return JsonResponse(context)
+
+
 
 

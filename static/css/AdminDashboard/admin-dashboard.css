@@ -391,6 +391,12 @@ ul > li{
     margin: 8px 5px 0px 5px !important;
 }
 
+@media (max-width: 768px){
+    ul > li{
+        margin: 0 !important;
+    }
+}
+
 .sidebar{
   background-color: #696969 !important; //tertiary
 }

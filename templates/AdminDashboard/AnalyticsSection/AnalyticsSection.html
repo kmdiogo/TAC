@@ -1,31 +1,52 @@
 {% load static %}
 
 <div class="container">
-    <div class="row">
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h1 id="weekly-traffic-title">Traffic This Week</h1>
+    <div class="card">
+        <div class="card-header text-center">
+            <h1>Data Analytics</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 id="weekly-traffic-title">Traffic This Week</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <canvas id="chart-weekly-traffic" width="400" height="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <div class="container">
-                        <canvas id="chart-weekly-traffic" width="400" height="400"></canvas>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 id="monthly-traffic-title">Monthly Traffic</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <canvas id="chart-monthly-traffic" width="400" height="400"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-6">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h1 id="monthly-traffic-title">Monthly Traffic</h1>
-                </div>
-                <div class="card-body">
-                    <div class="container">
-                        <canvas id="chart-monthly-traffic" width="400" height="400"></canvas>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4>Top 5 Courses This Month</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="container">
+                                <canvas id="chart-monthly-course-traffic" width="400" height="400"></canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
