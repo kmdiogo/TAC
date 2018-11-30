@@ -349,7 +349,7 @@ footer.sticky-footer {
   bottom: 0;
   width: calc(100% - 90px);
   height: 80px;
-  background-color: #e9ecef;
+  background-color: black;
 }
 
 footer.sticky-footer .copyright {
@@ -412,5 +412,37 @@ ul > li{
   padding-top: 5px !important;
 }
 
+.dropdown-item,
+.dropdown-header{
+  font-weight: bold !important;
+  color: black !important;
+}
+
+.dropdown-header{
+  font-style: italic !important;
+}
+
+.table-bordered{
+  border-width: 3px !important;
+  border-color: #343a40 !important;
+}
+
+.table-bordered th,
+.table-bordered td{
+  border-color: #696969 !important;
+}
+
+.table-bordered thead,
+.table-bordered th{
+  background-color: #A9A9A9 !important;
+  border-right-width: 2px !important;
+  border-left-width: 2px !important;
+  border-bottom-width: 2px !important;
+}
+
+.table-bordered td {
+    border-right-width: 2px !important;
+    border-left-width: 2px !important;
+}
 
 
