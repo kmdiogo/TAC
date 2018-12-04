@@ -1,9 +1,32 @@
 {% load static %}
 
 <script id="time-off-scripts">
+    function getCookie(name) {
+        function escape(s) { return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); };
+        let match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+        return match ? match[1] : null;
+    }
     function LoadTimeOffSection(){
         $('#table-time-off').DataTable({
             'ordering': true
+        });
+
+        $('button.time-off-submit').click(function(){
+            let action = 1;
+            let id = $(this).parent().parent().find('input[type="hidden"]').first().val();
+            let comments = $(this).parent().parent().find('.comments').first().val();
+            let data = {
+                'status': action,
+                'id': id,
+                'comments': comments,
+            };
+            $.post('time-off', {
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
+                data: data,
+                success: function(data){
+                    console.log(data);
+                }
+            });
         });
     }
 </script>

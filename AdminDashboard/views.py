@@ -2,12 +2,14 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.admin.views.decorators import staff_member_required, user_passes_test
 from django.template.loader import render_to_string
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from django.views.decorators.http import require_http_methods, require_GET, require_POST
 from datetime import datetime, timedelta
 import calendar
+from AdminDashboard import serializers
 from django.utils import timezone
 from SignIn.models import *
 from Dashboard.models import *
@@ -75,13 +77,14 @@ def monthly_course_traffic(request):
     currentDate = timezone.now()
     daysInMonth = calendar.monthrange(currentDate.year, currentDate.month)[1]
     context = {'labels': [], 'values': [], 'colors': []}
-    query = Session.objects.all().values('course').annotate(count=Count('course')).order_by('-count')[:5]
+    query = Session.objects.all().filter(startTime__month=currentDate.month, startTime__year=currentDate.year).values('course').annotate(count=Count('course')).order_by('-count')[:5]
     for o in query:
         context['labels'].append(o['course'])
         context['values'].append(o['count'])
         context['colors'].append(COURSE_COLORS[o['course']])
 
     return JsonResponse(context)
+
 
 
 @staff_member_required
@@ -93,7 +96,10 @@ def time_off_view(request):
         context['timeoffs'] = TimeOff.objects.filter(status=0, date__gte=timezone.now()).order_by('date')
         return HttpResponse(render_to_string('AdminDashboard/TimeOffSection/TimeOffSection.html', context, request))
     else:
-        pass
+        serializer = serializers.TimeOffPostSerializer(request.data)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
