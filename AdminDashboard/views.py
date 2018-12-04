@@ -10,6 +10,7 @@ from datetime import datetime, timedelta
 import calendar
 from django.utils import timezone
 from SignIn.models import *
+from Dashboard.models import *
 from django.db.models import Count
 
 @staff_member_required
@@ -81,6 +82,19 @@ def monthly_course_traffic(request):
         context['colors'].append(COURSE_COLORS[o['course']])
 
     return JsonResponse(context)
+
+
+@staff_member_required
+@user_passes_test(lambda u: u.is_superuser)
+@api_view(['GET', 'POST'])
+def time_off_view(request):
+    if request.method == 'GET':
+        context = {'firstName': request.user.first_name, 'lastName': request.user.last_name}
+        context['timeoffs'] = TimeOff.objects.filter(status=0, date__gte=timezone.now()).order_by('date')
+        return HttpResponse(render_to_string('AdminDashboard/TimeOffSection/TimeOffSection.html', context, request))
+    else:
+        pass
+
 
 
 

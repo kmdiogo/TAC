@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            <h1>Time-Off Requests</h1>
+        </div>
+        <div class="card-body">
+            <table class="table" style="table-layout: fixed" id="table-time-off">
+                <thead class="thead-light">
+                    <tr class="text-center">
+                        <th scope="col">Employee <i class="fas fa-sort"></i></th>
+                        <th scope="col">Date <i class="fas fa-sort"></i></th>
+                        <th scope="col">Reason <i class="fas fa-sort"></i></th>
+                        <th scope="col">Comments</th>
+                        <th scope="col">Action <i class="fas fa-sort"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if timeoffs %}
+                        {% for t in timeoffs %}
+                            <tr class="text-center">
+                                <input class="id" type="hidden" value="{{ t.user.id }}" />
+                                <td>{{ t.user.last_name }}, {{ t.user.first_name }}</td>
+                                <td><span class="d-none">{{ t.date|date:"Y/m/d" }}</span>{{ t.date }}</td>
+                                <td>{{ t.reason }}</td>
+                                <td><input class="form-control comments" /></td>
+                                <td>
+                                    <button class="btn btn-success"><i class="fas fa-check" style="color:green;"></i></button>
+                                    <button class="btn btn-danger"><i class="fas fa-times-circle" style="color:red;"></i></button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center">No Time-off requests to show</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

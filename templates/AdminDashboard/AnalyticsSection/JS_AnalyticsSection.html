@@ -1,0 +1,108 @@
+<script>
+    let TRAFFIC_CHART_OPTIONS = {
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Day'
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Sessions'
+                },
+                ticks: {
+                    beginAtZero: true,
+                    userCallback: function(label, index, labels) {
+                        // Don't allow decimal numbers in y-axis
+                        if (Math.floor(label) === label) {
+                            return label;
+                        }
+                    }
+                }
+            }]
+        }
+    };
+
+    function LoadWeeklyTrafficChart() {
+        let ctx = $('#chart-weekly-traffic');
+        $.get("{% url 'admin-weekly-traffic' %}", function(data){
+            $('#weekly-traffic-title').html('Week of ' + data.weekOf)
+            let labels = [];
+            let chartData = []
+            for (let day in data.data){
+                labels.push(day);
+                chartData.push(data.data[day]);
+            }
+            let weeklyTrafficChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    data: chartData,
+                    datasets: [{
+                        label: '# Of Sessions',
+                        data: chartData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: TRAFFIC_CHART_OPTIONS
+            });
+        });
+    }
+
+    function LoadMonthlyTrafficChart(){
+        let ctx = $('#chart-monthly-traffic');
+        $.get("{% url 'admin-monthly-traffic' %}", function(data){
+            $('#monthly-traffic-title').html('Month of ' + data.month)
+            let labels = [];
+            let chartData = []
+            for (let day in data.data){
+                labels.push(day);
+                chartData.push(data.data[day]);
+            }
+            let monthlyTrafficChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '# Of Sessions',
+                        data: chartData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: TRAFFIC_CHART_OPTIONS
+            });
+        });
+    }
+
+    function LoadMonthlyCourseTrafficChart(){
+        let ctx = $('#chart-monthly-course-traffic');
+        $.get("{% url 'admin-monthly-course-traffic' %}", function(data){
+            let monthlyCourseTrafficChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: '# Of Sessions with course',
+                        data: data.values,
+                        backgroundColor: data.colors
+                    }]
+                },
+            });
+        });
+    }
+
+</script>
