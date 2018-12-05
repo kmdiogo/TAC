@@ -1,5 +1,5 @@
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required, user_passes_test
 from django.template.loader import render_to_string
 from rest_framework import status
@@ -37,6 +37,15 @@ def home_view(request):
 def analytics_view(request):
     context = {'firstName': request.user.first_name, 'lastName': request.user.last_name}
     return HttpResponse(render_to_string('AdminDashboard/AnalyticsSection/AnalyticsSection.html', context, request))
+
+
+@staff_member_required
+@user_passes_test(lambda u: u.is_superuser)
+@api_view(['GET'])
+def employees_view(request):
+    employees = User.objects.filter(is_active=True, is_superuser=False)
+    context = {'firstName': request.user.first_name, 'lastName': request.user.last_name, 'employees': employees}
+    return HttpResponse(render_to_string('AdminDashboard/EmployeesSection/EmployeesSection.html', context, request))
 
 
 @staff_member_required
@@ -96,10 +105,14 @@ def time_off_view(request):
         context['timeoffs'] = TimeOff.objects.filter(status=0, date__gte=timezone.now()).order_by('date')
         return HttpResponse(render_to_string('AdminDashboard/TimeOffSection/TimeOffSection.html', context, request))
     else:
-        serializer = serializers.TimeOffPostSerializer(request.data)
-        if serializer.is_valid():
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        if 'pk' in request.data:
+            obj = TimeOff.objects.get(pk=request.data['pk'])
+            serializer = serializers.TimeOffPostSerializer(obj, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response('No primary key passed through', status=status.HTTP_400_BAD_REQUEST)
 
 
 

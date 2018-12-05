@@ -24,6 +24,11 @@
     <script src="{% static 'js/jquery.validate.min.js' %}"></script>
     <script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
     <script id="validator-methods">
+        function getCookie(name) {
+            function escape(s) { return s.replace(/([.*+?\^${}()|\[\]\/\\])/g, '\\$1'); };
+            let match = document.cookie.match(RegExp('(?:^|;\\s*)' + escape(name) + '=([^;]*)'));
+            return match ? match[1] : null;
+        }
         jQuery.validator.addMethod("noPastDate", function(value){
             let today = new Date();
             let split = value.split('-');

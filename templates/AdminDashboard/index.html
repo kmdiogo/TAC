@@ -137,6 +137,7 @@
 <script src="{% static 'js/Chart.bundle.min.js' %}"></script>
 {% include 'AdminDashboard/TimeOffSection/JS_TimeOffSection.html' %}
 {% include 'AdminDashboard/AnalyticsSection/JS_AnalyticsSection.html' %}
+{% include 'AdminDashboard/EmployeesSection/JS_EmployeesSection.html' %}
 <script>
     $(document).ready(function(){
         ShowHomeSection();
@@ -153,6 +154,11 @@
         $('#time-off-link').click(function(e){
             e.preventDefault();
             ShowTimeOffSection();
+        });
+
+        $('#employees-link').click(function(e){
+            e.preventDefault();
+            ShowEmployeesSection();
         });
     });
 
@@ -194,7 +200,16 @@
             $('#time-off-item-item').addClass('active');
             LoadTimeOffSection();
         });
+    }
 
+    function ShowEmployeesSection() {
+        $('#content-wrapper').html($('#loading-screen-template').html());
+        $.get("{% url 'employees' %}", function(data){
+            $('#content-wrapper').html(data);
+            $('.nav-item.active').removeClass('active');
+            $('#employees-item').addClass('active');
+            LoadEmployeesSection();
+        });
     }
 </script>
 {% endblock %}

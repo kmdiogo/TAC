@@ -7,4 +7,4 @@ from django.core.validators import RegexValidator
 class TimeOffPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = TimeOff
-        fields = ('comments', 'status')
+        fields = ('comment', 'status')
