@@ -4,12 +4,13 @@
             <h1>Employees</h1>
         </div>
         <div class="card-body">
-            <table class="table" style="table-layout: fixed" id="table-time-off">
+            <table class="table" style="table-layout: fixed" id="table-employees">
                 <thead class="thead-light">
                     <tr class="text-center">
                         <th scope="col">Y Number <i class="fas fa-sort"></i></th>
                         <th scope="col">Employee Name <i class="fas fa-sort"></i></th>
                         <th scope="col">Email <i class="fas fa-sort"></i></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,6 +21,7 @@
                                 <td>{{ employee.username }}</td>
                                 <td>{{ employee.last_name }}, {{ employee.first_name }}</td>
                                 <td>{{ employee.email }}</td>
+                                <td><button class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td>
                             </tr>
                         {% endfor %}
                     {% else %}
@@ -29,6 +31,13 @@
                     {% endif %}
                 </tbody>
             </table>
+
+            <div class="container d-flex justify-content-end">
+                <button class="btn btn-success" data-toggle="modal" data-target="#modal-add-employees">Add Employee</button>
+            </div>
+
         </div>
     </div>
 </div>
+
+{% include 'AdminDashboard/EmployeesSection/_AddEmployeesModal.html' %}
