@@ -8,9 +8,11 @@
                 <thead class="thead-light">
                     <tr class="text-center">
                         <th scope="col">Y Number <i class="fas fa-sort"></i></th>
+                        <th scope="col">Sex <i class="fas fa-sort"></i></th>
                         <th scope="col">Employee Name <i class="fas fa-sort"></i></th>
                         <th scope="col">Email <i class="fas fa-sort"></i></th>
-                        <th scope="col"></th>
+                        <th scope="col">Actions</th>
+                        <th scope="col">Courses</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -19,9 +21,11 @@
                             <tr class="text-center">
                                 <input class="id" type="hidden" value="{{ employee.id }}" />
                                 <td>{{ employee.username }}</td>
+                                <td>{{ employee.employee.sex }}</td>
                                 <td>{{ employee.last_name }}, {{ employee.first_name }}</td>
                                 <td>{{ employee.email }}</td>
                                 <td><button class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td>
+                                <td><button class="btn btn-primary"><i class="fas fa-list-ul"></i></button></td>
                             </tr>
                         {% endfor %}
                     {% else %}

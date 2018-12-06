@@ -23,7 +23,7 @@ User.add_to_class("__str__", custom_user_string_method)
 
 class Employee(models.Model):
     employeeIdValidator = RegexValidator(EMPLOYEE_ID_REGEX, 'Employee ID does not match the specified format')
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='employee')
     #employeeId = models.CharField(max_length=50, primary_key=True, verbose_name=EMPLOYEE_ID_ALIAS, validators=[employeeIdValidator])
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, verbose_name="Sex")
     dob = models.DateField(verbose_name="Date of Birth")
