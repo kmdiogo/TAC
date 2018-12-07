@@ -58,8 +58,8 @@ def weekly_traffic(request):
     endOfWeek = startOfWeek + timedelta(days=6)
     context = {'data': {}}
     for i in range(7):
-        context['data'][DOW_DICT[i]] = Session.objects.filter(startTime__range=(startOfWeek, endOfWeek),
-                                                      endTime__isnull=False, startTime__week_day=i+1).count()
+        context['data'][DOW_DICT[i]] = Session.objects.filter(endTime__range=(startOfWeek, endOfWeek),
+                                                      endTime__isnull=False, endTime__week_day=i+1).count()
     context['weekOf'] = startOfWeek.strftime('%m/%d/%Y')
     return JsonResponse(context)
 
@@ -73,7 +73,7 @@ def monthly_traffic(request):
     context = {'data': {}}
     for i in range(1, daysInMonth+1):
         dateLabel = datetime.date(currentDate.year, currentDate.month, i).strftime('%m/%d/%Y')
-        context['data'][dateLabel] = Session.objects.filter(startTime__month=currentDate.month, startTime__day=i,
+        context['data'][dateLabel] = Session.objects.filter(endTime__month=currentDate.month, endTime__day=i,
                                                     endTime__isnull=False).count()
     context['month'] = currentDate.strftime('%B')
     return JsonResponse(context)
