@@ -43,24 +43,24 @@
 <div id="wrapper">
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav shadow-lg">
-        <li class="nav-item active" id="home-item">
+        <!--<li class="nav-item active" id="home-item">
             <a class="nav-link btn btn-primary-dark-outline" href="" id="home-link">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
-        </li>
+        </li>-->
         <li class="nav-item" id="analytics-item">
             <a class="nav-link btn btn-primary-dark-outline" href='' id="analytics-link">
                 <i class="fas fa-chart-area"></i>
                 <span>Analytics</span>
             </a>
         </li>
-        <li class="nav-item" id="schedule-item">
+        <!--<li class="nav-item" id="schedule-item">
             <a class="nav-link btn btn-primary-dark-outline" href="" id="schedule-link">
                 <i class="far fa-calendar-alt"></i>
                 <span>Schedule</span>
             </a>
-        </li>
+        </li>-->
         <li class="nav-item" id="time-off-item">
             <a class="nav-link btn btn-primary-dark-outline" href="" id="time-off-link">
                 <i class="fas fa-plane-departure"></i>
@@ -140,7 +140,8 @@
 {% include 'AdminDashboard/EmployeesSection/JS_EmployeesSection.html' %}
 <script>
     $(document).ready(function(){
-        ShowHomeSection();
+        ShowAnalyticsSection();
+        //ShowHomeSection();
         $('#home-link').click(function(e){
             e.preventDefault();
             ShowHomeSection();
