@@ -44,7 +44,7 @@
                $('#tbody-course-offers').empty();
                $('#course-offer-title').text(`Course Offers For ${data[0].first_name} ${data[0].last_name}`);
                 for (let i in data){
-                    $('#tbody-course-offers').append(`<tr class='text-center'><td>${data[i].course}</td></tr>`);
+                    $('#tbody-course-offers').append(`<tr><td>${data[i].course_name}</td></tr>`);
                 }
            });
         });

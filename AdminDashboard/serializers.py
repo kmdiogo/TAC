@@ -14,10 +14,17 @@ class TimeOffPostSerializer(serializers.ModelSerializer):
 class CourseOfferSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name', read_only=True)
     last_name = serializers.CharField(source='user.last_name', read_only=True)
+    course_name = serializers.SerializerMethodField()
 
     class Meta:
         model = CourseOffer
-        fields = ['course', 'first_name', 'last_name']
+        fields = ['course', 'first_name', 'last_name', 'course_name']
+
+    def get_course_name(self, obj):
+        for course in COURSE_CHOICES:
+            if course[0] == obj.course:
+                return course[1]
+        return "INVALID COURSE VALUE"
 
 
 # SUPER HACKY WAY TO GET USER AND EMPLOYEE MODELS CREATED IN ONE POST! !!!WARNING REWRITE THIS PLZ!!
