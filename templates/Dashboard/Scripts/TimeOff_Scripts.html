@@ -24,6 +24,7 @@
                 console.log($("#id_date").val());
                 $.ajax({
                     method: 'POST',
+                    headers: {'X-CSRFToken': getCookie('csrftoken')},
                     url: "{% url 'timeoff_view' %}",
                     data: data,
                     success: function(data){

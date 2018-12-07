@@ -68,7 +68,7 @@
             $.ajax({
                 type: 'POST',
                 data: postData,
-                headers: {'X-CSRFToken': $('#form-StudentSection-openSession').find("input[name='csrfmiddlewaretoken']").val()},
+                headers: {'X-CSRFToken': getCookie('csrftoken')},
                 url: POST_OPEN_SESSION_URL,
                 success: function(){
                     ShowOpenSessionSuccessScreen();
@@ -84,7 +84,7 @@
                $.ajax({
                   type: 'PUT',
                   data: putData,
-                   headers: {'X-CSRFToken': $('#form-StudentSection-closeSession').find("input[name='csrfmiddlewaretoken']").val()},
+                   headers: {'X-CSRFToken': getCookie('csrftoken')},
                   url: CloseSessionURL(schoolId),
                    success: function(data){
                       ShowCloseSessionSuccessScreen(data.firstName);

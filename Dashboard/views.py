@@ -102,6 +102,7 @@ def shifts_view(request):
         hoursWorked = 0
         for shift in shifts:
             dt = shift.endTime - shift.startTime
+            print(str(shift.startTime) + " -- " + str(shift.endTime) + " -- " + str(dt))
             hoursWorked += dt.days * 24 + dt.seconds / 3600
         hoursWorked = round(hoursWorked, PRECISION)
         context = {'shifts': shifts, 'firstName': request.user.first_name, 'lastName': request.user.last_name, 'hoursWorked': hoursWorked}

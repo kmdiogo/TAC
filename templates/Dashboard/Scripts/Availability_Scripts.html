@@ -22,7 +22,7 @@
                     type: 'POST',
                     data: data,
                     url: "{% url 'availability_view' %}",
-                    headers: {'X-CSRFToken': token},
+                    headers: {'X-CSRFToken': getCookie('csrftoken')},
                     error: function(data){
                         alert("Something went wrong!");
                     }
@@ -33,7 +33,7 @@
                     type: 'POST',
                     data: data,
                     url: "{% url 'availability_view' %}",
-                    headers: {'X-CSRFToken': token},
+                    headers: {'X-CSRFToken': getCookie('csrftoken')},
                     success: function(data){
                         ShowAvailabilitySection(true);
                     }

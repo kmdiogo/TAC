@@ -49,7 +49,7 @@ class Session(Log):
                                                                          date=self.startTime.date())
         else:
             return '{date} - Closed {course} session for {student}'.format(course=self.course, student=self.student,
-                                                                           date=self.startTime.date())
+                                                                           date=self.endTime.date())
 
 
 # --------------------------EMPLOYEE----------------------------
