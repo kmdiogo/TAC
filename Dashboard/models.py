@@ -49,7 +49,10 @@ class Shift(models.Model):
 
 class CourseOffer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.CharField(max_length=50, verbose_name="Course Number")
+    course = models.CharField(max_length=50, verbose_name="Course", choices=COURSE_CHOICES)
+
+    def __str__(self):
+        return "{last}, {first} - {course}".format(last=self.user.last_name, first=self.user.first_name, course=self.course)
 
 
 class AbstractAvailSched(models.Model):

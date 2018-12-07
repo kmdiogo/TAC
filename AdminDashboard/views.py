@@ -15,6 +15,7 @@ from SignIn.models import *
 from Dashboard.models import *
 from django.db.models import Count
 
+
 @staff_member_required
 @user_passes_test(lambda u: u.is_superuser)
 @api_view(['GET'])
@@ -113,6 +114,29 @@ def time_off_view(request):
                 return Response(serializer.data)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response('No primary key passed through', status=status.HTTP_400_BAD_REQUEST)
+
+
+@staff_member_required
+@user_passes_test(lambda u: u.is_superuser)
+@api_view(['POST'])
+def new_employee_view(request):
+    serializer = serializers.EmployeeSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@staff_member_required
+@user_passes_test(lambda u: u.is_superuser)
+@api_view(['GET', 'POST'])
+def employee_courses_view(request, pk):
+    if request.method == 'GET':
+        courses = CourseOffer.objects.filter(user__username=pk)
+        serializer = serializers.CourseOfferSerializer(courses, many=True)
+        return Response(serializer.data)
+    else:
+        pass
 
 
 

@@ -3,5 +3,55 @@
         $('#table-employees').DataTable({
             ordering: true
         });
+
+        $('#id_username').inputmask('Y00999999');
+        $('#id_dob').inputmask('datetime',{
+            inputFormat: 'yyyy-mm-dd',
+            placeholder: 'YYYY-MM-DD'
+        });
+
+        $('#form-new-employee').validate({
+            rules: {
+                email: {
+                    email: true
+                }
+            },
+            validClass: 'is-valid',
+            errorClass: 'is-invalid'
+        });
+
+        $('#new-employee-submit').click(function(){
+            if ($('#form-new-employee').valid()){
+               let data = $('#form-new-employee').serialize();
+               $.ajax('{% url 'new-employee' %}', {
+                   type: 'POST',
+                   headers: {'X-CSRFToken': getCookie('csrftoken')},
+                   data: data,
+                   success: function(data){
+                       $('#modal-add-employees').modal('hide');
+                   }
+               });
+            }
+        });
+
+        $('#modal-add-employees').on('hidden.bs.modal', function(){
+           ShowEmployeesSection();
+        });
+
+        $('.open-course-list').click(function(){
+           let schoolId =  $(this).parent().parent().find('.schoolId:first').text();
+           $.get('/administrator/course_offers/' + schoolId + '/', function(data){
+               $('#tbody-course-offers').empty();
+               $('#course-offer-title').text(`Course Offers For ${data[0].first_name} ${data[0].last_name}`);
+                for (let i in data){
+                    $('#tbody-course-offers').append(`<tr class='text-center'><td>${data[i].course}</td></tr>`);
+                }
+           });
+        });
+
+
+    }
+    function LoadCourseOffers(schoolId){
+
     }
 </script>

@@ -20,12 +20,12 @@
                         {% for employee in employees %}
                             <tr class="text-center">
                                 <input class="id" type="hidden" value="{{ employee.id }}" />
-                                <td>{{ employee.username }}</td>
+                                <td class="schoolId">{{ employee.username }}</td>
                                 <td>{{ employee.employee.sex }}</td>
                                 <td>{{ employee.last_name }}, {{ employee.first_name }}</td>
                                 <td>{{ employee.email }}</td>
                                 <td><button class="btn btn-danger"><i class="fas fa-times-circle"></i></button></td>
-                                <td><button class="btn btn-primary"><i class="fas fa-list-ul"></i></button></td>
+                                <td><button class="btn btn-primary open-course-list" data-toggle="modal" data-target="#modal-course-offers"><i class="fas fa-list-ul"></i></button></td>
                             </tr>
                         {% endfor %}
                     {% else %}
@@ -36,6 +36,8 @@
                 </tbody>
             </table>
 
+            <hr />
+
             <div class="container d-flex justify-content-end">
                 <button class="btn btn-success" data-toggle="modal" data-target="#modal-add-employees">Add Employee</button>
             </div>
@@ -45,3 +47,4 @@
 </div>
 
 {% include 'AdminDashboard/EmployeesSection/_AddEmployeesModal.html' %}
+{% include 'AdminDashboard/EmployeesSection/_CourseOfferListModal.html' %}
